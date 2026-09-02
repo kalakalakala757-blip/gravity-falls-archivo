@@ -1,556 +1,1056 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Episodios | Gravity Falls</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Georgia, serif;
-            color: #eee;
-
-            background:
-                linear-gradient(
-                    rgba(5, 12, 9, 0.86),
-                    rgba(5, 12, 9, 0.94)
-                ),
-                url("https://images.unsplash.com/photo-1448375240586-882707db888b");
-
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        header {
-            text-align: center;
-            padding: 55px 20px 35px;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 42px;
-            letter-spacing: 6px;
-            text-shadow: 0 0 15px #000;
-        }
-
-        .subtitulo {
-            margin-top: 12px;
-            color: #aaa;
-            font-size: 14px;
-            letter-spacing: 3px;
-        }
-
-        .temporada {
-            max-width: 1050px;
-            margin: 0 auto 45px;
-            padding: 20px;
-        }
-
-        .titulo-temporada {
-            text-align: center;
-
-            margin-bottom: 25px;
-            padding: 15px;
-
-            border-top: 1px solid #666;
-            border-bottom: 1px solid #666;
-
-            letter-spacing: 4px;
-        }
-
-        .episodios {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
-
-            gap: 22px;
-        }
-
-        .episodio {
-            position: relative;
-
-            background: rgba(15, 18, 16, 0.9);
-
-            border: 1px solid #555;
-
-            padding: 23px;
-
-            transition: 0.3s;
-        }
-
-        .episodio:hover {
-            transform: translateY(-5px);
-
-            border-color: #999;
-
-            box-shadow:
-                0 10px 25px rgba(0,0,0,0.6);
-        }
-
-        .numero {
-            position: absolute;
-
-            top: 12px;
-            right: 15px;
-
-            color: #777;
-
-            font-size: 11px;
-        }
-
-        .icono {
-            font-size: 38px;
-
-            margin-bottom: 8px;
-        }
-
-        h2 {
-            margin: 5px 0 12px;
-
-            font-size: 20px;
-
-            letter-spacing: 1px;
-        }
-
-        .tipo {
-            display: inline-block;
-
-            border: 1px solid #777;
-
-            padding: 5px 9px;
-
-            margin-bottom: 15px;
-
-            font-size: 10px;
-
-            letter-spacing: 1px;
-        }
-
-        .descripcion {
-            color: #bbb;
-
-            font-size: 14px;
-
-            line-height: 1.6;
-        }
-
-        .archivo {
-            margin-top: 15px;
-
-            padding-top: 12px;
-
-            border-top: 1px solid #444;
-
-            color: #888;
-
-            font-size: 12px;
-        }
-
-        .volver {
-            display: block;
-
-            width: fit-content;
-
-            margin: 40px auto 50px;
-
-            padding: 12px 20px;
-
-            color: white;
-
-            text-decoration: none;
-
-            border: 1px solid #777;
-
-            background: rgba(0,0,0,0.6);
-
-            transition: 0.3s;
-        }
-
-        .volver:hover {
-            background: rgba(255,255,255,0.1);
-
-            border-color: white;
-        }
-
-        footer {
-            text-align: center;
-
-            padding: 20px;
-
-            color: #666;
-
-            font-size: 10px;
-
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 600px) {
-
-            h1 {
-                font-size: 30px;
-            }
-
-            .episodios {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archivo de Episodios | Gravity Falls</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Georgia,serif;
+    color:#e8e2d0;
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(5,12,9,.88),rgba(5,12,9,.96)),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b")
+        center/cover fixed;
+}
+
+/* ===== ENCABEZADO ===== */
+
+header{
+    text-align:center;
+    padding:45px 20px 30px;
+    border-bottom:1px solid #665d45;
+    background:rgba(7,13,10,.75);
+}
+
+header h1{
+    font-size:clamp(2rem,5vw,4rem);
+    letter-spacing:6px;
+    color:#d6c99d;
+    text-shadow:0 0 15px rgba(210,190,120,.25);
+}
+
+header p{
+    margin-top:12px;
+    color:#9d997f;
+    letter-spacing:3px;
+    font-size:.85rem;
+}
+
+/* ===== CONTENEDOR ===== */
+
+.container{
+    width:min(1200px,92%);
+    margin:35px auto 70px;
+}
+
+/* ===== ESTADÍSTICAS ===== */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.stat{
+    background:rgba(15,22,17,.88);
+    border:1px solid #57513d;
+    padding:20px;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:2rem;
+    color:#d6c99d;
+}
+
+.stat span{
+    color:#8e8b76;
+    font-size:.8rem;
+    letter-spacing:2px;
+}
+
+/* ===== BUSCADOR ===== */
+
+.search{
+    margin-bottom:20px;
+}
+
+.search input{
+    width:100%;
+    padding:15px 18px;
+    background:rgba(8,14,10,.9);
+    border:1px solid #625a43;
+    color:#eee7d4;
+    font-family:Georgia,serif;
+    font-size:1rem;
+    outline:none;
+}
+
+.search input:focus{
+    border-color:#b8a66c;
+    box-shadow:0 0 12px rgba(184,166,108,.12);
+}
+
+/* ===== FILTROS ===== */
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:30px;
+}
+
+.filters button{
+    padding:10px 15px;
+    background:#121b15;
+    border:1px solid #57513d;
+    color:#b9b39c;
+    cursor:pointer;
+    font-family:Georgia,serif;
+    transition:.2s;
+}
+
+.filters button:hover,
+.filters button.active{
+    background:#302d20;
+    color:#eee4bd;
+    border-color:#aa9a61;
+}
+
+/* ===== TEMPORADAS ===== */
+
+.season-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:40px 0 18px;
+    color:#d2c59a;
+    letter-spacing:3px;
+}
+
+.season-title::after{
+    content:"";
+    height:1px;
+    background:#514c3b;
+    flex:1;
+}
+
+/* ===== EPISODIOS ===== */
+
+.episodes{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.episode{
+    background:rgba(13,20,16,.93);
+    border:1px solid #514c3b;
+    transition:.25s;
+}
+
+.episode:hover{
+    border-color:#8e8054;
+    transform:translateY(-2px);
+}
+
+.episode summary{
+    list-style:none;
+    cursor:pointer;
+    padding:20px;
+}
+
+.episode summary::-webkit-details-marker{
+    display:none;
+}
+
+.episode-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.number{
+    color:#77745f;
+    font-size:.8rem;
+    letter-spacing:2px;
+}
+
+.title{
+    color:#e1d7b2;
+    font-size:1.15rem;
+    margin-top:5px;
+}
+
+.arrow{
+    color:#8e8054;
+    font-size:1.2rem;
+}
+
+.episode[open] .arrow{
+    transform:rotate(90deg);
+}
+
+.content{
+    padding:0 20px 20px;
+    border-top:1px solid #3d3a2e;
+    color:#aaa792;
+    line-height:1.7;
+    font-size:.92rem;
+}
+
+.content p{
+    margin-top:15px;
+}
+
+.tag{
+    display:inline-block;
+    margin-top:15px;
+    padding:5px 9px;
+    border:1px solid #59533e;
+    color:#a79d78;
+    font-size:.7rem;
+    letter-spacing:1px;
+}
+
+/* ===== PIE ===== */
+
+footer{
+    text-align:center;
+    margin-top:45px;
+    padding-top:25px;
+    border-top:1px solid #403d31;
+}
+
+.back{
+    display:inline-block;
+    color:#c4b77f;
+    text-decoration:none;
+    border:1px solid #625a43;
+    padding:12px 20px;
+    transition:.2s;
+}
+
+.back:hover{
+    background:#302d20;
+}
+
+.warning{
+    margin-top:18px;
+    color:#666657;
+    font-size:.75rem;
+    letter-spacing:1px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:800px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .episodes{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+
+    header h1{
+        letter-spacing:3px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .episode-top{
+        align-items:flex-start;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-
-    <h1>EPISODIOS</h1>
-
-    <div class="subtitulo">
-        REGISTRO CRONOLÓGICO DE INVESTIGACIONES
-    </div>
-
+    <h1>ARCHIVO DE EPISODIOS</h1>
+    <p>REGISTRO AUDIOVISUAL · GRAVITY FALLS</p>
 </header>
 
+<main class="container">
 
-<!-- TEMPORADA 1 -->
+    <section class="stats">
+        <div class="stat">
+            <strong id="total">40</strong>
+            <span>EPISODIOS</span>
+        </div>
 
-<section class="temporada">
+        <div class="stat">
+            <strong>20</strong>
+            <span>TEMPORADA 1</span>
+        </div>
 
-    <div class="titulo-temporada">
-        TEMPORADA 01
+        <div class="stat">
+            <strong>20</strong>
+            <span>TEMPORADA 2</span>
+        </div>
+
+        <div class="stat">
+            <strong>∞</strong>
+            <span>MISTERIOS</span>
+        </div>
+    </section>
+
+    <section class="search">
+        <input
+            type="text"
+            id="search"
+            placeholder="Buscar episodio, personaje o misterio..."
+        >
+    </section>
+
+    <div class="filters">
+        <button class="active" data-filter="todos">TODOS</button>
+        <button data-filter="temporada1">TEMPORADA 1</button>
+        <button data-filter="temporada2">TEMPORADA 2</button>
+        <button data-filter="misterio">MISTERIOS</button>
+        <button data-filter="bill">BILL</button>
+        <button data-filter="familia">FAMILIA PINES</button>
     </div>
 
-    <div class="episodios">
+    <!-- ================= TEMPORADA 1 ================= -->
 
-        <article class="episodio">
+    <h2 class="season-title">TEMPORADA 01</h2>
 
-            <div class="numero">01</div>
+    <section class="episodes">
 
-            <div class="icono">🌲</div>
-
-            <h2>TOURIST TRAP</h2>
-
-            <div class="tipo">
-                INVESTIGACIÓN INICIAL
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E01</div>
+                        <div class="title">Tourist Trapped</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper y Mabel descubren que algo extraño está ocurriendo en Gravity Falls cuando Dipper sospecha que el nuevo novio de Mabel no es lo que parece.</p>
+                <span class="tag">MISTERIO</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Dipper y Mabel llegan a Gravity Falls para pasar
-                el verano con su tío Stan y comienzan a descubrir
-                que el pueblo esconde secretos.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: PRIMER CONTACTO
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E02</div>
+                        <div class="title">The Legend of the Gobblewonker</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Los gemelos investigan la leyenda de un supuesto monstruo marino mientras Stan intenta conseguir una fotografía de la criatura.</p>
+                <span class="tag">CRIATURA</span>
             </div>
+        </details>
 
-        </article>
-
-
-        <article class="episodio">
-
-            <div class="numero">02</div>
-
-            <div class="icono">👁️</div>
-
-            <h2>THE LEGEND OF THE GOBBLEWONKER</h2>
-
-            <div class="tipo">
-                CRIATURA
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E03</div>
+                        <div class="title">Headhunters</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Mabel encuentra una misteriosa figura de cera que parece representar a una persona real.</p>
+                <span class="tag">EXPEDIENTE</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Los hermanos se encuentran con una criatura
-                misteriosa mientras exploran los alrededores
-                del pueblo.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: CRIATURAS
+        <details class="episode" data-season="temporada1" data-tags="familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E04</div>
+                        <div class="title">The Hand That Rocks the Mabel</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Mabel conoce a Gideon, un niño con habilidades psíquicas que desarrolla una obsesión con ella.</p>
+                <span class="tag">GIDEON</span>
             </div>
+        </details>
 
-        </article>
-
-
-        <article class="episodio">
-
-            <div class="numero">03</div>
-
-            <div class="icono">🎪</div>
-
-            <h2>HEAVY METAL PARA SIEMPRE</h2>
-
-            <div class="tipo">
-                ANOMALÍA
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E05</div>
+                        <div class="title">The Inconveniencing</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper intenta impresionar a Wendy durante una noche que termina involucrando una tienda abandonada y fenómenos sobrenaturales.</p>
+                <span class="tag">ANOMALÍA</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Una nueva aventura lleva a los protagonistas
-                a descubrir que nada en Gravity Falls es
-                completamente normal.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: ANOMALÍAS
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E06</div>
+                        <div class="title">Dipper vs. Manliness</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper intenta demostrar que puede ser tan fuerte como los hombres del bosque y termina encontrándose con los Manotauros.</p>
+                <span class="tag">CRIATURA</span>
             </div>
+        </details>
 
-        </article>
-
-
-        <article class="episodio">
-
-            <div class="numero">04</div>
-
-            <div class="icono">👻</div>
-
-            <h2>THE HAND THAT ROCKS THE MABEL</h2>
-
-            <div class="tipo">
-                AMENAZA
+        <details class="episode" data-season="temporada1" data-tags="familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E07</div>
+                        <div class="title">Double Dipper</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper utiliza la fotocopiadora de la Cabaña del Misterio para crear copias de sí mismo durante la fiesta de cumpleaños de Wendy.</p>
+                <span class="tag">CABAÑA DEL MISTERIO</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Una situación aparentemente inocente termina
-                revelando que existen peligros ocultos
-                alrededor de los habitantes del pueblo.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: MISTERIOS
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E08</div>
+                        <div class="title">Irrational Treasure</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper y Mabel descubren que la historia oficial de Gravity Falls puede esconder una mentira.</p>
+                <span class="tag">HISTORIA</span>
             </div>
+        </details>
 
-        </article>
-
-
-        <article class="episodio">
-
-            <div class="numero">05</div>
-
-            <div class="icono">🏚️</div>
-
-            <h2>THE INCONVENIENCING</h2>
-
-            <div class="tipo">
-                EXPEDIENTE
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E09</div>
+                        <div class="title">The Time Traveler's Pig</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper descubre una anomalía temporal que le permite regresar al pasado y alterar pequeños acontecimientos.</p>
+                <span class="tag">TIEMPO</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Dipper y sus amigos se enfrentan a una situación
-                extraña durante una salida nocturna.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: CASOS ABIERTOS
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E10</div>
+                        <div class="title">Fight Fighters</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Un personaje de videojuego cobra vida después de que Dipper intenta utilizarlo para enfrentarse a Robbie.</p>
+                <span class="tag">REALIDAD ALTERADA</span>
             </div>
+        </details>
 
-        </article>
-
-
-        <article class="episodio">
-
-            <div class="numero">06</div>
-
-            <div class="icono">📖</div>
-
-            <h2>DIPPER VS. MANLINESS</h2>
-
-            <div class="tipo">
-                REGISTRO
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E11</div>
+                        <div class="title">Little Dipper</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper intenta recuperar su orgullo cuando Mabel termina siendo más alta que él.</p>
+                <span class="tag">ANOMALÍA</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Dipper intenta demostrar que puede enfrentarse
-                a situaciones que normalmente evitaría.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: PERSONAJES
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E12</div>
+                        <div class="title">Summerween</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Durante Summerween aparece una criatura que exige dulces y amenaza a quienes no cumplan con sus reglas.</p>
+                <span class="tag">SUMMERWEEN TRICKSTER</span>
             </div>
+        </details>
 
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- TEMPORADA 2 -->
-
-<section class="temporada">
-
-    <div class="titulo-temporada">
-        TEMPORADA 02
-    </div>
-
-    <div class="episodios">
-
-        <article class="episodio">
-
-            <div class="numero">01</div>
-
-            <div class="icono">🔍</div>
-
-            <h2>SCARY-OKE</h2>
-
-            <div class="tipo">
-                ANOMALÍA
+        <details class="episode" data-season="temporada1" data-tags="familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E13</div>
+                        <div class="title">Boss Mabel</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Mabel termina a cargo de la Cabaña del Misterio y descubre que dirigir un negocio no es tan sencillo como parece.</p>
+                <span class="tag">MABEL</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                El verano continúa y los misterios de Gravity Falls
-                comienzan a hacerse cada vez más peligrosos.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: ANOMALÍAS
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E14</div>
+                        <div class="title">Bottomless Pit!</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Los habitantes de la Cabaña caen en un pozo aparentemente interminable y comienzan a contar historias extrañas.</p>
+                <span class="tag">ANOMALÍA</span>
             </div>
+        </details>
 
-        </article>
-
-
-        <article class="episodio">
-
-            <div class="numero">02</div>
-
-            <div class="icono">📻</div>
-
-            <h2>INTO THE BUNKER</h2>
-
-            <div class="tipo">
-                DIARIO
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E15</div>
+                        <div class="title">The Deep End</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Mabel conoce a un misterioso habitante de la piscina municipal mientras Dipper intenta descubrir su secreto.</p>
+                <span class="tag">CRIATURA</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Una investigación conduce a los protagonistas
-                hacia uno de los secretos más importantes
-                relacionados con los diarios.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: DIARIOS
+        <details class="episode" data-season="temporada1" data-tags="familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E16</div>
+                        <div class="title">Carpet Diem</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper y Mabel descubren que una alfombra de la Cabaña del Misterio puede intercambiar sus cuerpos.</p>
+                <span class="tag">OBJETO ANÓMALO</span>
             </div>
+        </details>
 
-        </article>
-
-
-        <article class="episodio">
-
-            <div class="numero">03</div>
-
-            <div class="icono">🌀</div>
-
-            <h2>THE SOCIETY OF THE BLIND EYE</h2>
-
-            <div class="tipo">
-                MISTERIO MAYOR
+        <details class="episode" data-season="temporada1" data-tags="familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E17</div>
+                        <div class="title">Boyz Crazy</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Mabel descubre un extraño secreto relacionado con su grupo musical favorito.</p>
+                <span class="tag">MABEL</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Una organización secreta y los recuerdos perdidos
-                revelan una nueva parte de la historia del pueblo.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: SECRETOS
+        <details class="episode" data-season="temporada1" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E18</div>
+                        <div class="title">Land Before Swine</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Waddles desaparece después de que un águila lo captura, llevando a Dipper y Mabel a una aventura en el bosque.</p>
+                <span class="tag">WADDLES</span>
             </div>
+        </details>
 
-        </article>
-
-
-        <article class="episodio">
-
-            <div class="numero">04</div>
-
-            <div class="icono">🔺</div>
-
-            <h2>DREAMSCAPERERS</h2>
-
-            <div class="tipo">
-                BILL CIPHER
+        <details class="episode" data-season="temporada1" data-tags="misterio bill">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E19</div>
+                        <div class="title">Dreamscaperers</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper, Mabel y Soos entran en la mente de Stan para enfrentarse a Gideon. Allí aparece una entidad que cambiará la historia de Gravity Falls: Bill Cipher.</p>
+                <span class="tag">BILL CIPHER</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Una amenaza relacionada con los sueños demuestra
-                que algunas entidades pueden entrar en la mente
-                de las personas.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: BILL CIPHER
+        <details class="episode" data-season="temporada1" data-tags="misterio familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S01 · E20</div>
+                        <div class="title">Gideon Rises</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Gideon toma el control de la Cabaña del Misterio y los Pines intentan recuperar su hogar.</p>
+                <span class="tag">FINAL DE TEMPORADA</span>
             </div>
+        </details>
 
-        </article>
+    </section>
 
+    <!-- ================= TEMPORADA 2 ================= -->
 
-        <article class="episodio">
+    <h2 class="season-title">TEMPORADA 02</h2>
 
-            <div class="numero">05</div>
+    <section class="episodes">
 
-            <div class="icono">⚠️</div>
-
-            <h2>WEIRDmageddon</h2>
-
-            <div class="tipo">
-                NIVEL CRÍTICO
+        <details class="episode" data-season="temporada2" data-tags="familia misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E01</div>
+                        <div class="title">Scary-oke</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Después de los acontecimientos de la primera temporada, Dipper y Mabel intentan disfrutar de una noche de karaoke que rápidamente se convierte en caos.</p>
+                <span class="tag">POST-GIDEON</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Los acontecimientos de Gravity Falls alcanzan
-                un punto crítico y el pueblo queda expuesto
-                a una amenaza extraordinaria.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: CLASIFICADO
+        <details class="episode" data-season="temporada2" data-tags="misterio familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E02</div>
+                        <div class="title">Into the Bunker</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper sigue una pista relacionada con el autor de los diarios y encuentra un antiguo búnker escondido bajo el bosque.</p>
+                <span class="tag">AUTOR</span>
             </div>
+        </details>
 
-        </article>
-
-
-        <article class="episodio">
-
-            <div class="numero">06</div>
-
-            <div class="icono">🔒</div>
-
-            <h2>ARCHIVO FINAL</h2>
-
-            <div class="tipo">
-                INFORMACIÓN RESTRINGIDA
+        <details class="episode" data-season="temporada2" data-tags="familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E03</div>
+                        <div class="title">The Golf War</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Mabel se enfrenta a Pacifica en una batalla relacionada con el minigolf y unas criaturas diminutas.</p>
+                <span class="tag">MABEL</span>
             </div>
+        </details>
 
-            <p class="descripcion">
-                Algunos acontecimientos permanecen clasificados.
-                El contenido completo de este expediente será
-                ampliado posteriormente.
-            </p>
-
-            <div class="archivo">
-                ARCHIVO: █████████
+        <details class="episode" data-season="temporada2" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E04</div>
+                        <div class="title">Sock Opera</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper utiliza métodos poco convencionales para investigar el ordenador de Mabel y termina enfrentándose a una amenaza sobrenatural.</p>
+                <span class="tag">ENTIDAD</span>
             </div>
+        </details>
 
-        </article>
+        <details class="episode" data-season="temporada2" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E05</div>
+                        <div class="title">Soos and the Real Girl</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Soos comienza una relación con una chica virtual cuya naturaleza resulta ser mucho más peligrosa de lo esperado.</p>
+                <span class="tag">TECNOLOGÍA</span>
+            </div>
+        </details>
 
-    </div>
+        <details class="episode" data-season="temporada2" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E06</div>
+                        <div class="title">Little Gift Shop of Horrors</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Stan cuenta tres historias extrañas relacionadas con los objetos y secretos de la Cabaña del Misterio.</p>
+                <span class="tag">HISTORIAS</span>
+            </div>
+        </details>
 
-</section>
+        <details class="episode" data-season="temporada2" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E07</div>
+                        <div class="title">Society of the Blind Eye</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Los gemelos descubren una sociedad secreta dedicada a borrar recuerdos relacionados con los fenómenos sobrenaturales de Gravity Falls.</p>
+                <span class="tag">SOCIEDAD SECRETA</span>
+            </div>
+        </details>
 
+        <details class="episode" data-season="temporada2" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E08</div>
+                        <div class="title">Blendin's Game</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper y Mabel se ven involucrados en un conflicto temporal relacionado con Blendin Blandin.</p>
+                <span class="tag">TIEMPO</span>
+            </div>
+        </details>
 
-<a href="archivo.html" class="volver">
-    ← VOLVER AL ARCHIVO
-</a>
+        <details class="episode" data-season="temporada2" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E09</div>
+                        <div class="title">The Love God</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Mabel encuentra una entidad capaz de alterar los sentimientos amorosos de las personas.</p>
+                <span class="tag">ENTIDAD</span>
+            </div>
+        </details>
 
+        <details class="episode" data-season="temporada2" data-tags="misterio familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E10</div>
+                        <div class="title">Northwest Mansion Mystery</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper y Pacifica investigan una mansión encantada y descubren una parte oscura de la historia de los Northwest.</p>
+                <span class="tag">FANTASMA</span>
+            </div>
+        </details>
 
-<footer>
-    ARCHIVO DE INVESTIGACIÓN · GRAVITY FALLS
-</footer>
+        <details class="episode" data-season="temporada2" data-tags="familia misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E11</div>
+                        <div class="title">Not What He Seems</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Una investigación del gobierno pone a Stan bajo sospecha. Dipper y Mabel deben decidir si confían en él.</p>
+                <span class="tag">STAN</span>
+            </div>
+        </details>
+
+        <details class="episode" data-season="temporada2" data-tags="familia misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E12</div>
+                        <div class="title">A Tale of Two Stans</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>La historia de Stanford Pines y Stanley Pines revela finalmente qué ocurrió con los hermanos y cómo comenzó el misterio de los diarios.</p>
+                <span class="tag">HISTORIA PRINCIPAL</span>
+            </div>
+        </details>
+
+        <details class="episode" data-season="temporada2" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E13</div>
+                        <div class="title">Dungeons, Dungeons & More Dungeons</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Dipper encuentra a alguien que comparte su pasión por un juego de rol que resulta tener consecuencias inesperadas.</p>
+                <span class="tag">AVENTURA</span>
+            </div>
+        </details>
+
+        <details class="episode" data-season="temporada2" data-tags="familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E14</div>
+                        <div class="title">The Stanchurian Candidate</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Stan decide presentarse a un cargo político mientras los gemelos intentan ayudarlo a ganar.</p>
+                <span class="tag">STAN</span>
+            </div>
+        </details>
+
+        <details class="episode" data-season="temporada2" data-tags="misterio bill">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E15</div>
+                        <div class="title">The Last Mabelcorn</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Mabel necesita conseguir el cabello de un unicornio para proteger la mente de Ford de una amenaza que se acerca.</p>
+                <span class="tag">FORD · BILL</span>
+            </div>
+        </details>
+
+        <details class="episode" data-season="temporada2" data-tags="misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E16</div>
+                        <div class="title">Roadside Attraction</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Stan lleva a los gemelos de viaje para visitar distintas atracciones extrañas mientras intentan mantener los misterios bajo control.</p>
+                <span class="tag">VIAJE</span>
+            </div>
+        </details>
+
+        <details class="episode" data-season="temporada2" data-tags="familia bill misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E17</div>
+                        <div class="title">Dipper and Mabel vs. the Future</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Los gemelos se enfrentan a decisiones sobre su futuro mientras Ford prepara a Dipper para una misión relacionada con Bill Cipher.</p>
+                <span class="tag">FORD · BILL</span>
+            </div>
+        </details>
+
+        <details class="episode" data-season="temporada2" data-tags="bill misterio">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E18</div>
+                        <div class="title">Weirdmageddon 1</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Bill Cipher consigue acceder al mundo físico y comienza una transformación de Gravity Falls que amenaza con destruir las reglas de la realidad.</p>
+                <span class="tag">WEIRDMAGEDDON</span>
+            </div>
+        </details>
+
+        <details class="episode" data-season="temporada2" data-tags="bill misterio familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E19</div>
+                        <div class="title">Weirdmageddon 2: Escape from Reality</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Mabel queda atrapada dentro de una realidad creada por Bill mientras Dipper, Wendy y Soos buscan una manera de llegar hasta ella.</p>
+                <span class="tag">BILL CIPHER</span>
+            </div>
+        </details>
+
+        <details class="episode" data-season="temporada2" data-tags="bill misterio familia">
+            <summary>
+                <div class="episode-top">
+                    <div>
+                        <div class="number">S02 · E20</div>
+                        <div class="title">Weirdmageddon 3: Taking Back The Falls</div>
+                    </div>
+                    <span class="arrow">›</span>
+                </div>
+            </summary>
+            <div class="content">
+                <p>Los habitantes de Gravity Falls se unen para enfrentarse a Bill Cipher. La historia de los Pines llega a su conclusión y el verano termina.</p>
+                <span class="tag">FINAL DE LA SERIE</span>
+            </div>
+        </details>
+
+    </section>
+
+    <footer>
+        <a class="back" href="archivo.html">← VOLVER AL ARCHIVO PRINCIPAL</a>
+        <div class="warning">
+            ARCHIVO CLASIFICADO · ACCESO AUTORIZADO ÚNICAMENTE
+        </div>
+    </footer>
+
+</main>
+
+<script>
+
+const search = document.getElementById("search");
+const buttons = document.querySelectorAll(".filters button");
+const episodes = document.querySelectorAll(".episode");
+
+let filtroActual = "todos";
+
+function actualizar(){
+
+    const texto = search.value.toLowerCase().trim();
+
+    episodes.forEach(episode => {
+
+        const contenido = episode.innerText.toLowerCase();
+        const temporada = episode.dataset.season;
+        const tags = episode.dataset.tags;
+
+        const coincideTexto =
+            texto === "" || contenido.includes(texto);
+
+        const coincideFiltro =
+            filtroActual === "todos" ||
+            temporada === filtroActual ||
+            tags.includes(filtroActual);
+
+        if(coincideTexto && coincideFiltro){
+            episode.style.display = "";
+        }else{
+            episode.style.display = "none";
+        }
+
+    });
+}
+
+search.addEventListener("input", actualizar);
+
+buttons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        buttons.forEach(b => b.classList.remove("active"));
+
+        button.classList.add("active");
+
+        filtroActual = button.dataset.filter;
+
+        actualizar();
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>
