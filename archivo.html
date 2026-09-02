@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Archivo de Gravity Falls</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            color: #e8dfc4;
+
+            background:
+                linear-gradient(
+                    rgba(8, 12, 8, 0.82),
+                    rgba(5, 8, 5, 0.92)
+                ),
+                url("https://images.unsplash.com/photo-1448375240586-882707db888b")
+                center / cover fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 70px 20px 40px;
+        }
+
+        .clasificado {
+            color: #a99d76;
+            font-size: 12px;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(40px, 7vw, 75px);
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            color: #b9aa7c;
+            letter-spacing: 3px;
+        }
+
+        .menu {
+            width: 90%;
+            max-width: 1100px;
+            margin: 30px auto 80px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tarjeta {
+            min-height: 180px;
+            padding: 30px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            text-decoration: none;
+            color: #e8dfc4;
+
+            border: 1px solid rgba(185, 170, 124, 0.45);
+            background: rgba(15, 20, 13, 0.78);
+
+            transition: 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-7px);
+            background: rgba(185, 170, 124, 0.15);
+            border-color: #b9aa7c;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .icono {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta h2 {
+            font-size: 22px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .tarjeta p {
+            font-size: 14px;
+            color: #aaa38e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #686556;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 750px) {
+            .menu {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="clasificado">
+            ARCHIVO CLASIFICADO
+        </div>
+
+        <h1>GRAVITY FALLS</h1>
+
+        <p>ARCHIVO PRINCIPAL DE INVESTIGACIÓN</p>
+    </header>
+
+
+    <section class="menu">
+
+        <a href="misterios.html" class="tarjeta">
+            <div class="icono">🔎</div>
+            <h2>MISTERIOS</h2>
+            <p>Los secretos y enigmas de Gravity Falls.</p>
+        </a>
+
+
+        <a href="personajes.html" class="tarjeta">
+            <div class="icono">👤</div>
+            <h2>PERSONAJES</h2>
+            <p>Los habitantes y protagonistas del pueblo.</p>
+        </a>
+
+
+        <a href="diarios.html" class="tarjeta">
+            <div class="icono">📖</div>
+            <h2>LOS DIARIOS</h2>
+            <p>Los diarios y los secretos que contienen.</p>
+        </a>
+
+
+        <a href="criaturas.html" class="tarjeta">
+            <div class="icono">👁️</div>
+            <h2>CRIATURAS</h2>
+            <p>El bestiario de Gravity Falls.</p>
+        </a>
+
+
+        <a href="codigos.html" class="tarjeta">
+            <div class="icono">🔐</div>
+            <h2>CÓDIGOS</h2>
+            <p>Mensajes ocultos, símbolos y códigos.</p>
+        </a>
+
+
+        <a href="episodios.html" class="tarjeta">
+            <div class="icono">📺</div>
+            <h2>EPISODIOS</h2>
+            <p>Guía de episodios y acontecimientos.</p>
+        </a>
+
+    </section>
+
+
+    <footer>
+        ARCHIVO GF-001 — INFORMACIÓN RESTRINGIDA
+    </footer>
+
+</body>
+</html>
