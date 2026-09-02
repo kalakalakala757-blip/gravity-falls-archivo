@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mapa | Gravity Falls</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Georgia,serif;
+    color:#e8e2d0;
+    min-height:100vh;
+
+    background:
+        linear-gradient(rgba(5,11,8,.90),rgba(5,11,8,.96)),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b")
+        center/cover fixed;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    text-align:center;
+    padding:45px 20px 30px;
+
+    background:rgba(7,13,10,.82);
+
+    border-bottom:1px solid #625b44;
+}
+
+header h1{
+    font-size:clamp(2.2rem,5vw,4rem);
+    letter-spacing:7px;
+    color:#d8cda5;
+
+    text-shadow:
+        0 0 12px rgba(210,190,120,.25);
+}
+
+header p{
+    margin-top:12px;
+    color:#96927d;
+    font-size:.85rem;
+    letter-spacing:3px;
+}
+
+/* ================= CONTENEDOR ================= */
+
+.container{
+    width:min(1200px,92%);
+    margin:35px auto 70px;
+}
+
+/* ================= INFO ================= */
+
+.intro{
+    max-width:850px;
+    margin:0 auto 35px;
+
+    padding:25px;
+
+    text-align:center;
+
+    background:rgba(13,20,16,.90);
+
+    border:1px solid #514c3b;
+
+    color:#aaa793;
+
+    line-height:1.7;
+}
+
+/* ================= MAPA ================= */
+
+.map{
+    position:relative;
+
+    width:100%;
+    min-height:700px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            rgba(35,46,28,.50),
+            rgba(18,27,18,.65)
+        ),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7")
+        center/cover;
+
+    border:2px solid #625b44;
+
+    box-shadow:
+        inset 0 0 80px rgba(0,0,0,.75),
+        0 15px 40px rgba(0,0,0,.45);
+}
+
+/* textura */
+
+.map::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 35px,
+            rgba(210,190,130,.025) 36px
+        );
+
+    pointer-events:none;
+}
+
+/* ================= TITULO MAPA ================= */
+
+.map-title{
+    position:absolute;
+
+    top:25px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:10px 20px;
+
+    background:rgba(8,13,9,.88);
+
+    border:1px solid #756b4d;
+
+    color:#d4c99f;
+
+    letter-spacing:3px;
+
+    z-index:5;
+}
+
+/* ================= CAMINOS ================= */
+
+.path{
+    position:absolute;
+
+    height:5px;
+
+    background:#8c7950;
+
+    opacity:.55;
+
+    transform-origin:left center;
+}
+
+.path.one{
+    width:430px;
+    left:38%;
+    top:45%;
+    transform:rotate(-18deg);
+}
+
+.path.two{
+    width:350px;
+    left:38%;
+    top:45%;
+    transform:rotate(38deg);
+}
+
+.path.three{
+    width:280px;
+    left:38%;
+    top:45%;
+    transform:rotate(145deg);
+}
+
+.path.four{
+    width:260px;
+    left:38%;
+    top:45%;
+    transform:rotate(215deg);
+}
+
+/* ================= UBICACIONES ================= */
+
+.location{
+    position:absolute;
+
+    width:175px;
+
+    padding:14px;
+
+    background:rgba(8,14,10,.94);
+
+    border:1px solid #625b44;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    z-index:3;
+}
+
+.location:hover{
+    border-color:#b09d63;
+
+    transform:scale(1.04);
+
+    box-shadow:
+        0 0 20px rgba(180,160,100,.12);
+}
+
+.location h3{
+    color:#d7cca4;
+
+    font-size:1rem;
+
+    margin-bottom:6px;
+}
+
+.location p{
+    color:#858373;
+
+    font-size:.78rem;
+
+    line-height:1.4;
+}
+
+/* puntos */
+
+.location::before{
+    content:"";
+
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#b5a365;
+
+    left:-6px;
+    top:-6px;
+
+    box-shadow:
+        0 0 10px rgba(190,170,100,.5);
+}
+
+/* posiciones */
+
+.shack{
+    left:10%;
+    top:22%;
+}
+
+.forest{
+    left:65%;
+    top:16%;
+}
+
+.lake{
+    left:72%;
+    top:55%;
+}
+
+.bunker{
+    left:13%;
+    top:67%;
+}
+
+.cemetery{
+    left:43%;
+    top:73%;
+}
+
+.mansion{
+    left:73%;
+    top:77%;
+}
+
+.cave{
+    left:43%;
+    top:34%;
+}
+
+.town{
+    left:28%;
+    top:18%;
+}
+
+/* ================= BRUJULA ================= */
+
+.compass{
+    position:absolute;
+
+    right:25px;
+    top:25px;
+
+    width:80px;
+    height:80px;
+
+    border:1px solid #756b4d;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#cfc295;
+
+    background:rgba(7,12,8,.75);
+
+    font-size:.75rem;
+}
+
+.compass::before{
+    content:"";
+
+    position:absolute;
+
+    width:2px;
+    height:58px;
+
+    background:#9d8e60;
+
+    transform:rotate(45deg);
+}
+
+.compass span{
+    position:absolute;
+    top:5px;
+}
+
+.compass b{
+    position:absolute;
+    bottom:5px;
+}
+
+/* ================= LEYENDA ================= */
+
+.legend{
+    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+}
+
+.legend-item{
+    padding:15px;
+
+    background:rgba(13,20,16,.90);
+
+    border:1px solid #4e4939;
+
+    color:#96927f;
+
+    font-size:.8rem;
+}
+
+.legend-item strong{
+    display:block;
+
+    color:#c9bd91;
+
+    margin-bottom:5px;
+}
+
+/* ================= EXPEDIENTES ================= */
+
+.locations{
+    margin-top:40px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
+}
+
+.dossier{
+    background:rgba(13,20,16,.93);
+
+    border:1px solid #514c3b;
+}
+
+.dossier summary{
+    list-style:none;
+
+    cursor:pointer;
+
+    padding:20px;
+
+    color:#d3c79d;
+
+    letter-spacing:1px;
+}
+
+.dossier summary::-webkit-details-marker{
+    display:none;
+}
+
+.dossier summary::after{
+    content:"›";
+
+    float:right;
+
+    color:#8f8053;
+
+    font-size:1.3rem;
+}
+
+.dossier[open] summary::after{
+    transform:rotate(90deg);
+}
+
+.dossier-content{
+    padding:0 20px 20px;
+
+    border-top:1px solid #3e3b30;
+
+    color:#9c9987;
+
+    line-height:1.7;
+
+    font-size:.9rem;
+}
+
+.dossier-content p{
+    margin-top:15px;
+}
+
+.tag{
+    display:inline-block;
+
+    margin-top:15px;
+
+    padding:5px 9px;
+
+    border:1px solid #5c5540;
+
+    color:#a99d73;
+
+    font-size:.7rem;
+
+    letter-spacing:1px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+
+    margin-top:45px;
+
+    padding-top:25px;
+
+    border-top:1px solid #403d31;
+}
+
+.back{
+    display:inline-block;
+
+    padding:12px 20px;
+
+    border:1px solid #625b44;
+
+    color:#c4b77f;
+
+    text-decoration:none;
+
+    transition:.2s;
+}
+
+.back:hover{
+    background:#302d20;
+}
+
+.warning{
+    margin-top:18px;
+
+    color:#626254;
+
+    font-size:.75rem;
+
+    letter-spacing:1px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .map{
+        min-height:850px;
+    }
+
+    .location{
+        width:160px;
+    }
+
+    .shack{
+        left:5%;
+        top:20%;
+    }
+
+    .town{
+        left:48%;
+        top:20%;
+    }
+
+    .forest{
+        left:52%;
+        top:38%;
+    }
+
+    .cave{
+        left:5%;
+        top:42%;
+    }
+
+    .lake{
+        left:50%;
+        top:57%;
+    }
+
+    .bunker{
+        left:5%;
+        top:67%;
+    }
+
+    .cemetery{
+        left:50%;
+        top:72%;
+    }
+
+    .mansion{
+        left:50%;
+        top:82%;
+    }
+
+    .legend{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .map{
+        min-height:1150px;
+    }
+
+    .map-title{
+        white-space:nowrap;
+        font-size:.8rem;
+    }
+
+    .compass{
+        top:75px;
+        right:15px;
+    }
+
+    .location{
+        width:80%;
+        left:10% !important;
+    }
+
+    .shack{
+        top:17%;
+    }
+
+    .town{
+        top:28%;
+    }
+
+    .forest{
+        top:39%;
+    }
+
+    .cave{
+        top:50%;
+    }
+
+    .lake{
+        top:61%;
+    }
+
+    .bunker{
+        top:72%;
+    }
+
+    .cemetery{
+        top:83%;
+    }
+
+    .mansion{
+        top:94%;
+    }
+
+    .path{
+        display:none;
+    }
+
+    .legend,
+    .locations{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+    <h1>MAPA DE GRAVITY FALLS</h1>
+
+    <p>
+        CARTOGRAFÍA · UBICACIONES · ZONAS ANÓMALAS
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+    <section class="intro">
+
+        <p>
+            <strong>ARCHIVO CARTOGRÁFICO</strong><br><br>
+
+            Gravity Falls no es un pueblo común.
+            Bosques, edificios, cuevas y estructuras ocultas
+            forman una red de lugares relacionados con los
+            fenómenos sobrenaturales registrados durante el verano.
+        </p>
+
+    </section>
+
+
+    <!-- ================= MAPA ================= -->
+
+    <section class="map">
+
+        <div class="map-title">
+            GRAVITY FALLS · ZONA RESTRINGIDA
+        </div>
+
+
+        <div class="compass">
+            <span>N</span>
+            <b>S</b>
+        </div>
+
+
+        <!-- CAMINOS -->
+
+        <div class="path one"></div>
+        <div class="path two"></div>
+        <div class="path three"></div>
+        <div class="path four"></div>
+
+
+        <!-- UBICACIONES -->
+
+        <div class="location shack">
+
+            <h3>🏚 Cabaña del Misterio</h3>
+
+            <p>
+                Principal centro de operaciones
+                de la familia Pines.
+            </p>
+
+        </div>
+
+
+        <div class="location town">
+
+            <h3>🏘 Pueblo</h3>
+
+            <p>
+                Zona habitada de Gravity Falls.
+                Numerosos misterios ocurren aquí.
+            </p>
+
+        </div>
+
+
+        <div class="location forest">
+
+            <h3>🌲 Bosque</h3>
+
+            <p>
+                Amplia zona forestal con
+                numerosas anomalías registradas.
+            </p>
+
+        </div>
+
+
+        <div class="location cave">
+
+            <h3>🕳 Cuevas</h3>
+
+            <p>
+                Red de túneles y espacios
+                subterráneos ocultos.
+            </p>
+
+        </div>
+
+
+        <div class="location lake">
+
+            <h3>🌊 Lago Gravity Falls</h3>
+
+            <p>
+                Lugar asociado a criaturas
+                y fenómenos acuáticos.
+            </p>
+
+        </div>
+
+
+        <div class="location bunker">
+
+            <h3>🔐 Búnker</h3>
+
+            <p>
+                Instalación subterránea
+                relacionada con el autor.
+            </p>
+
+        </div>
+
+
+        <div class="location cemetery">
+
+            <h3>⚰ Cementerio</h3>
+
+            <p>
+                Zona vinculada a algunos
+                acontecimientos sobrenaturales.
+            </p>
+
+        </div>
+
+
+        <div class="location mansion">
+
+            <h3>🏰 Mansión Northwest</h3>
+
+            <p>
+                Residencia de la familia Northwest
+                y escenario de un fenómeno paranormal.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LEYENDA ================= -->
+
+    <section class="legend">
+
+        <div class="legend-item">
+
+            <strong>🏚 ESTRUCTURA</strong>
+
+            Edificio o construcción relevante.
+
+        </div>
+
+
+        <div class="legend-item">
+
+            <strong>🌲 ZONA NATURAL</strong>
+
+            Bosques, lagos y áreas exteriores.
+
+        </div>
+
+
+        <div class="legend-item">
+
+            <strong>🔐 ZONA RESTRINGIDA</strong>
+
+            Lugares relacionados con investigaciones.
+
+        </div>
+
+
+        <div class="legend-item">
+
+            <strong>⚠ ANOMALÍA</strong>
+
+            Área con actividad sobrenatural registrada.
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EXPEDIENTES ================= -->
+
+    <h2 style="
+        margin:45px 0 18px;
+        color:#d2c59a;
+        letter-spacing:3px;
+    ">
+        EXPEDIENTES DE UBICACIÓN
+    </h2>
+
+
+    <section class="locations">
+
+
+        <details class="dossier">
+
+            <summary>
+                001 · CABAÑA DEL MISTERIO
+            </summary>
+
+            <div class="dossier-content">
+
+                <p>
+                    Atracción turística propiedad de Stan Pines.
+                    Durante el verano se convierte en el centro
+                    de numerosas investigaciones de Dipper y Mabel.
+                </p>
+
+                <span class="tag">
+                    UBICACIÓN PRINCIPAL
+                </span>
+
+            </div>
+
+        </details>
+
+
+        <details class="dossier">
+
+            <summary>
+                002 · BOSQUE DE GRAVITY FALLS
+            </summary>
+
+            <div class="dossier-content">
+
+                <p>
+                    El bosque rodea gran parte del pueblo.
+                    En él se encuentran criaturas, estructuras
+                    ocultas y numerosas anomalías.
+                </p>
+
+                <span class="tag">
+                    ACTIVIDAD ANÓMALA
+                </span>
+
+            </div>
+
+        </details>
+
+
+        <details class="dossier">
+
+            <summary>
+                003 · BÚNKER DEL AUTOR
+            </summary>
+
+            <div class="dossier-content">
+
+                <p>
+                    Instalación oculta relacionada con la
+                    investigación de fenómenos sobrenaturales
+                    y con la historia del autor de los diarios.
+                </p>
+
+                <span class="tag">
+                    CLASIFICADO
+                </span>
+
+            </div>
+
+        </details>
+
+
+        <details class="dossier">
+
+            <summary>
+                004 · MANSIÓN NORTHWEST
+            </summary>
+
+            <div class="dossier-content">
+
+                <p>
+                    Antigua mansión de la familia Northwest.
+                    El lugar está relacionado con una presencia
+                    sobrenatural y con un episodio importante
+                    de la segunda temporada.
+                </p>
+
+                <span class="tag">
+                    ACTIVIDAD PARANORMAL
+                </span>
+
+            </div>
+
+        </details>
+
+
+        <details class="dossier">
+
+            <summary>
+                005 · LAGO GRAVITY FALLS
+            </summary>
+
+            <div class="dossier-content">
+
+                <p>
+                    Zona acuática del pueblo asociada con
+                    avistamientos y encuentros con criaturas.
+                </p>
+
+                <span class="tag">
+                    CRIATURAS
+                </span>
+
+            </div>
+
+        </details>
+
+
+        <details class="dossier">
+
+            <summary>
+                006 · ZONAS SUBTERRÁNEAS
+            </summary>
+
+            <div class="dossier-content">
+
+                <p>
+                    Gravity Falls posee numerosas áreas
+                    subterráneas, túneles y espacios ocultos.
+                    Algunas permanecen sin investigar.
+                </p>
+
+                <span class="tag">
+                    DESCONOCIDO
+                </span>
+
+            </div>
+
+        </details>
+
+
+    </section>
+
+
+    <footer>
+
+        <a class="back" href="archivo.html">
+            ← VOLVER AL ARCHIVO PRINCIPAL
+        </a>
+
+        <div class="warning">
+            ARCHIVO CARTOGRÁFICO · INFORMACIÓN PARCIALMENTE CLASIFICADA
+        </div>
+
+    </footer>
+
+
+</main>
+
+</body>
+</html>
