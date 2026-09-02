@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Códigos | Gravity Falls</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            color: #eee;
+
+            background:
+                linear-gradient(
+                    rgba(5, 10, 8, 0.88),
+                    rgba(5, 10, 8, 0.94)
+                ),
+                url("https://images.unsplash.com/photo-1448375240586-882707db888b");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 55px 20px 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 42px;
+            letter-spacing: 6px;
+            text-shadow: 0 0 15px black;
+        }
+
+        .subtitulo {
+            margin-top: 12px;
+            color: #aaa;
+            letter-spacing: 3px;
+            font-size: 14px;
+        }
+
+        .advertencia {
+            max-width: 850px;
+            margin: 0 auto 35px;
+            padding: 15px;
+            text-align: center;
+
+            background: rgba(0,0,0,0.7);
+            border: 1px solid #777;
+
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .codigos {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 25px;
+        }
+
+        .codigo {
+            background: rgba(15, 18, 16, 0.9);
+            border: 1px solid #555;
+
+            padding: 25px;
+
+            min-height: 300px;
+
+            position: relative;
+
+            transition: 0.3s;
+        }
+
+        .codigo:hover {
+            transform: translateY(-5px);
+            border-color: #999;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        .numero {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+
+            color: #777;
+            font-size: 11px;
+        }
+
+        .simbolo {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 5px 0 10px;
+
+            font-size: 22px;
+            letter-spacing: 2px;
+        }
+
+        .estado {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border: 1px solid #777;
+
+            font-size: 10px;
+            letter-spacing: 1px;
+
+            margin-bottom: 15px;
+        }
+
+        .codigo-secreto {
+            background: #080808;
+
+            border: 1px dashed #666;
+
+            padding: 15px;
+
+            margin: 15px 0;
+
+            text-align: center;
+
+            font-family: monospace;
+            font-size: 18px;
+
+            letter-spacing: 4px;
+        }
+
+        .descripcion {
+            color: #bbb;
+
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .pista {
+            margin-top: 18px;
+
+            padding: 12px;
+
+            background: rgba(255,255,255,0.04);
+
+            border-left: 3px solid #777;
+
+            color: #aaa;
+
+            font-size: 13px;
+        }
+
+        .bloqueado {
+            opacity: 0.7;
+        }
+
+        .bloqueado .codigo-secreto {
+            letter-spacing: 7px;
+        }
+
+        .volver {
+            display: block;
+
+            width: fit-content;
+
+            margin: 40px auto 50px;
+
+            padding: 12px 20px;
+
+            color: white;
+            text-decoration: none;
+
+            border: 1px solid #777;
+
+            background: rgba(0,0,0,0.6);
+
+            transition: 0.3s;
+        }
+
+        .volver:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        footer {
+            text-align: center;
+
+            padding: 20px;
+
+            color: #666;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .codigos {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>CÓDIGOS</h1>
+
+    <div class="subtitulo">
+        ARCHIVO DE MENSAJES CIFRADOS
+    </div>
+
+</header>
+
+
+<div class="advertencia">
+
+    ⚠ ALGUNOS MENSAJES PUEDEN CONTENER INFORMACIÓN RESTRINGIDA ⚠
+
+</div>
+
+
+<section class="codigos">
+
+
+    <!-- CÓDIGO 001 -->
+
+    <article class="codigo">
+
+        <div class="numero">
+            ARCHIVO Nº 001
+        </div>
+
+        <div class="simbolo">
+            🔐
+        </div>
+
+        <h2>CÓDIGO DE SUSTITUCIÓN</h2>
+
+        <div class="estado">
+            DESCIFRABLE
+        </div>
+
+        <div class="codigo-secreto">
+            QVXXM
+        </div>
+
+        <p class="descripcion">
+            Este mensaje ha sido encontrado en un documento
+            antiguo. Cada letra ha sido reemplazada por otra.
+        </p>
+
+        <div class="pista">
+            💡 PISTA: Algunas letras no están donde deberían.
+        </div>
+
+    </article>
+
+
+    <!-- CÓDIGO 002 -->
+
+    <article class="codigo">
+
+        <div class="numero">
+            ARCHIVO Nº 002
+        </div>
+
+        <div class="simbolo">
+            🔺
+        </div>
+
+        <h2>SÍMBOLOS DESCONOCIDOS</h2>
+
+        <div class="estado">
+            INVESTIGACIÓN ABIERTA
+        </div>
+
+        <div class="codigo-secreto">
+            △ ○ □ △ ☆
+        </div>
+
+        <p class="descripcion">
+            Una serie de símbolos aparece repetidamente
+            en diferentes documentos relacionados con
+            los misterios de Gravity Falls.
+        </p>
+
+        <div class="pista">
+            💡 PISTA: Busca símbolos que aparecen más de una vez.
+        </div>
+
+    </article>
+
+
+    <!-- CÓDIGO 003 -->
+
+    <article class="codigo">
+
+        <div class="numero">
+            ARCHIVO Nº 003
+        </div>
+
+        <div class="simbolo">
+            📖
+        </div>
+
+        <h2>MENSAJE OCULTO</h2>
+
+        <div class="estado">
+            INFORMACIÓN PARCIAL
+        </div>
+
+        <div class="codigo-secreto">
+            3 - 1 - 20 - 5
+        </div>
+
+        <p class="descripcion">
+            Una secuencia numérica encontrada dentro
+            de un registro aparentemente normal.
+        </p>
+
+        <div class="pista">
+            💡 PISTA: Convierte números en letras.
+        </div>
+
+    </article>
+
+
+    <!-- CÓDIGO 004 -->
+
+    <article class="codigo bloqueado">
+
+        <div class="numero">
+            ARCHIVO Nº 004
+        </div>
+
+        <div class="simbolo">
+            👁️
+        </div>
+
+        <h2>ARCHIVO BLOQUEADO</h2>
+
+        <div class="estado">
+            ACCESO DENEGADO
+        </div>
+
+        <div class="codigo-secreto">
+            █ █ █ █ █
+        </div>
+
+        <p class="descripcion">
+            Este documento ha sido clasificado.
+            Se necesita una clave para acceder a su contenido.
+        </p>
+
+        <div class="pista">
+            🔒 CLAVE REQUERIDA
+        </div>
+
+    </article>
+
+
+    <!-- CÓDIGO 005 -->
+
+    <article class="codigo bloqueado">
+
+        <div class="numero">
+            ARCHIVO Nº 005
+        </div>
+
+        <div class="simbolo">
+            ❓
+        </div>
+
+        <h2>MENSAJE DESCONOCIDO</h2>
+
+        <div class="estado">
+            CLASIFICADO
+        </div>
+
+        <div class="codigo-secreto">
+            ? ? ? ? ?
+        </div>
+
+        <p class="descripcion">
+            No se ha podido determinar el origen
+            de este mensaje.
+        </p>
+
+        <div class="pista">
+            🔒 Este archivo será desbloqueado posteriormente.
+        </div>
+
+    </article>
+
+
+    <!-- CÓDIGO 006 -->
+
+    <article class="codigo bloqueado">
+
+        <div class="numero">
+            ARCHIVO Nº 006
+        </div>
+
+        <div class="simbolo">
+            ⚠️
+        </div>
+
+        <h2>ARCHIVO NEGRO</h2>
+
+        <div class="estado">
+            PELIGRO EXTREMO
+        </div>
+
+        <div class="codigo-secreto">
+            █████████
+        </div>
+
+        <p class="descripcion">
+            Registro eliminado de los archivos.
+            No existe información suficiente para
+            determinar qué contenía.
+        </p>
+
+        <div class="pista">
+            ⚠ NO INTENTAR ACCEDER
+        </div>
+
+    </article>
+
+
+</section>
+
+
+<a href="archivo.html" class="volver">
+    ← VOLVER AL ARCHIVO
+</a>
+
+
+<footer>
+
+    ARCHIVO DE INVESTIGACIÓN · GRAVITY FALLS
+
+</footer>
+
+</body>
+</html>
