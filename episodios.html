@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Episodios | Gravity Falls</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            color: #eee;
+
+            background:
+                linear-gradient(
+                    rgba(5, 12, 9, 0.86),
+                    rgba(5, 12, 9, 0.94)
+                ),
+                url("https://images.unsplash.com/photo-1448375240586-882707db888b");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 42px;
+            letter-spacing: 6px;
+            text-shadow: 0 0 15px #000;
+        }
+
+        .subtitulo {
+            margin-top: 12px;
+            color: #aaa;
+            font-size: 14px;
+            letter-spacing: 3px;
+        }
+
+        .temporada {
+            max-width: 1050px;
+            margin: 0 auto 45px;
+            padding: 20px;
+        }
+
+        .titulo-temporada {
+            text-align: center;
+
+            margin-bottom: 25px;
+            padding: 15px;
+
+            border-top: 1px solid #666;
+            border-bottom: 1px solid #666;
+
+            letter-spacing: 4px;
+        }
+
+        .episodios {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 22px;
+        }
+
+        .episodio {
+            position: relative;
+
+            background: rgba(15, 18, 16, 0.9);
+
+            border: 1px solid #555;
+
+            padding: 23px;
+
+            transition: 0.3s;
+        }
+
+        .episodio:hover {
+            transform: translateY(-5px);
+
+            border-color: #999;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.6);
+        }
+
+        .numero {
+            position: absolute;
+
+            top: 12px;
+            right: 15px;
+
+            color: #777;
+
+            font-size: 11px;
+        }
+
+        .icono {
+            font-size: 38px;
+
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            margin: 5px 0 12px;
+
+            font-size: 20px;
+
+            letter-spacing: 1px;
+        }
+
+        .tipo {
+            display: inline-block;
+
+            border: 1px solid #777;
+
+            padding: 5px 9px;
+
+            margin-bottom: 15px;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+        }
+
+        .descripcion {
+            color: #bbb;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        .archivo {
+            margin-top: 15px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #444;
+
+            color: #888;
+
+            font-size: 12px;
+        }
+
+        .volver {
+            display: block;
+
+            width: fit-content;
+
+            margin: 40px auto 50px;
+
+            padding: 12px 20px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border: 1px solid #777;
+
+            background: rgba(0,0,0,0.6);
+
+            transition: 0.3s;
+        }
+
+        .volver:hover {
+            background: rgba(255,255,255,0.1);
+
+            border-color: white;
+        }
+
+        footer {
+            text-align: center;
+
+            padding: 20px;
+
+            color: #666;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 30px;
+            }
+
+            .episodios {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>EPISODIOS</h1>
+
+    <div class="subtitulo">
+        REGISTRO CRONOLÓGICO DE INVESTIGACIONES
+    </div>
+
+</header>
+
+
+<!-- TEMPORADA 1 -->
+
+<section class="temporada">
+
+    <div class="titulo-temporada">
+        TEMPORADA 01
+    </div>
+
+    <div class="episodios">
+
+        <article class="episodio">
+
+            <div class="numero">01</div>
+
+            <div class="icono">🌲</div>
+
+            <h2>TOURIST TRAP</h2>
+
+            <div class="tipo">
+                INVESTIGACIÓN INICIAL
+            </div>
+
+            <p class="descripcion">
+                Dipper y Mabel llegan a Gravity Falls para pasar
+                el verano con su tío Stan y comienzan a descubrir
+                que el pueblo esconde secretos.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: PRIMER CONTACTO
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">02</div>
+
+            <div class="icono">👁️</div>
+
+            <h2>THE LEGEND OF THE GOBBLEWONKER</h2>
+
+            <div class="tipo">
+                CRIATURA
+            </div>
+
+            <p class="descripcion">
+                Los hermanos se encuentran con una criatura
+                misteriosa mientras exploran los alrededores
+                del pueblo.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: CRIATURAS
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">03</div>
+
+            <div class="icono">🎪</div>
+
+            <h2>HEAVY METAL PARA SIEMPRE</h2>
+
+            <div class="tipo">
+                ANOMALÍA
+            </div>
+
+            <p class="descripcion">
+                Una nueva aventura lleva a los protagonistas
+                a descubrir que nada en Gravity Falls es
+                completamente normal.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: ANOMALÍAS
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">04</div>
+
+            <div class="icono">👻</div>
+
+            <h2>THE HAND THAT ROCKS THE MABEL</h2>
+
+            <div class="tipo">
+                AMENAZA
+            </div>
+
+            <p class="descripcion">
+                Una situación aparentemente inocente termina
+                revelando que existen peligros ocultos
+                alrededor de los habitantes del pueblo.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: MISTERIOS
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">05</div>
+
+            <div class="icono">🏚️</div>
+
+            <h2>THE INCONVENIENCING</h2>
+
+            <div class="tipo">
+                EXPEDIENTE
+            </div>
+
+            <p class="descripcion">
+                Dipper y sus amigos se enfrentan a una situación
+                extraña durante una salida nocturna.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: CASOS ABIERTOS
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">06</div>
+
+            <div class="icono">📖</div>
+
+            <h2>DIPPER VS. MANLINESS</h2>
+
+            <div class="tipo">
+                REGISTRO
+            </div>
+
+            <p class="descripcion">
+                Dipper intenta demostrar que puede enfrentarse
+                a situaciones que normalmente evitaría.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: PERSONAJES
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- TEMPORADA 2 -->
+
+<section class="temporada">
+
+    <div class="titulo-temporada">
+        TEMPORADA 02
+    </div>
+
+    <div class="episodios">
+
+        <article class="episodio">
+
+            <div class="numero">01</div>
+
+            <div class="icono">🔍</div>
+
+            <h2>SCARY-OKE</h2>
+
+            <div class="tipo">
+                ANOMALÍA
+            </div>
+
+            <p class="descripcion">
+                El verano continúa y los misterios de Gravity Falls
+                comienzan a hacerse cada vez más peligrosos.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: ANOMALÍAS
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">02</div>
+
+            <div class="icono">📻</div>
+
+            <h2>INTO THE BUNKER</h2>
+
+            <div class="tipo">
+                DIARIO
+            </div>
+
+            <p class="descripcion">
+                Una investigación conduce a los protagonistas
+                hacia uno de los secretos más importantes
+                relacionados con los diarios.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: DIARIOS
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">03</div>
+
+            <div class="icono">🌀</div>
+
+            <h2>THE SOCIETY OF THE BLIND EYE</h2>
+
+            <div class="tipo">
+                MISTERIO MAYOR
+            </div>
+
+            <p class="descripcion">
+                Una organización secreta y los recuerdos perdidos
+                revelan una nueva parte de la historia del pueblo.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: SECRETOS
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">04</div>
+
+            <div class="icono">🔺</div>
+
+            <h2>DREAMSCAPERERS</h2>
+
+            <div class="tipo">
+                BILL CIPHER
+            </div>
+
+            <p class="descripcion">
+                Una amenaza relacionada con los sueños demuestra
+                que algunas entidades pueden entrar en la mente
+                de las personas.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: BILL CIPHER
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">05</div>
+
+            <div class="icono">⚠️</div>
+
+            <h2>WEIRDmageddon</h2>
+
+            <div class="tipo">
+                NIVEL CRÍTICO
+            </div>
+
+            <p class="descripcion">
+                Los acontecimientos de Gravity Falls alcanzan
+                un punto crítico y el pueblo queda expuesto
+                a una amenaza extraordinaria.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: CLASIFICADO
+            </div>
+
+        </article>
+
+
+        <article class="episodio">
+
+            <div class="numero">06</div>
+
+            <div class="icono">🔒</div>
+
+            <h2>ARCHIVO FINAL</h2>
+
+            <div class="tipo">
+                INFORMACIÓN RESTRINGIDA
+            </div>
+
+            <p class="descripcion">
+                Algunos acontecimientos permanecen clasificados.
+                El contenido completo de este expediente será
+                ampliado posteriormente.
+            </p>
+
+            <div class="archivo">
+                ARCHIVO: █████████
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<a href="archivo.html" class="volver">
+    ← VOLVER AL ARCHIVO
+</a>
+
+
+<footer>
+    ARCHIVO DE INVESTIGACIÓN · GRAVITY FALLS
+</footer>
+
+</body>
+</html>
