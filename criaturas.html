@@ -1,433 +1,1925 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Criaturas | Gravity Falls</title>
+<title>Archivo de Criaturas | Gravity Falls</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Georgia, serif;
-            color: #eee;
-            background:
-                linear-gradient(rgba(5, 15, 10, 0.82), rgba(5, 15, 10, 0.92)),
-                url("https://images.unsplash.com/photo-1448375240586-882707db888b");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+*{
+    box-sizing:border-box;
+}
 
-        header {
-            text-align: center;
-            padding: 50px 20px 30px;
-        }
+body{
+    margin:0;
+    font-family:Georgia,"Times New Roman",serif;
+    color:#eee;
 
-        h1 {
-            margin: 0;
-            font-size: 42px;
-            letter-spacing: 5px;
-            text-shadow: 0 0 15px #000;
-        }
+    background:
+        linear-gradient(
+            rgba(4,9,7,.90),
+            rgba(4,9,7,.97)
+        ),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b")
+        center/cover fixed;
+}
 
-        .subtitulo {
-            margin-top: 10px;
-            font-size: 16px;
-            letter-spacing: 3px;
-            color: #aaa;
-        }
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.07;
 
-        .advertencia {
-            max-width: 800px;
-            margin: 0 auto 30px;
-            padding: 15px;
-            border: 1px solid #777;
-            background: rgba(0, 0, 0, 0.65);
-            text-align: center;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(255,255,255,.12) 4px
+        );
+}
 
-        .criaturas {
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
 
-        .criatura {
-            background: rgba(15, 20, 17, 0.88);
-            border: 1px solid #666;
-            padding: 25px;
-            position: relative;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
+/* =========================================
+   CABECERA
+========================================= */
 
-        .criatura:hover {
-            transform: translateY(-6px);
-            border-color: #aaa;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.7);
-        }
+header{
+    text-align:center;
+    padding:55px 20px 35px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
 
-        .numero {
-            position: absolute;
-            top: 12px;
-            right: 15px;
-            font-size: 12px;
-            color: #888;
-        }
+.codigo{
+    color:#718c67;
+    font-size:12px;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
 
-        .icono {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
+h1{
+    margin:0;
+    font-size:clamp(38px,7vw,72px);
+    letter-spacing:8px;
+}
 
-        h2 {
-            margin: 5px 0;
-            font-size: 24px;
-            letter-spacing: 2px;
-        }
+.subtitulo{
+    margin-top:12px;
+    color:#999;
+    letter-spacing:3px;
+    font-size:13px;
+}
 
-        .nivel {
-            display: inline-block;
-            margin: 10px 0;
-            padding: 5px 10px;
-            border: 1px solid #888;
-            font-size: 11px;
-            letter-spacing: 1px;
-        }
 
-        .dato {
-            margin: 8px 0;
-            font-size: 14px;
-            line-height: 1.5;
-        }
+/* =========================================
+   ALERTA
+========================================= */
 
-        .dato strong {
-            color: #ccc;
-        }
+.alerta{
+    max-width:1100px;
+    margin:30px auto;
+    padding:18px 20px;
 
-        .separador {
-            border: none;
-            border-top: 1px solid #444;
-            margin: 15px 0;
-        }
+    border:1px solid #59694f;
 
-        .curiosidad {
-            font-size: 13px;
-            color: #aaa;
-            font-style: italic;
-        }
+    background:
+        rgba(35,45,30,.35);
 
-        .volver {
-            display: block;
-            width: fit-content;
-            margin: 35px auto 50px;
-            padding: 12px 20px;
-            border: 1px solid #777;
-            color: white;
-            text-decoration: none;
-            background: rgba(0,0,0,0.6);
-            transition: 0.3s;
-        }
+    color:#abb6a4;
+    font-size:13px;
+    line-height:1.7;
+}
 
-        .volver:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-        }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #777;
-            font-size: 11px;
-            letter-spacing: 2px;
-        }
+/* =========================================
+   ESTADISTICAS
+========================================= */
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 30px;
-            }
+.estadisticas{
+    max-width:1100px;
+    margin:25px auto;
+    padding:0 20px;
 
-            .criaturas {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.stat{
+    padding:18px;
+    text-align:center;
+
+    background:rgba(10,15,12,.9);
+    border:1px solid #3f493f;
+}
+
+.stat-numero{
+    display:block;
+    color:#849b77;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.stat-texto{
+    color:#888;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+
+/* =========================================
+   BUSCADOR
+========================================= */
+
+.controles{
+    max-width:1100px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+.buscar{
+    width:100%;
+    padding:17px 20px;
+
+    background:rgba(5,9,7,.92);
+    border:1px solid #566054;
+
+    color:white;
+    font-family:inherit;
+    font-size:15px;
+
+    outline:none;
+}
+
+.buscar:focus{
+    border-color:#849b77;
+    box-shadow:0 0 15px rgba(132,155,119,.12);
+}
+
+.filtros{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:13px;
+}
+
+.filtro{
+    cursor:pointer;
+
+    padding:10px 14px;
+
+    background:rgba(10,15,12,.9);
+    border:1px solid #4c554b;
+
+    color:#aaa;
+    font-family:inherit;
+
+    transition:.2s;
+}
+
+.filtro:hover,
+.filtro.activo{
+    background:#718c67;
+    color:#10130f;
+    border-color:#718c67;
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:10px 20px 70px;
+}
+
+.seccion-titulo{
+    color:#849b77;
+
+    font-size:19px;
+    letter-spacing:3px;
+
+    border-bottom:1px solid #414841;
+
+    padding-bottom:12px;
+    margin:42px 0 18px;
+}
+
+
+/* =========================================
+   CRIATURA
+========================================= */
+
+.criatura{
+    margin-bottom:12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(17,24,18,.97),
+            rgba(7,11,9,.98)
+        );
+
+    border:1px solid #3e483f;
+
+    transition:.25s;
+}
+
+.criatura:hover{
+    border-color:#687267;
+}
+
+.criatura.abierto{
+    border-color:#849b77;
+}
+
+
+/* =========================================
+   CABECERA CRIATURA
+========================================= */
+
+.cabecera{
+    cursor:pointer;
+
+    padding:20px;
+
+    display:grid;
+    grid-template-columns:75px 1fr auto;
+
+    gap:18px;
+
+    align-items:center;
+}
+
+.id{
+    color:#666;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.nombre{
+    font-size:21px;
+    letter-spacing:2px;
+}
+
+.tipo{
+    color:#888;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.peligro{
+    font-size:10px;
+    letter-spacing:1px;
+
+    padding:8px 10px;
+
+    border:1px solid;
+}
+
+
+/* =========================================
+   NIVELES DE PELIGRO
+========================================= */
+
+.bajo{
+    color:#8daf83;
+    border-color:#536b4c;
+}
+
+.medio{
+    color:#d0b76d;
+    border-color:#756537;
+}
+
+.alto{
+    color:#d98c62;
+    border-color:#754a35;
+}
+
+.extremo{
+    color:#d75d55;
+    border-color:#71332e;
+}
+
+.desconocido{
+    color:#aaa;
+    border-color:#555;
+}
+
+
+/* =========================================
+   DOSSIER
+========================================= */
+
+.dossier{
+    display:none;
+
+    padding:25px;
+
+    border-top:1px solid #303830;
+
+    background:rgba(0,0,0,.18);
+}
+
+.criatura.abierto .dossier{
+    display:block;
+}
+
+.datos{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+
+    margin-bottom:25px;
+}
+
+.dato{
+    padding:11px;
+
+    border-left:2px solid #515950;
+
+    background:rgba(255,255,255,.025);
+}
+
+.dato strong{
+    display:block;
+
+    color:#777;
+    font-size:10px;
+    letter-spacing:1px;
+
+    margin-bottom:5px;
+}
+
+.dato span{
+    font-size:13px;
+}
+
+.dossier h3{
+    color:#849b77;
+
+    font-size:13px;
+    letter-spacing:2px;
+
+    margin-top:25px;
+}
+
+.dossier p{
+    color:#c4c4c4;
+
+    line-height:1.7;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.tag{
+    border:1px solid #4e574f;
+
+    padding:6px 9px;
+
+    color:#999;
+
+    font-size:11px;
+}
+
+
+/* =========================================
+   BOTON EXPEDIENTE
+========================================= */
+
+.boton{
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:9px 14px;
+
+    background:transparent;
+
+    color:#9baa93;
+
+    border:1px solid #596555;
+
+    cursor:pointer;
+
+    font-family:inherit;
+}
+
+.boton:hover{
+    background:#718c67;
+    color:#10130f;
+}
+
+
+/* =========================================
+   SIN RESULTADOS
+========================================= */
+
+.sin-resultados{
+    display:none;
+
+    padding:50px 20px;
+
+    text-align:center;
+
+    color:#777;
+
+    border:1px dashed #414941;
+}
+
+
+/* =========================================
+   VOLVER
+========================================= */
+
+.volver{
+    display:block;
+
+    width:max-content;
+
+    margin:10px auto 45px;
+
+    padding:12px 22px;
+
+    color:#aaa;
+
+    border:1px solid #555e56;
+
+    text-decoration:none;
+
+    transition:.2s;
+}
+
+.volver:hover{
+    background:#718c67;
+    color:#10130f;
+    border-color:#718c67;
+}
+
+
+footer{
+    text-align:center;
+
+    padding:25px;
+
+    border-top:1px solid rgba(255,255,255,.1);
+
+    color:#555;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:750px){
+
+    .estadisticas{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .cabecera{
+        grid-template-columns:55px 1fr;
+    }
+
+    .peligro{
+        grid-column:2;
+        width:max-content;
+    }
+
+    .datos{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:480px){
+
+    .datos{
+        grid-template-columns:1fr;
+    }
+
+    .nombre{
+        font-size:17px;
+    }
+
+    .dossier{
+        padding:18px;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
+
 <header>
 
-    <h1>BESTIARIO</h1>
+    <div class="codigo">
+        REGISTRO BIOLÓGICO · GF-CRT
+    </div>
+
+    <h1>ARCHIVO DE CRIATURAS</h1>
 
     <div class="subtitulo">
-        ARCHIVO DE CRIATURAS DE GRAVITY FALLS
+        ANOMALÍAS · ENTIDADES · ESPECIES DESCONOCIDAS
     </div>
 
 </header>
 
-<div class="advertencia">
-    ⚠ ADVERTENCIA: ALGUNAS CRIATURAS PUEDEN SER EXTREMADAMENTE PELIGROSAS ⚠
+
+<div class="alerta">
+
+    ⚠ ADVERTENCIA: Algunos organismos registrados en este archivo
+    no obedecen las leyes biológicas conocidas. No intente capturar,
+    alimentar, provocar o estudiar una criatura sin autorización.
+
 </div>
 
 
-<section class="criaturas">
-
-    <!-- CRIATURA 01 -->
-
-    <article class="criatura">
-
-        <div class="numero">REGISTRO Nº 001</div>
-
-        <div class="icono">🦶</div>
-
-        <h2>GIGANTE</h2>
-
-        <div class="nivel">
-            NIVEL DE PELIGRO: ALTO
-        </div>
-
-        <hr class="separador">
-
-        <p class="dato">
-            <strong>Hábitat:</strong> Bosques y zonas montañosas.
-        </p>
-
-        <p class="dato">
-            <strong>Descripción:</strong>
-            Criatura de enormes dimensiones capaz de desplazarse
-            por el bosque sin ser detectada fácilmente.
-        </p>
-
-        <p class="dato">
-            <strong>Primera aparición:</strong>
-            Bosques de Gravity Falls.
-        </p>
-
-        <p class="curiosidad">
-            "Si escuchas pasos demasiado grandes para ser humanos,
-            probablemente ya sea demasiado tarde."
-        </p>
-
-    </article>
-
-
-    <!-- CRIATURA 02 -->
-
-    <article class="criatura">
-
-        <div class="numero">REGISTRO Nº 002</div>
-
-        <div class="icono">👁️</div>
-
-        <h2>GNOMO</h2>
-
-        <div class="nivel">
-            NIVEL DE PELIGRO: MEDIO
-        </div>
-
-        <hr class="separador">
-
-        <p class="dato">
-            <strong>Hábitat:</strong> Bosques de Gravity Falls.
-        </p>
-
-        <p class="dato">
-            <strong>Descripción:</strong>
-            Pequeñas criaturas que viven en grupos y pueden
-            comportarse de forma bastante extraña.
-        </p>
-
-        <p class="dato">
-            <strong>Primera aparición:</strong>
-            Bosque cercano a Gravity Falls.
-        </p>
-
-        <p class="curiosidad">
-            "Nunca confíes en un grupo de criaturas pequeñas
-            que parecen demasiado organizadas."
-        </p>
-
-    </article>
-
-
-    <!-- CRIATURA 03 -->
-
-    <article class="criatura">
-
-        <div class="numero">REGISTRO Nº 003</div>
-
-        <div class="icono">🐙</div>
-
-        <h2>MONSTRUO DEL LAGO</h2>
-
-        <div class="nivel">
-            NIVEL DE PELIGRO: ALTO
-        </div>
-
-        <hr class="separador">
-
-        <p class="dato">
-            <strong>Hábitat:</strong> Lagos y zonas acuáticas.
-        </p>
-
-        <p class="dato">
-            <strong>Descripción:</strong>
-            Criatura acuática de origen desconocido.
-            Su existencia está relacionada con las numerosas
-            anomalías de Gravity Falls.
-        </p>
-
-        <p class="dato">
-            <strong>Primera aparición:</strong>
-            Lago de Gravity Falls.
-        </p>
-
-        <p class="curiosidad">
-            "El agua puede ocultar cosas que sería mejor no encontrar."
-        </p>
-
-    </article>
-
-
-    <!-- CRIATURA 04 -->
-
-    <article class="criatura">
-
-        <div class="numero">REGISTRO Nº 004</div>
-
-        <div class="icono">🦌</div>
-
-        <h2>CIERVOS EXTRAÑOS</h2>
-
-        <div class="nivel">
-            NIVEL DE PELIGRO: DESCONOCIDO
-        </div>
-
-        <hr class="separador">
-
-        <p class="dato">
-            <strong>Hábitat:</strong> Bosques.
-        </p>
-
-        <p class="dato">
-            <strong>Descripción:</strong>
-            Algunos animales de Gravity Falls presentan
-            comportamientos o características que no coinciden
-            con los animales normales.
-        </p>
-
-        <p class="dato">
-            <strong>Primera aparición:</strong>
-            Registros del bosque.
-        </p>
-
-        <p class="curiosidad">
-            "No todos los animales de este bosque son exactamente
-            lo que parecen."
-        </p>
-
-    </article>
-
-
-    <!-- CRIATURA 05 -->
-
-    <article class="criatura">
-
-        <div class="numero">REGISTRO Nº 005</div>
-
-        <div class="icono">👹</div>
-
-        <h2>CRIATURA DESCONOCIDA</h2>
-
-        <div class="nivel">
-            NIVEL DE PELIGRO: VARIABLE
-        </div>
-
-        <hr class="separador">
-
-        <p class="dato">
-            <strong>Hábitat:</strong> Clasificado.
-        </p>
-
-        <p class="dato">
-            <strong>Descripción:</strong>
-            Existen numerosas criaturas que todavía no han sido
-            identificadas correctamente.
-        </p>
-
-        <p class="dato">
-            <strong>Primera aparición:</strong>
-            ARCHIVOS INCOMPLETOS.
-        </p>
-
-        <p class="curiosidad">
-            "Hay cosas en Gravity Falls que ni siquiera aparecen
-            en los diarios."
-        </p>
-
-    </article>
-
-
-    <!-- CRIATURA 06 -->
-
-    <article class="criatura">
-
-        <div class="numero">REGISTRO Nº 006</div>
-
-        <div class="icono">❓</div>
-
-        <h2>REGISTRO VACÍO</h2>
-
-        <div class="nivel">
-            NIVEL DE PELIGRO: █████
-        </div>
-
-        <hr class="separador">
-
-        <p class="dato">
-            <strong>Hábitat:</strong> █████████
-        </p>
-
-        <p class="dato">
-            <strong>Descripción:</strong>
-            Este archivo ha sido parcialmente eliminado.
-            No se dispone de suficiente información.
-        </p>
-
-        <p class="dato">
-            <strong>Primera aparición:</strong>
-            █████████
-        </p>
-
-        <p class="curiosidad">
-            "Tal vez este registro debería permanecer cerrado..."
-        </p>
-
-    </article>
+<!-- =========================================
+     ESTADISTICAS
+========================================= -->
+
+<section class="estadisticas">
+
+    <div class="stat">
+        <span
+            class="stat-numero"
+            id="total">
+            000
+        </span>
+
+        <span class="stat-texto">
+            EXPEDIENTES
+        </span>
+    </div>
+
+
+    <div class="stat">
+        <span
+            class="stat-numero"
+            id="alto">
+            000
+        </span>
+
+        <span class="stat-texto">
+            ALTO PELIGRO
+        </span>
+    </div>
+
+
+    <div class="stat">
+        <span
+            class="stat-numero"
+            id="medio">
+            000
+        </span>
+
+        <span class="stat-texto">
+            PELIGRO MEDIO
+        </span>
+    </div>
+
+
+    <div class="stat">
+        <span
+            class="stat-numero"
+            id="desconocido">
+            000
+        </span>
+
+        <span class="stat-texto">
+            DESCONOCIDAS
+        </span>
+    </div>
 
 </section>
 
 
-<a href="archivo.html" class="volver">
-    ← VOLVER AL ARCHIVO
+<!-- =========================================
+     BUSCADOR
+========================================= -->
+
+<div class="controles">
+
+    <input
+        id="buscador"
+        class="buscar"
+        type="text"
+        placeholder="🔎 BUSCAR CRIATURA, ESPECIE, LUGAR, HABILIDAD..."
+    >
+
+
+    <div class="filtros">
+
+        <button
+            class="filtro activo"
+            data-filtro="todos">
+            TODAS
+        </button>
+
+        <button
+            class="filtro"
+            data-filtro="humanoide">
+            HUMANOIDES
+        </button>
+
+        <button
+            class="filtro"
+            data-filtro="animal">
+            ANIMALES
+        </button>
+
+        <button
+            class="filtro"
+            data-filtro="entidad">
+            ENTIDADES
+        </button>
+
+        <button
+            class="filtro"
+            data-filtro="anomalia">
+            ANOMALÍAS
+        </button>
+
+        <button
+            class="filtro"
+            data-filtro="peligroso">
+            PELIGROSAS
+        </button>
+
+    </div>
+
+</div>
+
+
+<main>
+
+
+<div class="seccion-titulo">
+    🐾 CATÁLOGO PRINCIPAL
+</div>
+
+
+<!-- =====================================================
+     001 GNOMOS
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="humanoide"
+    data-peligro="medio">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #001
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                GNOMOS
+            </div>
+
+            <div class="tipo">
+                ESPECIE HUMANOIDE · COLONIA
+            </div>
+
+        </div>
+
+        <div class="peligro medio">
+            PELIGRO MEDIO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>TIPO</strong>
+                <span>Humanoide</span>
+            </div>
+
+            <div class="dato">
+                <strong>HÁBITAT</strong>
+                <span>Bosque</span>
+            </div>
+
+            <div class="dato">
+                <strong>COMPORTAMIENTO</strong>
+                <span>Social</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>Medio</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Los gnomos viven en comunidades ocultas dentro del bosque
+            de Gravity Falls. Aunque individualmente no representan
+            una amenaza extrema, pueden resultar peligrosos cuando
+            actúan como grupo.
+        </p>
+
+
+        <h3>CARACTERÍSTICAS</h3>
+
+        <p>
+            Su sociedad posee estructuras jerárquicas y una fuerte
+            organización colectiva.
+        </p>
+
+
+        <h3>CONEXIONES</h3>
+
+        <div class="tags">
+
+            <span class="tag">BOSQUE</span>
+            <span class="tag">MABEL</span>
+            <span class="tag">DIARIO</span>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     002 SHAPESHIFTER
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="anomalia"
+    data-peligro="alto">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #002
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                SHAPESHIFTER
+            </div>
+
+            <div class="tipo">
+                ORGANISMO MUTANTE · CAMBIO DE FORMA
+            </div>
+
+        </div>
+
+        <div class="peligro alto">
+            ALTO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>TIPO</strong>
+                <span>Anomalía biológica</span>
+            </div>
+
+            <div class="dato">
+                <strong>UBICACIÓN</strong>
+                <span>Búnker</span>
+            </div>
+
+            <div class="dato">
+                <strong>HABILIDAD</strong>
+                <span>Imitación</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>Alto</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            El Shapeshifter es una criatura capaz de modificar su
+            apariencia para adoptar la forma de otras personas.
+        </p>
+
+        <p>
+            Su existencia está relacionada con las investigaciones
+            secretas realizadas en las instalaciones subterráneas
+            de Gravity Falls.
+        </p>
+
+
+        <h3>ADVERTENCIA</h3>
+
+        <p>
+            La identificación visual de un individuo no garantiza
+            que sea quien afirma ser.
+        </p>
+
+
+        <div class="tags">
+
+            <span class="tag">BÚNKER</span>
+            <span class="tag">FORD</span>
+            <span class="tag">DIARIO</span>
+            <span class="tag">IMITACIÓN</span>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     003 SUMMERWEEN TRICKSTER
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="entidad anomalia"
+    data-peligro="alto">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #003
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                SUMMERWEEN TRICKSTER
+            </div>
+
+            <div class="tipo">
+                ENTIDAD · SUMMERWEEN
+            </div>
+
+        </div>
+
+        <div class="peligro alto">
+            ALTO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>TIPO</strong>
+                <span>Entidad</span>
+            </div>
+
+            <div class="dato">
+                <strong>EVENTO</strong>
+                <span>Summerween</span>
+            </div>
+
+            <div class="dato">
+                <strong>ALIMENTACIÓN</strong>
+                <span>Dulces</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>Alto</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            El Summerween Trickster es una criatura asociada con
+            la celebración sobrenatural de Summerween.
+        </p>
+
+        <p>
+            Su comportamiento está directamente relacionado con
+            la obtención de dulces y con las reglas de la celebración.
+        </p>
+
+
+        <h3>CONEXIONES</h3>
+
+        <div class="tags">
+
+            <span class="tag">SUMMERWEEN</span>
+            <span class="tag">DULCES</span>
+            <span class="tag">MABEL</span>
+            <span class="tag">DIPPER</span>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     004 MANOTAUR
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="humanoide"
+    data-peligro="medio">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #004
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                MANOTAUR
+            </div>
+
+            <div class="tipo">
+                GUERRERO · SOCIEDAD DE MANOTAURS
+            </div>
+
+        </div>
+
+        <div class="peligro medio">
+            MEDIO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>TIPO</strong>
+                <span>Humanoide</span>
+            </div>
+
+            <div class="dato">
+                <strong>HÁBITAT</strong>
+                <span>Zona desconocida</span>
+            </div>
+
+            <div class="dato">
+                <strong>ACTIVIDAD</strong>
+                <span>Combate</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>Medio</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Los Manotaurs son criaturas humanoides dedicadas a una
+            cultura basada en la fuerza, el combate y las pruebas
+            físicas.
+        </p>
+
+
+        <h3>NOTA</h3>
+
+        <p>
+            Su existencia demuestra que algunas sociedades
+            sobrenaturales poseen estructuras culturales propias.
+        </p>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     005 GIGANTE
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="humanoide anomalia"
+    data-peligro="alto">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #005
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                GIGANTE
+            </div>
+
+            <div class="tipo">
+                CRIATURA DE GRAN TAMAÑO
+            </div>
+
+        </div>
+
+        <div class="peligro alto">
+            ALTO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>TIPO</strong>
+                <span>Gigante</span>
+            </div>
+
+            <div class="dato">
+                <strong>TAMAÑO</strong>
+                <span>Extraordinario</span>
+            </div>
+
+            <div class="dato">
+                <strong>HÁBITAT</strong>
+                <span>Desconocido</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>Alto</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Registro de una criatura de proporciones anormales.
+            La documentación disponible no permite establecer con
+            precisión su origen.
+        </p>
+
+
+        <h3>ESTADO DEL REGISTRO</h3>
+
+        <p>
+            Se requieren investigaciones adicionales antes de
+            establecer una clasificación definitiva.
+        </p>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     006 LAGO
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="animal anomalia"
+    data-peligro="medio">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #006
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                CRIATURA DEL LAGO
+            </div>
+
+            <div class="tipo">
+                ORGANISMO ACUÁTICO · IDENTIDAD NO CONFIRMADA
+            </div>
+
+        </div>
+
+        <div class="peligro medio">
+            MEDIO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>TIPO</strong>
+                <span>Acuático</span>
+            </div>
+
+            <div class="dato">
+                <strong>HÁBITAT</strong>
+                <span>Lago</span>
+            </div>
+
+            <div class="dato">
+                <strong>ESTADO</strong>
+                <span>Investigación</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>Medio</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Registro relacionado con una criatura supuestamente
+            observada en una masa de agua cercana a Gravity Falls.
+        </p>
+
+        <p>
+            La evidencia disponible debe separarse cuidadosamente
+            entre observaciones confirmadas, testimonios y rumores.
+        </p>
+
+
+        <div class="tags">
+
+            <span class="tag">LAGO</span>
+            <span class="tag">ANOMALÍA</span>
+            <span class="tag">INVESTIGACIÓN</span>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     007 DEERTEETH
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="animal anomalia"
+    data-peligro="bajo">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #007
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                DEERTEETH
+            </div>
+
+            <div class="tipo">
+                FAUNA ANÓMALA · BOSQUE
+            </div>
+
+        </div>
+
+        <div class="peligro bajo">
+            BAJO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>TIPO</strong>
+                <span>Animal anómalo</span>
+            </div>
+
+            <div class="dato">
+                <strong>HÁBITAT</strong>
+                <span>Bosque</span>
+            </div>
+
+            <div class="dato">
+                <strong>ACTIVIDAD</strong>
+                <span>Nocturna</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>Bajo</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Registro de fauna extraña observada dentro del ecosistema
+            sobrenatural de Gravity Falls.
+        </p>
+
+        <p>
+            El bosque contiene numerosas especies que no aparecen
+            en los registros zoológicos convencionales.
+        </p>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     008 SHMEBULOCK
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="humanoide"
+    data-peligro="bajo">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #008
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                SHMEBULOCK
+            </div>
+
+            <div class="tipo">
+                GNOMO · MATERIAL OFICIAL
+            </div>
+
+        </div>
+
+        <div class="peligro bajo">
+            BAJO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>TIPO</strong>
+                <span>Gnomo</span>
+            </div>
+
+            <div class="dato">
+                <strong>FUENTE</strong>
+                <span>Material oficial</span>
+            </div>
+
+            <div class="dato">
+                <strong>ESPECIE</strong>
+                <span>Gnomo</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>Bajo</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Shmebulock es un personaje relacionado con la comunidad
+            de gnomos de Gravity Falls y aparece también en material
+            oficial complementario de la franquicia.
+        </p>
+
+
+        <h3>CLASIFICACIÓN</h3>
+
+        <p>
+            Este expediente distingue deliberadamente entre
+            información mostrada en la serie y material oficial
+            complementario.
+        </p>
+
+        <div class="tags">
+
+            <span class="tag">GNOMOS</span>
+            <span class="tag">LOST LEGENDS</span>
+            <span class="tag">MATERIAL OFICIAL</span>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     009 BILL CIPHER
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="entidad anomalia peligroso"
+    data-peligro="extremo">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #009
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                BILL CIPHER
+            </div>
+
+            <div class="tipo">
+                ENTIDAD INTERDIMENSIONAL
+            </div>
+
+        </div>
+
+        <div class="peligro extremo">
+            EXTREMO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>TIPO</strong>
+                <span>Entidad</span>
+            </div>
+
+            <div class="dato">
+                <strong>ORIGEN</strong>
+                <span>Interdimensional</span>
+            </div>
+
+            <div class="dato">
+                <strong>CAPACIDAD</strong>
+                <span>Manipulación de realidad</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>Extremo</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Bill Cipher es una entidad interdimensional capaz de
+            manipular sueños, realizar pactos y alterar la realidad.
+        </p>
+
+        <p>
+            Su intervención es fundamental para comprender los
+            acontecimientos conocidos como Weirdmageddon.
+        </p>
+
+
+        <h3>ADVERTENCIA DEL INVESTIGADOR</h3>
+
+        <p>
+            Toda información atribuida directamente a Bill debe
+            considerarse susceptible de manipulación. El sujeto
+            posee un historial documentado de engaño.
+        </p>
+
+
+        <h3>CONEXIONES</h3>
+
+        <div class="tags">
+
+            <span class="tag">FORD</span>
+            <span class="tag">DIARIOS</span>
+            <span class="tag">PORTAL</span>
+            <span class="tag">WEIRDMAGEDDON</span>
+            <span class="tag">AXOLOTL</span>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     010 AXOLOTL
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="entidad anomalia"
+    data-peligro="desconocido">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #010
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                AXOLOTL
+            </div>
+
+            <div class="tipo">
+                ENTIDAD / FIGURA DE LORE INTERDIMENSIONAL
+            </div>
+
+        </div>
+
+        <div class="peligro desconocido">
+            DESCONOCIDO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <div class="datos">
+
+            <div class="dato">
+                <strong>CLASIFICACIÓN</strong>
+                <span>Entidad</span>
+            </div>
+
+            <div class="dato">
+                <strong>ORIGEN</strong>
+                <span>Desconocido</span>
+            </div>
+
+            <div class="dato">
+                <strong>RELACIÓN</strong>
+                <span>Bill Cipher</span>
+            </div>
+
+            <div class="dato">
+                <strong>PELIGRO</strong>
+                <span>No determinado</span>
+            </div>
+
+        </div>
+
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            El Axolotl es una figura de gran importancia dentro del
+            lore relacionado con Bill Cipher y las dimensiones.
+        </p>
+
+        <p>
+            La información disponible debe clasificarse por niveles
+            de evidencia, especialmente cuando procede de documentos
+            donde la narración puede ser poco fiable.
+        </p>
+
+
+        <h3>ESTADO</h3>
+
+        <p>
+            Expediente abierto. Requiere conexión con los documentos
+            posteriores de la franquicia.
+        </p>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     011 CYCLOPS
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="anomalia"
+    data-peligro="medio">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #011
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                CRIATURA CICLÓPEA
+            </div>
+
+            <div class="tipo">
+                ANOMALÍA VISUAL · REGISTRO INCOMPLETO
+            </div>
+
+        </div>
+
+        <div class="peligro medio">
+            MEDIO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Registro incompleto perteneciente al catálogo de
+            anomalías de Gravity Falls.
+        </p>
+
+        <p>
+            La clasificación definitiva requiere comparar las
+            diferentes fuentes documentales disponibles.
+        </p>
+
+    </div>
+
+</article>
+
+
+<!-- =====================================================
+     012 ARCHIVO DESCONOCIDO
+===================================================== -->
+
+<article
+    class="criatura"
+    data-categoria="anomalia"
+    data-peligro="desconocido">
+
+    <div class="cabecera">
+
+        <div class="id">
+            #012
+        </div>
+
+        <div>
+
+            <div class="nombre">
+                ENTIDAD NO IDENTIFICADA
+            </div>
+
+            <div class="tipo">
+                EXPEDIENTE ABIERTO
+            </div>
+
+        </div>
+
+        <div class="peligro desconocido">
+            DESCONOCIDO
+        </div>
+
+    </div>
+
+
+    <div class="dossier">
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            No existe suficiente información para determinar la
+            naturaleza de esta entidad.
+        </p>
+
+        <p>
+            Este expediente permanecerá abierto hasta que aparezcan
+            nuevas pruebas.
+        </p>
+
+
+        <h3>NOTA</h3>
+
+        <p>
+            ██████████████████████████████
+        </p>
+
+    </div>
+
+</article>
+
+
+<div
+    class="sin-resultados"
+    id="sinResultados">
+
+    NO SE ENCONTRARON CRIATURAS CON ESOS CRITERIOS.
+
+</div>
+
+
+</main>
+
+
+<a
+    href="archivo.html"
+    class="volver">
+
+    ← VOLVER AL ARCHIVO PRINCIPAL
+
 </a>
 
 
 <footer>
-    ARCHIVO DE INVESTIGACIÓN · GRAVITY FALLS
+
+    GRAVITY FALLS · ARCHIVO DE INVESTIGACIÓN<br>
+    GF-CRT · REGISTRO BIOLÓGICO RESTRINGIDO
+
 </footer>
+
+
+<script>
+
+/* =========================================
+   ELEMENTOS
+========================================= */
+
+const criaturas =
+    document.querySelectorAll(".criatura");
+
+const buscador =
+    document.getElementById("buscador");
+
+const filtros =
+    document.querySelectorAll(".filtro");
+
+const sinResultados =
+    document.getElementById("sinResultados");
+
+let filtroActual = "todos";
+
+
+/* =========================================
+   ABRIR EXPEDIENTES
+========================================= */
+
+criaturas.forEach(criatura => {
+
+    const cabecera =
+        criatura.querySelector(".cabecera");
+
+    cabecera.addEventListener("click", () => {
+
+        criatura.classList.toggle("abierto");
+
+    });
+
+});
+
+
+/* =========================================
+   FILTRAR
+========================================= */
+
+function filtrar(){
+
+    const texto =
+        buscador.value.toLowerCase().trim();
+
+    let visibles = 0;
+
+
+    criaturas.forEach(criatura => {
+
+        const contenido =
+            criatura.innerText.toLowerCase();
+
+        const categoria =
+            criatura.dataset.categoria;
+
+        const peligro =
+            criatura.dataset.peligro;
+
+
+        const coincideTexto =
+            contenido.includes(texto);
+
+
+        let coincideFiltro = true;
+
+
+        if(filtroActual !== "todos"){
+
+            if(filtroActual === "peligroso"){
+
+                coincideFiltro =
+                    peligro === "alto" ||
+                    peligro === "extremo";
+
+            }else{
+
+                coincideFiltro =
+                    categoria.includes(filtroActual);
+
+            }
+
+        }
+
+
+        if(
+            coincideTexto &&
+            coincideFiltro
+        ){
+
+            criatura.style.display =
+                "block";
+
+            visibles++;
+
+        }else{
+
+            criatura.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    sinResultados.style.display =
+        visibles === 0
+        ? "block"
+        : "none";
+
+}
+
+
+/* =========================================
+   BUSCADOR
+========================================= */
+
+buscador.addEventListener(
+    "input",
+    filtrar
+);
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+filtros.forEach(filtro => {
+
+    filtro.addEventListener(
+        "click",
+        () => {
+
+            filtros.forEach(boton => {
+
+                boton.classList.remove(
+                    "activo"
+                );
+
+            });
+
+
+            filtro.classList.add(
+                "activo"
+            );
+
+
+            filtroActual =
+                filtro.dataset.filtro;
+
+
+            filtrar();
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   ESTADISTICAS
+========================================= */
+
+const total =
+    criaturas.length;
+
+
+const alto =
+    document.querySelectorAll(
+        '.criatura[data-peligro="alto"],' +
+        '.criatura[data-peligro="extremo"]'
+    ).length;
+
+
+const medio =
+    document.querySelectorAll(
+        '.criatura[data-peligro="medio"]'
+    ).length;
+
+
+const desconocido =
+    document.querySelectorAll(
+        '.criatura[data-peligro="desconocido"]'
+    ).length;
+
+
+document.getElementById("total")
+    .textContent =
+    String(total).padStart(3,"0");
+
+
+document.getElementById("alto")
+    .textContent =
+    String(alto).padStart(3,"0");
+
+
+document.getElementById("medio")
+    .textContent =
+    String(medio).padStart(3,"0");
+
+
+document.getElementById("desconocido")
+    .textContent =
+    String(desconocido).padStart(3,"0");
+
+
+</script>
+
 
 </body>
 </html>
