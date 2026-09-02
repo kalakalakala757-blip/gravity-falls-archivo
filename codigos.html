@@ -1,468 +1,1669 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Códigos | Gravity Falls</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Georgia, serif;
-            color: #eee;
-
-            background:
-                linear-gradient(
-                    rgba(5, 10, 8, 0.88),
-                    rgba(5, 10, 8, 0.94)
-                ),
-                url("https://images.unsplash.com/photo-1448375240586-882707db888b");
-
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        header {
-            text-align: center;
-            padding: 55px 20px 30px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Códigos y Cifras | Gravity Falls</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Georgia,"Times New Roman",serif;
+    color:#eee;
 
-        h1 {
-            margin: 0;
-            font-size: 42px;
-            letter-spacing: 6px;
-            text-shadow: 0 0 15px black;
-        }
+    background:
+        linear-gradient(
+            rgba(5,8,7,.92),
+            rgba(5,8,7,.97)
+        ),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b")
+        center/cover fixed;
+}
 
-        .subtitulo {
-            margin-top: 12px;
-            color: #aaa;
-            letter-spacing: 3px;
-            font-size: 14px;
-        }
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.06;
 
-        .advertencia {
-            max-width: 850px;
-            margin: 0 auto 35px;
-            padding: 15px;
-            text-align: center;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(255,255,255,.12) 4px
+        );
+}
 
-            background: rgba(0,0,0,0.7);
-            border: 1px solid #777;
 
-            font-size: 12px;
-            letter-spacing: 2px;
-        }
+/* =====================================
+   CABECERA
+===================================== */
 
-        .codigos {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
+header{
+    text-align:center;
+    padding:55px 20px 35px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
 
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
+.codigo{
+    color:#c5a84d;
+    font-size:12px;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
 
-            gap: 25px;
-        }
+h1{
+    margin:0;
+    font-size:clamp(38px,7vw,72px);
+    letter-spacing:8px;
+}
 
-        .codigo {
-            background: rgba(15, 18, 16, 0.9);
-            border: 1px solid #555;
+.subtitulo{
+    margin-top:12px;
+    color:#999;
+    letter-spacing:3px;
+    font-size:13px;
+}
 
-            padding: 25px;
 
-            min-height: 300px;
+/* =====================================
+   ALERTA
+===================================== */
 
-            position: relative;
+.alerta{
+    max-width:1050px;
+    margin:30px auto;
 
-            transition: 0.3s;
-        }
+    padding:18px 20px;
 
-        .codigo:hover {
-            transform: translateY(-5px);
-            border-color: #999;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-        }
+    border:1px solid #665d38;
 
-        .numero {
-            position: absolute;
-            top: 12px;
-            right: 15px;
+    background:rgba(50,43,20,.28);
 
-            color: #777;
-            font-size: 11px;
-        }
+    color:#bdb590;
 
-        .simbolo {
-            font-size: 45px;
-            margin-bottom: 10px;
-        }
+    font-size:13px;
+    line-height:1.7;
+}
 
-        h2 {
-            margin: 5px 0 10px;
 
-            font-size: 22px;
-            letter-spacing: 2px;
-        }
+/* =====================================
+   ESTADISTICAS
+===================================== */
 
-        .estado {
-            display: inline-block;
+.estadisticas{
+    max-width:1050px;
+    margin:25px auto;
+    padding:0 20px;
 
-            padding: 5px 9px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
 
-            border: 1px solid #777;
+.stat{
+    padding:18px;
 
-            font-size: 10px;
-            letter-spacing: 1px;
+    text-align:center;
 
-            margin-bottom: 15px;
-        }
+    background:rgba(10,13,11,.9);
 
-        .codigo-secreto {
-            background: #080808;
+    border:1px solid #48483d;
+}
 
-            border: 1px dashed #666;
+.stat-numero{
+    display:block;
 
-            padding: 15px;
+    color:#c5a84d;
 
-            margin: 15px 0;
+    font-size:30px;
 
-            text-align: center;
+    font-weight:bold;
+}
 
-            font-family: monospace;
-            font-size: 18px;
+.stat-texto{
+    color:#888;
 
-            letter-spacing: 4px;
-        }
+    font-size:10px;
 
-        .descripcion {
-            color: #bbb;
+    letter-spacing:2px;
+}
 
-            font-size: 14px;
-            line-height: 1.6;
-        }
 
-        .pista {
-            margin-top: 18px;
+/* =====================================
+   NAVEGACION DE CODIGOS
+===================================== */
 
-            padding: 12px;
+.controles{
+    max-width:1050px;
+    margin:30px auto;
 
-            background: rgba(255,255,255,0.04);
+    padding:0 20px;
+}
 
-            border-left: 3px solid #777;
+.buscar{
+    width:100%;
 
-            color: #aaa;
+    padding:17px 20px;
 
-            font-size: 13px;
-        }
+    background:rgba(5,8,7,.94);
 
-        .bloqueado {
-            opacity: 0.7;
-        }
+    border:1px solid #59594d;
 
-        .bloqueado .codigo-secreto {
-            letter-spacing: 7px;
-        }
+    color:white;
 
-        .volver {
-            display: block;
+    font-family:inherit;
+    font-size:15px;
 
-            width: fit-content;
+    outline:none;
+}
 
-            margin: 40px auto 50px;
+.buscar:focus{
+    border-color:#c5a84d;
 
-            padding: 12px 20px;
+    box-shadow:
+        0 0 15px
+        rgba(197,168,77,.12);
+}
 
-            color: white;
-            text-decoration: none;
+.filtros{
+    display:flex;
+    flex-wrap:wrap;
 
-            border: 1px solid #777;
+    gap:8px;
 
-            background: rgba(0,0,0,0.6);
+    margin-top:13px;
+}
 
-            transition: 0.3s;
-        }
+.filtro{
+    cursor:pointer;
 
-        .volver:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-        }
+    padding:10px 14px;
 
-        footer {
-            text-align: center;
+    background:rgba(10,13,11,.9);
 
-            padding: 20px;
+    border:1px solid #505047;
 
-            color: #666;
+    color:#aaa;
 
-            font-size: 10px;
+    font-family:inherit;
 
-            letter-spacing: 2px;
-        }
+    transition:.2s;
+}
 
-        @media (max-width: 600px) {
+.filtro:hover,
+.filtro.activo{
+    background:#c5a84d;
 
-            h1 {
-                font-size: 30px;
-            }
+    color:#10100d;
 
-            .codigos {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    border-color:#c5a84d;
+}
+
+
+/* =====================================
+   CONTENIDO
+===================================== */
+
+main{
+    max-width:1050px;
+
+    margin:auto;
+
+    padding:10px 20px 70px;
+}
+
+.seccion-titulo{
+    color:#c5a84d;
+
+    font-size:19px;
+
+    letter-spacing:3px;
+
+    border-bottom:1px solid #42423a;
+
+    padding-bottom:12px;
+
+    margin:42px 0 18px;
+}
+
+
+/* =====================================
+   TARJETAS
+===================================== */
+
+.codigo-card{
+    margin-bottom:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20,20,15,.97),
+            rgba(8,10,9,.98)
+        );
+
+    border:1px solid #42433b;
+
+    transition:.25s;
+}
+
+.codigo-card:hover{
+    border-color:#706b4e;
+}
+
+.codigo-card.abierto{
+    border-color:#c5a84d;
+}
+
+
+/* =====================================
+   CABECERA CARD
+===================================== */
+
+.card-header{
+    cursor:pointer;
+
+    padding:20px;
+
+    display:grid;
+
+    grid-template-columns:70px 1fr auto;
+
+    gap:18px;
+
+    align-items:center;
+}
+
+.card-id{
+    color:#666;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+}
+
+.card-nombre{
+    font-size:20px;
+
+    letter-spacing:2px;
+}
+
+.card-tipo{
+    color:#888;
+
+    font-size:12px;
+
+    margin-top:5px;
+}
+
+.estado{
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    padding:8px 10px;
+
+    border:1px solid;
+}
+
+.resuelto{
+    color:#8caf83;
+    border-color:#526c4b;
+}
+
+.investigacion{
+    color:#c5a84d;
+    border-color:#716234;
+}
+
+.bloqueado{
+    color:#d06a61;
+    border-color:#713b36;
+}
+
+
+/* =====================================
+   CUERPO CARD
+===================================== */
+
+.card-body{
+    display:none;
+
+    padding:25px;
+
+    border-top:1px solid #34352f;
+
+    background:rgba(0,0,0,.17);
+}
+
+.codigo-card.abierto .card-body{
+    display:block;
+}
+
+.card-body h3{
+    color:#c5a84d;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    margin-top:25px;
+}
+
+.card-body p{
+    color:#c3c3c3;
+
+    line-height:1.7;
+}
+
+
+/* =====================================
+   CIFRADO
+===================================== */
+
+.caja-codigo{
+    padding:22px;
+
+    margin:18px 0;
+
+    text-align:center;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.02),
+            rgba(255,255,255,.02) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    border:1px dashed #68644b;
+}
+
+.texto-cifrado{
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:clamp(20px,5vw,34px);
+
+    letter-spacing:7px;
+
+    color:#d1c58e;
+
+    word-break:break-word;
+}
+
+.resultado{
+    margin-top:15px;
+
+    color:#8caf83;
+
+    font-size:15px;
+
+    letter-spacing:2px;
+}
+
+
+/* =====================================
+   DECODIFICADOR
+===================================== */
+
+.decoder{
+    margin-top:20px;
+
+    padding:20px;
+
+    border:1px solid #41433b;
+
+    background:rgba(255,255,255,.02);
+}
+
+.decoder h4{
+    margin-top:0;
+
+    color:#aaa;
+
+    letter-spacing:2px;
+}
+
+.decoder input{
+    width:100%;
+
+    padding:13px;
+
+    background:#080a09;
+
+    border:1px solid #55564c;
+
+    color:#eee;
+
+    font-family:"Courier New",monospace;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.decoder button{
+    margin-top:10px;
+
+    padding:11px 17px;
+
+    cursor:pointer;
+
+    background:#c5a84d;
+
+    color:#111;
+
+    border:1px solid #c5a84d;
+
+    font-family:inherit;
+
+    font-weight:bold;
+}
+
+.decoder button:hover{
+    background:#dfc86c;
+}
+
+.resultado-decoder{
+    margin-top:15px;
+
+    min-height:20px;
+
+    color:#8caf83;
+
+    font-family:"Courier New",monospace;
+}
+
+
+/* =====================================
+   TABLA DE SIMBOLOS
+===================================== */
+
+.simbolos{
+    display:grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap:7px;
+
+    margin-top:18px;
+}
+
+.simbolo{
+    min-height:60px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:1px solid #41433b;
+
+    background:rgba(255,255,255,.025);
+}
+
+.simbolo-grande{
+    font-size:23px;
+
+    color:#c5a84d;
+}
+
+.simbolo-letra{
+    color:#777;
+
+    font-size:11px;
+
+    margin-top:4px;
+}
+
+
+/* =====================================
+   TAGS
+===================================== */
+
+.tags{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    margin-top:15px;
+}
+
+.tag{
+    padding:6px 9px;
+
+    border:1px solid #4d4e46;
+
+    color:#999;
+
+    font-size:11px;
+}
+
+
+/* =====================================
+   SIN RESULTADOS
+===================================== */
+
+.sin-resultados{
+    display:none;
+
+    padding:50px 20px;
+
+    text-align:center;
+
+    color:#777;
+
+    border:1px dashed #41433b;
+}
+
+
+/* =====================================
+   VOLVER
+===================================== */
+
+.volver{
+    display:block;
+
+    width:max-content;
+
+    margin:10px auto 45px;
+
+    padding:12px 22px;
+
+    color:#aaa;
+
+    border:1px solid #55564c;
+
+    text-decoration:none;
+
+    transition:.2s;
+}
+
+.volver:hover{
+    background:#c5a84d;
+
+    color:#111;
+
+    border-color:#c5a84d;
+}
+
+
+footer{
+    text-align:center;
+
+    padding:25px;
+
+    border-top:1px solid rgba(255,255,255,.1);
+
+    color:#555;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:750px){
+
+    .estadisticas{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .card-header{
+        grid-template-columns:50px 1fr;
+    }
+
+    .estado{
+        grid-column:2;
+
+        width:max-content;
+    }
+
+    .simbolos{
+        grid-template-columns:
+            repeat(4,1fr);
+    }
+
+}
+
+@media(max-width:480px){
+
+    .simbolos{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .card-nombre{
+        font-size:17px;
+    }
+
+    .card-body{
+        padding:18px;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
+
 <header>
+
+    <div class="codigo">
+        ARCHIVO CRIPTOGRÁFICO · GF-COD
+    </div>
 
     <h1>CÓDIGOS</h1>
 
     <div class="subtitulo">
-        ARCHIVO DE MENSAJES CIFRADOS
+        CIFRAS · SÍMBOLOS · MENSAJES OCULTOS
     </div>
 
 </header>
 
 
-<div class="advertencia">
+<div class="alerta">
 
-    ⚠ ALGUNOS MENSAJES PUEDEN CONTENER INFORMACIÓN RESTRINGIDA ⚠
+    ⚠ ALGUNOS MENSAJES PUEDEN ESTAR OCULTOS A SIMPLE VISTA.
+    Los códigos encontrados en Gravity Falls pueden utilizar
+    diferentes sistemas de sustitución y símbolos.
 
 </div>
 
 
-<section class="codigos">
+<!-- =====================================
+     ESTADISTICAS
+===================================== -->
 
+<section class="estadisticas">
 
-    <!-- CÓDIGO 001 -->
+    <div class="stat">
 
-    <article class="codigo">
+        <span
+            class="stat-numero"
+            id="total">
+            000
+        </span>
 
-        <div class="numero">
-            ARCHIVO Nº 001
-        </div>
+        <span class="stat-texto">
+            EXPEDIENTES
+        </span>
 
-        <div class="simbolo">
-            🔐
-        </div>
+    </div>
 
-        <h2>CÓDIGO DE SUSTITUCIÓN</h2>
 
-        <div class="estado">
-            DESCIFRABLE
-        </div>
+    <div class="stat">
 
-        <div class="codigo-secreto">
-            QVXXM
-        </div>
+        <span
+            class="stat-numero"
+            id="resueltos">
+            000
+        </span>
 
-        <p class="descripcion">
-            Este mensaje ha sido encontrado en un documento
-            antiguo. Cada letra ha sido reemplazada por otra.
-        </p>
+        <span class="stat-texto">
+            RESUELTOS
+        </span>
 
-        <div class="pista">
-            💡 PISTA: Algunas letras no están donde deberían.
-        </div>
+    </div>
 
-    </article>
 
+    <div class="stat">
 
-    <!-- CÓDIGO 002 -->
+        <span
+            class="stat-numero"
+            id="investigacion">
+            000
+        </span>
 
-    <article class="codigo">
+        <span class="stat-texto">
+            EN INVESTIGACIÓN
+        </span>
 
-        <div class="numero">
-            ARCHIVO Nº 002
-        </div>
+    </div>
 
-        <div class="simbolo">
-            🔺
-        </div>
 
-        <h2>SÍMBOLOS DESCONOCIDOS</h2>
+    <div class="stat">
 
-        <div class="estado">
-            INVESTIGACIÓN ABIERTA
-        </div>
+        <span
+            class="stat-numero"
+            id="bloqueados">
+            000
+        </span>
 
-        <div class="codigo-secreto">
-            △ ○ □ △ ☆
-        </div>
+        <span class="stat-texto">
+            BLOQUEADOS
+        </span>
 
-        <p class="descripcion">
-            Una serie de símbolos aparece repetidamente
-            en diferentes documentos relacionados con
-            los misterios de Gravity Falls.
-        </p>
-
-        <div class="pista">
-            💡 PISTA: Busca símbolos que aparecen más de una vez.
-        </div>
-
-    </article>
-
-
-    <!-- CÓDIGO 003 -->
-
-    <article class="codigo">
-
-        <div class="numero">
-            ARCHIVO Nº 003
-        </div>
-
-        <div class="simbolo">
-            📖
-        </div>
-
-        <h2>MENSAJE OCULTO</h2>
-
-        <div class="estado">
-            INFORMACIÓN PARCIAL
-        </div>
-
-        <div class="codigo-secreto">
-            3 - 1 - 20 - 5
-        </div>
-
-        <p class="descripcion">
-            Una secuencia numérica encontrada dentro
-            de un registro aparentemente normal.
-        </p>
-
-        <div class="pista">
-            💡 PISTA: Convierte números en letras.
-        </div>
-
-    </article>
-
-
-    <!-- CÓDIGO 004 -->
-
-    <article class="codigo bloqueado">
-
-        <div class="numero">
-            ARCHIVO Nº 004
-        </div>
-
-        <div class="simbolo">
-            👁️
-        </div>
-
-        <h2>ARCHIVO BLOQUEADO</h2>
-
-        <div class="estado">
-            ACCESO DENEGADO
-        </div>
-
-        <div class="codigo-secreto">
-            █ █ █ █ █
-        </div>
-
-        <p class="descripcion">
-            Este documento ha sido clasificado.
-            Se necesita una clave para acceder a su contenido.
-        </p>
-
-        <div class="pista">
-            🔒 CLAVE REQUERIDA
-        </div>
-
-    </article>
-
-
-    <!-- CÓDIGO 005 -->
-
-    <article class="codigo bloqueado">
-
-        <div class="numero">
-            ARCHIVO Nº 005
-        </div>
-
-        <div class="simbolo">
-            ❓
-        </div>
-
-        <h2>MENSAJE DESCONOCIDO</h2>
-
-        <div class="estado">
-            CLASIFICADO
-        </div>
-
-        <div class="codigo-secreto">
-            ? ? ? ? ?
-        </div>
-
-        <p class="descripcion">
-            No se ha podido determinar el origen
-            de este mensaje.
-        </p>
-
-        <div class="pista">
-            🔒 Este archivo será desbloqueado posteriormente.
-        </div>
-
-    </article>
-
-
-    <!-- CÓDIGO 006 -->
-
-    <article class="codigo bloqueado">
-
-        <div class="numero">
-            ARCHIVO Nº 006
-        </div>
-
-        <div class="simbolo">
-            ⚠️
-        </div>
-
-        <h2>ARCHIVO NEGRO</h2>
-
-        <div class="estado">
-            PELIGRO EXTREMO
-        </div>
-
-        <div class="codigo-secreto">
-            █████████
-        </div>
-
-        <p class="descripcion">
-            Registro eliminado de los archivos.
-            No existe información suficiente para
-            determinar qué contenía.
-        </p>
-
-        <div class="pista">
-            ⚠ NO INTENTAR ACCEDER
-        </div>
-
-    </article>
-
+    </div>
 
 </section>
 
 
-<a href="archivo.html" class="volver">
-    ← VOLVER AL ARCHIVO
+<!-- =====================================
+     BUSCADOR
+===================================== -->
+
+<div class="controles">
+
+    <input
+        class="buscar"
+        id="buscador"
+        type="text"
+        placeholder="🔎 BUSCAR CÓDIGO, CIFRA, SÍMBOLO..."
+    >
+
+
+    <div class="filtros">
+
+        <button
+            class="filtro activo"
+            data-filtro="todos">
+            TODOS
+        </button>
+
+        <button
+            class="filtro"
+            data-filtro="cifrado">
+            CIFRADOS
+        </button>
+
+        <button
+            class="filtro"
+            data-filtro="simbolos">
+            SÍMBOLOS
+        </button>
+
+        <button
+            class="filtro"
+            data-filtro="mensajes">
+            MENSAJES
+        </button>
+
+        <button
+            class="filtro"
+            data-filtro="bloqueado">
+            BLOQUEADOS
+        </button>
+
+    </div>
+
+</div>
+
+
+<main>
+
+
+<div class="seccion-titulo">
+    🔐 ARCHIVO CRIPTOGRÁFICO
+</div>
+
+
+<!-- =========================================
+     CIFRA DE SUSTITUCIÓN
+========================================= -->
+
+<article
+    class="codigo-card"
+    data-categoria="cifrado mensajes"
+    data-estado="resuelto">
+
+    <div class="card-header">
+
+        <div class="card-id">
+            #001
+        </div>
+
+        <div>
+
+            <div class="card-nombre">
+                CIFRA DE SUSTITUCIÓN
+            </div>
+
+            <div class="card-tipo">
+                SISTEMA CRIPTOGRÁFICO
+            </div>
+
+        </div>
+
+        <div class="estado resuelto">
+            RESUELTO
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Uno de los sistemas criptográficos utilizados en
+            Gravity Falls consiste en sustituir cada letra por
+            otra letra siguiendo un patrón determinado.
+        </p>
+
+
+        <h3>EJEMPLO DE CÓDIGO</h3>
+
+        <div class="caja-codigo">
+
+            <div class="texto-cifrado">
+                QVXXM
+            </div>
+
+            <div class="resultado">
+                RESULTADO: BILL
+            </div>
+
+        </div>
+
+
+        <h3>PRUEBA EL DECODIFICADOR</h3>
+
+        <div class="decoder">
+
+            <h4>
+                ESCRIBE EL CÓDIGO
+            </h4>
+
+            <input
+                id="decoderInput"
+                type="text"
+                placeholder="Ejemplo: QVXXM"
+            >
+
+            <button onclick="decodificar()">
+                DECODIFICAR
+            </button>
+
+            <div
+                class="resultado-decoder"
+                id="decoderResultado">
+            </div>
+
+        </div>
+
+
+        <div class="tags">
+
+            <span class="tag">
+                BILL
+            </span>
+
+            <span class="tag">
+                DIARIOS
+            </span>
+
+            <span class="tag">
+                MENSAJES OCULTOS
+            </span>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- =========================================
+     CIFRA DE NÚMEROS
+========================================= -->
+
+<article
+    class="codigo-card"
+    data-categoria="cifrado mensajes"
+    data-estado="resuelto">
+
+    <div class="card-header">
+
+        <div class="card-id">
+            #002
+        </div>
+
+        <div>
+
+            <div class="card-nombre">
+                CIFRA NUMÉRICA
+            </div>
+
+            <div class="card-tipo">
+                A1Z26 · LETRAS REPRESENTADAS POR NÚMEROS
+            </div>
+
+        </div>
+
+        <div class="estado resuelto">
+            RESUELTO
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <h3>PRINCIPIO</h3>
+
+        <p>
+            En una cifra A1Z26, cada número representa la posición
+            de una letra dentro del alfabeto.
+        </p>
+
+        <div class="caja-codigo">
+
+            <div class="texto-cifrado">
+                3 - 1 - 20 - 5
+            </div>
+
+            <div class="resultado">
+                C - A - T - E
+            </div>
+
+        </div>
+
+
+        <h3>REGLA</h3>
+
+        <p>
+            A = 1, B = 2, C = 3... Z = 26.
+        </p>
+
+
+        <div class="tags">
+
+            <span class="tag">
+                A1Z26
+            </span>
+
+            <span class="tag">
+                DIARIOS
+            </span>
+
+            <span class="tag">
+                CÓDIGOS
+            </span>
+
+        </div>
+
+    </div>
+
+</article>
+
+
+<!-- =========================================
+     SÍMBOLOS
+========================================= -->
+
+<article
+    class="codigo-card"
+    data-categoria="simbolos"
+    data-estado="resuelto">
+
+    <div class="card-header">
+
+        <div class="card-id">
+            #003
+        </div>
+
+        <div>
+
+            <div class="card-nombre">
+                SÍMBOLOS DEL CÓDIGO
+            </div>
+
+            <div class="card-tipo">
+                ALFABETO DE SÍMBOLOS
+            </div>
+
+        </div>
+
+        <div class="estado resuelto">
+            REGISTRADO
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Gravity Falls utiliza un conjunto de símbolos que pueden
+            sustituir letras del alfabeto en determinados mensajes.
+        </p>
+
+
+        <h3>TABLA DE REFERENCIA</h3>
+
+        <div class="simbolos">
+
+            <div class="simbolo">
+                <span class="simbolo-grande">△</span>
+                <span class="simbolo-letra">A</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">□</span>
+                <span class="simbolo-letra">B</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">○</span>
+                <span class="simbolo-letra">C</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">◇</span>
+                <span class="simbolo-letra">D</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">☆</span>
+                <span class="simbolo-letra">E</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">♢</span>
+                <span class="simbolo-letra">F</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">⬡</span>
+                <span class="simbolo-letra">G</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">☽</span>
+                <span class="simbolo-letra">H</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">✦</span>
+                <span class="simbolo-letra">I</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">✧</span>
+                <span class="simbolo-letra">J</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">✚</span>
+                <span class="simbolo-letra">K</span>
+            </div>
+
+            <div class="simbolo">
+                <span class="simbolo-grande">☀</span>
+                <span class="simbolo-letra">L</span>
+            </div>
+
+        </div>
+
+
+        <p>
+            Esta tabla es una referencia visual inicial del archivo.
+            Posteriormente podemos ampliarla y hacer que el usuario
+            pueda introducir una palabra y convertirla a símbolos.
+        </p>
+
+    </div>
+
+</article>
+
+
+<!-- =========================================
+     MENSAJE OCULTO
+========================================= -->
+
+<article
+    class="codigo-card"
+    data-categoria="mensajes cifrado"
+    data-estado="investigacion">
+
+    <div class="card-header">
+
+        <div class="card-id">
+            #004
+        </div>
+
+        <div>
+
+            <div class="card-nombre">
+                MENSAJE OCULTO
+            </div>
+
+            <div class="card-tipo">
+                REGISTRO ENCONTRADO
+            </div>
+
+        </div>
+
+        <div class="estado investigacion">
+            INVESTIGACIÓN
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <h3>MENSAJE</h3>
+
+        <div class="caja-codigo">
+
+            <div class="texto-cifrado">
+                3-1-20-5
+            </div>
+
+        </div>
+
+
+        <h3>HIPÓTESIS</h3>
+
+        <p>
+            Aplicando el sistema A1Z26 se obtiene una secuencia de
+            letras. El significado final depende del contexto en
+            que aparezca el código.
+        </p>
+
+
+        <h3>ESTADO</h3>
+
+        <p>
+            El sistema de cifrado está identificado, pero no todos
+            los mensajes encontrados deben interpretarse de la misma
+            manera.
+        </p>
+
+    </div>
+
+</article>
+
+
+<!-- =========================================
+     CIFRADO INVERSO
+========================================= -->
+
+<article
+    class="codigo-card"
+    data-categoria="cifrado"
+    data-estado="investigacion">
+
+    <div class="card-header">
+
+        <div class="card-id">
+            #005
+        </div>
+
+        <div>
+
+            <div class="card-nombre">
+                CIFRADO INVERSO
+            </div>
+
+            <div class="card-tipo">
+                INVESTIGACIÓN CRIPTOGRÁFICA
+            </div>
+
+        </div>
+
+        <div class="estado investigacion">
+            INVESTIGACIÓN
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <h3>DESCRIPCIÓN</h3>
+
+        <p>
+            Algunos mensajes pueden requerir invertir el orden de
+            los caracteres antes de aplicar otro sistema de cifrado.
+        </p>
+
+
+        <div class="caja-codigo">
+
+            <div class="texto-cifrado">
+                5 - 4 - 3 - 2 - 1
+            </div>
+
+        </div>
+
+
+        <h3>NOTA DEL ARCHIVO</h3>
+
+        <p>
+            No asumir que todos los mensajes aparentemente
+            cifrados utilizan el mismo método.
+        </p>
+
+    </div>
+
+</article>
+
+
+<!-- =========================================
+     ARCHIVO BLOQUEADO
+========================================= -->
+
+<article
+    class="codigo-card"
+    data-categoria="bloqueado"
+    data-estado="bloqueado">
+
+    <div class="card-header">
+
+        <div class="card-id">
+            #006
+        </div>
+
+        <div>
+
+            <div class="card-nombre">
+                ARCHIVO ███████
+            </div>
+
+            <div class="card-tipo">
+                ACCESO DENEGADO
+            </div>
+
+        </div>
+
+        <div class="estado bloqueado">
+            BLOQUEADO
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <h3>████████████</h3>
+
+        <p>
+            Este archivo ha sido bloqueado por el sistema.
+        </p>
+
+        <div class="caja-codigo">
+
+            <div class="texto-cifrado">
+                ███ ███ █████
+            </div>
+
+        </div>
+
+        <p>
+            Se requiere una contraseña.
+        </p>
+
+    </div>
+
+</article>
+
+
+<!-- =========================================
+     SEGUNDO ARCHIVO BLOQUEADO
+========================================= -->
+
+<article
+    class="codigo-card"
+    data-categoria="bloqueado"
+    data-estado="bloqueado">
+
+    <div class="card-header">
+
+        <div class="card-id">
+            #007
+        </div>
+
+        <div>
+
+            <div class="card-nombre">
+                ARCHIVO DEL AUTOR
+            </div>
+
+            <div class="card-tipo">
+                NIVEL DE SEGURIDAD: ███
+            </div>
+
+        </div>
+
+        <div class="estado bloqueado">
+            BLOQUEADO
+        </div>
+
+    </div>
+
+
+    <div class="card-body">
+
+        <h3>ACCESO RESTRINGIDO</h3>
+
+        <p>
+            Los registros indican que este archivo fue protegido
+            mediante un sistema de seguridad desconocido.
+        </p>
+
+        <p>
+            La contraseña todavía no ha sido determinada.
+        </p>
+
+    </div>
+
+</article>
+
+
+<div
+    class="sin-resultados"
+    id="sinResultados">
+
+    NO SE ENCONTRARON CÓDIGOS CON ESOS CRITERIOS.
+
+</div>
+
+
+</main>
+
+
+<a
+    href="archivo.html"
+    class="volver">
+
+    ← VOLVER AL ARCHIVO PRINCIPAL
+
 </a>
 
 
 <footer>
 
-    ARCHIVO DE INVESTIGACIÓN · GRAVITY FALLS
+    GRAVITY FALLS · ARCHIVO DE INVESTIGACIÓN<br>
+    GF-COD · ARCHIVO CRIPTOGRÁFICO
 
 </footer>
+
+
+<script>
+
+/* =========================================
+   ELEMENTOS
+========================================= */
+
+const tarjetas =
+    document.querySelectorAll(".codigo-card");
+
+const buscador =
+    document.getElementById("buscador");
+
+const filtros =
+    document.querySelectorAll(".filtro");
+
+const sinResultados =
+    document.getElementById("sinResultados");
+
+let filtroActual = "todos";
+
+
+/* =========================================
+   ABRIR TARJETAS
+========================================= */
+
+tarjetas.forEach(tarjeta => {
+
+    const cabecera =
+        tarjeta.querySelector(".card-header");
+
+    cabecera.addEventListener(
+        "click",
+        () => {
+
+            tarjeta.classList.toggle(
+                "abierto"
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   BUSCAR
+========================================= */
+
+function filtrar(){
+
+    const texto =
+        buscador.value
+        .toLowerCase()
+        .trim();
+
+    let visibles = 0;
+
+
+    tarjetas.forEach(tarjeta => {
+
+        const contenido =
+            tarjeta.innerText.toLowerCase();
+
+        const categoria =
+            tarjeta.dataset.categoria || "";
+
+
+        const coincideTexto =
+            contenido.includes(texto);
+
+
+        const coincideFiltro =
+            filtroActual === "todos" ||
+            categoria.includes(filtroActual);
+
+
+        if(
+            coincideTexto &&
+            coincideFiltro
+        ){
+
+            tarjeta.style.display =
+                "block";
+
+            visibles++;
+
+        }else{
+
+            tarjeta.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    sinResultados.style.display =
+        visibles === 0
+        ? "block"
+        : "none";
+
+}
+
+
+buscador.addEventListener(
+    "input",
+    filtrar
+);
+
+
+/* =========================================
+   FILTROS
+========================================= */
+
+filtros.forEach(filtro => {
+
+    filtro.addEventListener(
+        "click",
+        () => {
+
+            filtros.forEach(boton => {
+
+                boton.classList.remove(
+                    "activo"
+                );
+
+            });
+
+
+            filtro.classList.add(
+                "activo"
+            );
+
+
+            filtroActual =
+                filtro.dataset.filtro;
+
+
+            filtrar();
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   ESTADISTICAS
+========================================= */
+
+const total =
+    tarjetas.length;
+
+
+const resueltos =
+    document.querySelectorAll(
+        '.codigo-card[data-estado="resuelto"]'
+    ).length;
+
+
+const investigacion =
+    document.querySelectorAll(
+        '.codigo-card[data-estado="investigacion"]'
+    ).length;
+
+
+const bloqueados =
+    document.querySelectorAll(
+        '.codigo-card[data-estado="bloqueado"]'
+    ).length;
+
+
+document.getElementById("total")
+    .textContent =
+    String(total).padStart(3,"0");
+
+
+document.getElementById("resueltos")
+    .textContent =
+    String(resueltos).padStart(3,"0");
+
+
+document.getElementById("investigacion")
+    .textContent =
+    String(investigacion).padStart(3,"0");
+
+
+document.getElementById("bloqueados")
+    .textContent =
+    String(bloqueados).padStart(3,"0");
+
+
+/* =========================================
+   DECODIFICADOR
+========================================= */
+
+function decodificar(){
+
+    const entrada =
+        document
+        .getElementById("decoderInput")
+        .value
+        .toUpperCase()
+        .trim();
+
+    const resultado =
+        document.getElementById(
+            "decoderResultado"
+        );
+
+
+    if(!entrada){
+
+        resultado.textContent =
+            "ESCRIBE UN CÓDIGO.";
+
+        return;
+
+    }
+
+
+    /*
+       Tabla sencilla de demostración.
+       Podemos ampliar este sistema después
+       con diferentes cifrados reales.
+    */
+
+    const tabla = {
+
+        "QVXXM":"BILL",
+
+        "ORPPS":"STAN",
+
+        "GZMW":"FORD"
+
+    };
+
+
+    if(tabla[entrada]){
+
+        resultado.textContent =
+            "✓ RESULTADO: " +
+            tabla[entrada];
+
+    }else{
+
+        resultado.textContent =
+            "⚠ CÓDIGO NO RECONOCIDO.";
+
+    }
+
+}
+
+</script>
+
 
 </body>
 </html>
