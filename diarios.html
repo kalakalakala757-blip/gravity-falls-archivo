@@ -4,461 +4,681 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Los Diarios | Gravity Falls</title>
+<title>Diarios | Gravity Falls</title>
 
 <style>
 
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-    margin:0;
-    font-family:Georgia,"Times New Roman",serif;
-    color:#eee;
+    font-family:Georgia,serif;
+    color:#e8e2d0;
+    min-height:100vh;
+
     background:
-        linear-gradient(rgba(5,9,7,.9),rgba(5,9,7,.96)),
+        linear-gradient(rgba(5,11,8,.91),rgba(5,11,8,.97)),
         url("https://images.unsplash.com/photo-1448375240586-882707db888b")
         center/cover fixed;
 }
 
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.07;
-    background:
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 3px,
-            rgba(255,255,255,.12) 4px
-        );
-}
-
-/* =========================
-   CABECERA
-========================= */
+/* ================= HEADER ================= */
 
 header{
     text-align:center;
-    padding:55px 20px 35px;
-    border-bottom:1px solid rgba(255,255,255,.15);
+    padding:45px 20px 30px;
+
+    background:rgba(7,13,10,.84);
+
+    border-bottom:1px solid #625b44;
 }
 
-.codigo{
-    color:#b32626;
-    font-size:12px;
-    letter-spacing:4px;
-    margin-bottom:15px;
+header h1{
+    font-size:clamp(2.2rem,5vw,4rem);
+    letter-spacing:7px;
+    color:#d8cda5;
+
+    text-shadow:
+        0 0 15px rgba(210,190,120,.25);
 }
 
-h1{
-    margin:0;
-    font-size:clamp(38px,7vw,72px);
-    letter-spacing:8px;
-    color:#eee;
-}
-
-.subtitulo{
+header p{
     margin-top:12px;
-    color:#999;
+    color:#96927d;
+    font-size:.85rem;
     letter-spacing:3px;
-    font-size:13px;
 }
 
-/* =========================
-   ALERTA
-========================= */
+/* ================= CONTENEDOR ================= */
 
-.alerta{
-    max-width:1050px;
-    margin:30px auto;
-    padding:18px 20px;
-    border:1px solid #6c3434;
-    background:rgba(70,15,15,.3);
-    color:#c8a3a3;
-    font-size:13px;
-    line-height:1.6;
+.container{
+    width:min(1200px,92%);
+    margin:35px auto 70px;
 }
 
-/* =========================
-   ESTADISTICAS
-========================= */
+/* ================= INTRO ================= */
 
-.estadisticas{
-    max-width:1050px;
-    margin:25px auto;
-    padding:0 20px;
+.intro{
+    max-width:900px;
+    margin:0 auto 30px;
+
+    padding:28px;
+
+    text-align:center;
+
+    background:rgba(13,20,16,.92);
+
+    border:1px solid #514c3b;
+
+    color:#aaa793;
+
+    line-height:1.75;
+}
+
+.intro strong{
+    color:#d2c59a;
+}
+
+/* ================= ESTADÍSTICAS ================= */
+
+.stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:12px;
+    gap:15px;
+
+    margin-bottom:25px;
 }
 
 .stat{
-    background:rgba(12,16,13,.9);
-    border:1px solid #3f4840;
-    padding:18px;
+    padding:20px;
+
     text-align:center;
+
+    background:rgba(13,20,16,.91);
+
+    border:1px solid #514c3b;
 }
 
-.numero-stat{
+.stat strong{
     display:block;
-    color:#b32626;
-    font-size:30px;
-    font-weight:bold;
+
+    color:#d6c99d;
+
+    font-size:2rem;
 }
 
-.texto-stat{
-    color:#888;
-    font-size:10px;
+.stat span{
+    color:#858272;
+
+    font-size:.75rem;
+
     letter-spacing:2px;
 }
 
-/* =========================
-   BUSCADOR
-========================= */
+/* ================= BUSCADOR ================= */
 
-.controles{
-    max-width:1050px;
-    margin:30px auto;
-    padding:0 20px;
+.search{
+    margin-bottom:18px;
 }
 
-input{
+.search input{
     width:100%;
-    padding:16px 18px;
-    background:rgba(5,9,7,.9);
-    border:1px solid #555e56;
-    color:white;
-    font-family:inherit;
-    font-size:15px;
+
+    padding:15px 18px;
+
+    background:rgba(8,14,10,.95);
+
+    border:1px solid #625b44;
+
+    color:#eee7d4;
+
+    font-family:Georgia,serif;
+
+    font-size:1rem;
+
     outline:none;
 }
 
-input:focus{
-    border-color:#b32626;
+.search input:focus{
+    border-color:#ad9b63;
+
+    box-shadow:
+        0 0 12px rgba(190,170,100,.12);
 }
 
-.filtros{
+/* ================= FILTROS ================= */
+
+.filters{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
-    margin-top:12px;
+
+    margin-bottom:35px;
 }
 
-.filtro{
+.filters button{
+    padding:10px 15px;
+
+    background:#121b15;
+
+    border:1px solid #57513d;
+
+    color:#aaa48f;
+
     cursor:pointer;
-    padding:9px 14px;
-    background:rgba(12,16,13,.9);
-    border:1px solid #4b554c;
-    color:#aaa;
-    font-family:inherit;
-}
 
-.filtro:hover,
-.filtro.activo{
-    background:#b32626;
-    border-color:#b32626;
-    color:white;
-}
+    font-family:Georgia,serif;
 
-/* =========================
-   CONTENIDO
-========================= */
-
-main{
-    max-width:1050px;
-    margin:auto;
-    padding:10px 20px 70px;
-}
-
-.seccion-titulo{
-    color:#b32626;
-    font-size:19px;
-    letter-spacing:3px;
-    border-bottom:1px solid #414841;
-    padding-bottom:12px;
-    margin:40px 0 18px;
-}
-
-/* =========================
-   DIARIOS
-========================= */
-
-.diario{
-    margin-bottom:25px;
-    border:1px solid #4a514b;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(30,26,19,.96),
-            rgba(12,13,11,.98)
-        );
-    transition:.25s;
-}
-
-.diario:hover{
-    border-color:#777;
-}
-
-.diario.abierto{
-    border-color:#b32626;
-}
-
-.cabecera-diario{
-    padding:25px;
-    display:grid;
-    grid-template-columns:90px 1fr auto;
-    gap:20px;
-    align-items:center;
-}
-
-.simbolo{
-    width:70px;
-    height:70px;
-    border:2px solid #b32626;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:30px;
-    color:#b32626;
-    transform:rotate(-3deg);
-}
-
-.titulo-diario{
-    font-size:26px;
-    letter-spacing:3px;
-}
-
-.descripcion-corta{
-    color:#999;
-    font-size:13px;
-    margin-top:7px;
-}
-
-.estado-diario{
-    font-size:10px;
-    letter-spacing:2px;
-    color:#aaa;
-    border:1px solid #555;
-    padding:8px 10px;
-}
-
-/* =========================
-   CONTENIDO DIARIO
-========================= */
-
-.contenido-diario{
-    display:none;
-    border-top:1px solid #3d423e;
-    padding:25px;
-}
-
-.diario.abierto .contenido-diario{
-    display:block;
-}
-
-.grid-info{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-bottom:25px;
-}
-
-.info{
-    padding:12px;
-    background:rgba(255,255,255,.025);
-    border-left:2px solid #555;
-}
-
-.info strong{
-    display:block;
-    font-size:10px;
-    color:#777;
-    letter-spacing:1px;
-    margin-bottom:6px;
-}
-
-.info span{
-    font-size:13px;
-}
-
-.contenido-diario h3{
-    color:#b32626;
-    font-size:14px;
-    letter-spacing:2px;
-    margin-top:25px;
-}
-
-.contenido-diario p{
-    color:#c5c5c5;
-    line-height:1.7;
-}
-
-.lista{
-    margin:0;
-    padding-left:20px;
-    color:#aaa;
-    line-height:1.9;
-}
-
-.lista li::marker{
-    color:#b32626;
-}
-
-.tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-}
-
-.tag{
-    border:1px solid #505650;
-    padding:6px 9px;
-    color:#aaa;
-    font-size:11px;
-}
-
-/* =========================
-   PAGINAS
-========================= */
-
-.paginas{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    margin-top:20px;
-}
-
-.pagina{
-    min-height:120px;
-    padding:18px;
-    border:1px solid #414841;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(40,35,25,.8),
-            rgba(15,15,12,.9)
-        );
-    position:relative;
-}
-
-.pagina-numero{
-    color:#b32626;
-    font-size:11px;
-    letter-spacing:2px;
-}
-
-.pagina h4{
-    margin:12px 0 7px;
-    color:#ddd;
-}
-
-.pagina p{
-    font-size:12px;
-    color:#888;
-    margin:0;
-    line-height:1.5;
-}
-
-/* =========================
-   BLOQUEADO
-========================= */
-
-.bloqueado{
-    filter:blur(2px);
-    opacity:.5;
-    user-select:none;
-    position:relative;
-}
-
-.bloqueado:after{
-    content:"🔒 INFORMACIÓN BLOQUEADA";
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:rgba(0,0,0,.6);
-    color:#b32626;
-    font-weight:bold;
-    letter-spacing:2px;
-    filter:blur(0);
-}
-
-/* =========================
-   VOLVER
-========================= */
-
-.volver{
-    display:block;
-    width:max-content;
-    margin:10px auto 45px;
-    padding:12px 22px;
-    color:#aaa;
-    border:1px solid #555e56;
-    text-decoration:none;
     transition:.2s;
 }
 
-.volver:hover{
-    background:#b32626;
-    color:white;
-    border-color:#b32626;
+.filters button:hover,
+.filters button.active{
+    background:#302d20;
+
+    color:#eee4bd;
+
+    border-color:#aa9a61;
 }
 
-footer{
-    text-align:center;
+/* ================= TITULOS ================= */
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    margin:40px 0 20px;
+
+    color:#d2c59a;
+
+    letter-spacing:3px;
+}
+
+.section-title::after{
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:#514c3b;
+}
+
+/* ================= DIARIOS ================= */
+
+.journals{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.journal{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35,31,21,.96),
+            rgba(13,18,14,.96)
+        );
+
+    border:1px solid #5d553e;
+
+    transition:.25s;
+}
+
+.journal:hover{
+    transform:translateY(-4px);
+
+    border-color:#a18f59;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+}
+
+.journal summary{
+    list-style:none;
+
+    cursor:pointer;
+
     padding:25px;
-    border-top:1px solid rgba(255,255,255,.1);
-    color:#555;
-    font-size:10px;
+}
+
+.journal summary::-webkit-details-marker{
+    display:none;
+}
+
+/* ================= PORTADA ================= */
+
+.cover{
+    height:210px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:20px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(150,130,75,.14),
+            transparent 60%
+        );
+
+    border:1px solid #494433;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.cover::before{
+    content:"";
+
+    position:absolute;
+
+    width:170px;
+    height:170px;
+
+    border:2px solid #81734c;
+
+    transform:rotate(45deg);
+
+    opacity:.3;
+}
+
+.cover-number{
+    position:relative;
+
+    font-size:5rem;
+
+    color:#c6b77f;
+
+    text-shadow:
+        0 0 20px rgba(200,180,110,.15);
+}
+
+.journal-name{
+    text-align:center;
+
+    color:#ded3ad;
+
+    font-size:1.4rem;
+
+    letter-spacing:3px;
+}
+
+.journal-subtitle{
+    text-align:center;
+
+    margin-top:8px;
+
+    color:#817e6c;
+
+    font-size:.75rem;
+
     letter-spacing:2px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ================= CONTENIDO DIARIO ================= */
 
-@media(max-width:750px){
+.journal-content{
+    padding:0 25px 25px;
 
-    .estadisticas{
-        grid-template-columns:repeat(2,1fr);
+    border-top:1px solid #403c2f;
+
+    color:#a19e8b;
+
+    line-height:1.7;
+
+    font-size:.9rem;
+}
+
+.journal-content p{
+    margin-top:16px;
+}
+
+.data{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+
+    margin-top:18px;
+}
+
+.data div{
+    padding:11px;
+
+    background:#111711;
+
+    border:1px solid #3d3a2f;
+}
+
+.data strong{
+    display:block;
+
+    color:#777562;
+
+    font-size:.65rem;
+
+    letter-spacing:1px;
+
+    margin-bottom:4px;
+}
+
+.data span{
+    color:#b5ad91;
+
+    font-size:.78rem;
+}
+
+.tag{
+    display:inline-block;
+
+    margin-top:17px;
+
+    padding:5px 9px;
+
+    border:1px solid #5c5540;
+
+    color:#a99d73;
+
+    font-size:.68rem;
+
+    letter-spacing:1px;
+}
+
+/* ================= PAGINAS ================= */
+
+.pages{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+}
+
+.page{
+    padding:20px;
+
+    background:
+        rgba(25,23,17,.94);
+
+    border:1px solid #504a37;
+
+    transition:.2s;
+}
+
+.page:hover{
+    border-color:#8e8053;
+
+    transform:translateY(-2px);
+}
+
+.page-number{
+    color:#c4b77f;
+
+    font-size:.8rem;
+
+    letter-spacing:2px;
+}
+
+.page-title{
+    margin-top:8px;
+
+    color:#d3c8a4;
+
+    font-size:.95rem;
+}
+
+.page p{
+    margin-top:10px;
+
+    color:#898777;
+
+    font-size:.8rem;
+
+    line-height:1.5;
+}
+
+/* ================= AUTOR ================= */
+
+.author{
+    margin-top:40px;
+
+    padding:28px;
+
+    background:rgba(13,20,16,.93);
+
+    border:1px solid #514c3b;
+}
+
+.author h2{
+    color:#d4c89e;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+}
+
+.author p{
+    color:#a09d8a;
+
+    line-height:1.75;
+
+    max-width:900px;
+}
+
+.author-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+
+    margin-top:20px;
+}
+
+.author-data{
+    padding:15px;
+
+    background:#111811;
+
+    border:1px solid #3d3a2f;
+}
+
+.author-data strong{
+    display:block;
+
+    color:#777562;
+
+    font-size:.65rem;
+
+    letter-spacing:1px;
+
+    margin-bottom:6px;
+}
+
+.author-data span{
+    color:#b9b08f;
+
+    font-size:.82rem;
+}
+
+/* ================= CONEXION ================= */
+
+.connection{
+    margin-top:35px;
+
+    padding:25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(30,27,18,.94),
+            rgba(13,19,15,.94)
+        );
+
+    border:1px solid #5a523b;
+}
+
+.connection h2{
+    color:#d4c89e;
+
+    letter-spacing:3px;
+
+    margin-bottom:15px;
+}
+
+.connection p{
+    color:#9c9987;
+
+    line-height:1.7;
+}
+
+.connection-line{
+    margin-top:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+.connection-box{
+    padding:13px 20px;
+
+    border:1px solid #665d43;
+
+    background:#151b15;
+
+    color:#c6bb91;
+
+    letter-spacing:2px;
+
+    font-size:.8rem;
+}
+
+.arrow{
+    color:#8f8155;
+
+    font-size:1.3rem;
+}
+
+/* ================= CLASIFICACION ================= */
+
+.classification{
+    margin-top:30px;
+
+    padding:18px;
+
+    background:rgba(10,16,12,.9);
+
+    border:1px solid #494535;
+
+    color:#898675;
+
+    font-size:.8rem;
+
+    line-height:1.7;
+}
+
+.classification strong{
+    color:#c4b77f;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+
+    margin-top:45px;
+
+    padding-top:25px;
+
+    border-top:1px solid #403d31;
+}
+
+.back{
+    display:inline-block;
+
+    padding:12px 20px;
+
+    border:1px solid #625b44;
+
+    color:#c4b77f;
+
+    text-decoration:none;
+
+    transition:.2s;
+}
+
+.back:hover{
+    background:#302d20;
+}
+
+.warning{
+    margin-top:18px;
+
+    color:#626254;
+
+    font-size:.75rem;
+
+    letter-spacing:1px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .journals{
+        grid-template-columns:1fr;
     }
 
-    .cabecera-diario{
-        grid-template-columns:70px 1fr;
+    .pages{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
-    .estado-diario{
-        grid-column:2;
-        width:max-content;
-    }
-
-    .grid-info{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .paginas{
+    .author-grid{
         grid-template-columns:1fr;
     }
 
 }
 
-@media(max-width:480px){
+@media(max-width:600px){
 
-    .grid-info{
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .pages{
         grid-template-columns:1fr;
     }
 
-    .cabecera-diario{
-        padding:18px;
+    .data{
+        grid-template-columns:1fr;
     }
 
-    .titulo-diario{
-        font-size:20px;
+    header h1{
+        letter-spacing:3px;
     }
 
 }
@@ -472,658 +692,828 @@ footer{
 
 <header>
 
-    <div class="codigo">
-        DOCUMENTOS RECUPERADOS · GF-JRN
-    </div>
+    <h1>ARCHIVO DE DIARIOS</h1>
 
-    <h1>LOS DIARIOS</h1>
-
-    <div class="subtitulo">
-        REGISTROS DEL AUTOR · DOCUMENTACIÓN INTERDIMENSIONAL
-    </div>
+    <p>
+        REGISTROS · INVESTIGACIÓN · FENÓMENOS SOBRENATURALES
+    </p>
 
 </header>
 
 
-<div class="alerta">
-
-    ⚠ ADVERTENCIA: Los siguientes documentos contienen información
-    relacionada con anomalías, criaturas, dimensiones y tecnología
-    interdimensional. Algunas páginas han sido deliberadamente
-    ocultadas o destruidas.
-
-</div>
+<main class="container">
 
 
-<!-- =========================
-     ESTADISTICAS
-========================= -->
+    <!-- ================= INTRO ================= -->
 
-<section class="estadisticas">
+    <section class="intro">
 
-    <div class="stat">
-        <span class="numero-stat">03</span>
-        <span class="texto-stat">DIARIOS CONOCIDOS</span>
-    </div>
+        <p>
 
-    <div class="stat">
-        <span class="numero-stat">∞</span>
-        <span class="texto-stat">ANOMALÍAS REGISTRADAS</span>
-    </div>
+            <strong>LOS DIARIOS</strong><br><br>
 
-    <div class="stat">
-        <span class="numero-stat">??</span>
-        <span class="texto-stat">PÁGINAS PERDIDAS</span>
-    </div>
+            Tres diarios documentan décadas de investigaciones
+            relacionadas con los fenómenos sobrenaturales
+            de Gravity Falls.
 
-    <div class="stat">
-        <span class="numero-stat">1</span>
-        <span class="texto-stat">AUTOR CONFIRMADO</span>
-    </div>
+            <br><br>
 
-</section>
+            El origen de estos registros está relacionado
+            con Stanford Pines, investigador y autor de los diarios.
+
+        </p>
+
+    </section>
 
 
-<!-- =========================
-     BUSCADOR
-========================= -->
+    <!-- ================= ESTADISTICAS ================= -->
 
-<div class="controles">
+    <section class="stats">
 
-    <input
-        type="text"
-        id="buscador"
-        placeholder="🔎 BUSCAR EN LOS DIARIOS..."
-    >
+        <div class="stat">
 
-    <div class="filtros">
+            <strong>3</strong>
+
+            <span>DIARIOS</span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>288</strong>
+
+            <span>PÁGINAS · DIARIO 3</span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>∞</strong>
+
+            <span>ANOMALÍAS</span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>?</strong>
+
+            <span>SECRETOS</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BUSCADOR ================= -->
+
+    <section class="search">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Buscar diario, autor, anomalía o información..."
+        >
+
+    </section>
+
+
+    <!-- ================= FILTROS ================= -->
+
+    <div class="filters">
 
         <button
-            class="filtro activo"
-            data-filtro="todos">
+            class="active"
+            data-filter="todos">
             TODOS
         </button>
 
         <button
-            class="filtro"
-            data-filtro="diario1">
+            data-filter="diario1">
             DIARIO 1
         </button>
 
         <button
-            class="filtro"
-            data-filtro="diario2">
+            data-filter="diario2">
             DIARIO 2
         </button>
 
         <button
-            class="filtro"
-            data-filtro="diario3">
+            data-filter="diario3">
             DIARIO 3
         </button>
 
         <button
-            class="filtro"
-            data-filtro="autor">
+            data-filter="autor">
             AUTOR
         </button>
 
         <button
-            class="filtro"
-            data-filtro="bill">
-            BILL CIPHER
+            data-filter="clasificado">
+            CLASIFICADO
         </button>
 
     </div>
 
-</div>
+
+    <!-- ================================================= -->
+    <!-- LOS TRES DIARIOS -->
+    <!-- ================================================= -->
+
+    <h2 class="section-title">
+        LOS TRES DIARIOS
+    </h2>
 
 
-<main>
+    <section class="journals">
 
 
-<div class="seccion-titulo">
-    📖 ARCHIVO PRINCIPAL
-</div>
+        <!-- ================= DIARIO 1 ================= -->
+
+        <details
+            class="journal"
+            data-category="diario1">
+
+            <summary>
+
+                <div class="cover">
+
+                    <div class="cover-number">
+                        I
+                    </div>
+
+                </div>
 
 
-<!-- ==================================================
-     DIARIO 1
-================================================== -->
+                <div class="journal-name">
+                    DIARIO 1
+                </div>
 
-<article
-    class="diario"
-    data-categoria="diario1 autor">
+                <div class="journal-subtitle">
+                    PRIMER REGISTRO
+                </div>
 
-    <div class="cabecera-diario">
+            </summary>
 
-        <div class="simbolo">
-            I
+
+            <div class="journal-content">
+
+                <p>
+                    Uno de los primeros diarios relacionados
+                    con la investigación de los fenómenos
+                    sobrenaturales de Gravity Falls.
+                </p>
+
+
+                <div class="data">
+
+                    <div>
+
+                        <strong>AUTOR</strong>
+
+                        <span>
+                            Stanford Pines
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>CLASIFICACIÓN</strong>
+
+                        <span>
+                            Investigación
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>CONTENIDO</strong>
+
+                        <span>
+                            Criaturas y anomalías
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>ESTADO</strong>
+
+                        <span>
+                            Parte del archivo
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <span class="tag">
+                    MATERIAL OFICIAL
+                </span>
+
+            </div>
+
+        </details>
+
+
+        <!-- ================= DIARIO 2 ================= -->
+
+        <details
+            class="journal"
+            data-category="diario2">
+
+            <summary>
+
+                <div class="cover">
+
+                    <div class="cover-number">
+                        II
+                    </div>
+
+                </div>
+
+
+                <div class="journal-name">
+                    DIARIO 2
+                </div>
+
+                <div class="journal-subtitle">
+                    SEGUNDO REGISTRO
+                </div>
+
+            </summary>
+
+
+            <div class="journal-content">
+
+                <p>
+                    Segundo volumen de las investigaciones.
+                    El conocimiento acumulado aumenta y
+                    los fenómenos documentados se vuelven
+                    progresivamente más complejos.
+                </p>
+
+
+                <div class="data">
+
+                    <div>
+
+                        <strong>AUTOR</strong>
+
+                        <span>
+                            Stanford Pines
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>CLASIFICACIÓN</strong>
+
+                        <span>
+                            Investigación
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>RELACIÓN</strong>
+
+                        <span>
+                            Diario 1 · Diario 3
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>ESTADO</strong>
+
+                        <span>
+                            Parte del archivo
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <span class="tag">
+                    MATERIAL OFICIAL
+                </span>
+
+            </div>
+
+        </details>
+
+
+        <!-- ================= DIARIO 3 ================= -->
+
+        <details
+            class="journal"
+            data-category="diario3">
+
+            <summary>
+
+                <div class="cover">
+
+                    <div class="cover-number">
+                        III
+                    </div>
+
+                </div>
+
+
+                <div class="journal-name">
+                    DIARIO 3
+                </div>
+
+                <div class="journal-subtitle">
+                    REGISTRO PRINCIPAL
+                </div>
+
+            </summary>
+
+
+            <div class="journal-content">
+
+                <p>
+                    El diario que llega a manos de Dipper
+                    durante el verano. Contiene información
+                    sobre numerosas criaturas, anomalías,
+                    lugares y fenómenos de Gravity Falls.
+                </p>
+
+
+                <div class="data">
+
+                    <div>
+
+                        <strong>AUTOR</strong>
+
+                        <span>
+                            Stanford Pines
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>EXTENSIÓN</strong>
+
+                        <span>
+                            288 páginas
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>APARICIÓN</strong>
+
+                        <span>
+                            Temporada 1
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>IMPORTANCIA</strong>
+
+                        <span>
+                            Extremadamente alta
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <span class="tag">
+                    ARCHIVO PRINCIPAL
+                </span>
+
+            </div>
+
+        </details>
+
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PAGINAS / REGISTROS -->
+    <!-- ================================================= -->
+
+    <h2 class="section-title">
+        REGISTROS Y PISTAS
+    </h2>
+
+
+    <section class="pages">
+
+
+        <article class="page">
+
+            <div class="page-number">
+                REG · 001
+            </div>
+
+            <div class="page-title">
+                Criaturas
+            </div>
+
+            <p>
+                Registros de especies y entidades
+                encontradas en Gravity Falls.
+            </p>
+
+        </article>
+
+
+        <article class="page">
+
+            <div class="page-number">
+                REG · 002
+            </div>
+
+            <div class="page-title">
+                Anomalías
+            </div>
+
+            <p>
+                Fenómenos que no pueden explicarse
+                mediante métodos convencionales.
+            </p>
+
+        </article>
+
+
+        <article class="page">
+
+            <div class="page-number">
+                REG · 003
+            </div>
+
+            <div class="page-title">
+                El Portal
+            </div>
+
+            <p>
+                Investigación relacionada con
+                el proyecto interdimensional.
+            </p>
+
+        </article>
+
+
+        <article class="page">
+
+            <div class="page-number">
+                REG · 004
+            </div>
+
+            <div class="page-title">
+                Bill Cipher
+            </div>
+
+            <p>
+                Entidad relacionada con sueños,
+                pactos y dimensiones.
+            </p>
+
+        </article>
+
+
+        <article class="page">
+
+            <div class="page-number">
+                REG · 005
+            </div>
+
+            <div class="page-title">
+                Códigos
+            </div>
+
+            <p>
+                Símbolos y mensajes ocultos
+                encontrados durante la investigación.
+            </p>
+
+        </article>
+
+
+        <article class="page">
+
+            <div class="page-number">
+                REG · 006
+            </div>
+
+            <div class="page-title">
+                El Autor
+            </div>
+
+            <p>
+                Información sobre el investigador
+                detrás de los diarios.
+            </p>
+
+        </article>
+
+
+        <article class="page">
+
+            <div class="page-number">
+                REG · 007
+            </div>
+
+            <div class="page-title">
+                Gravity Falls
+            </div>
+
+            <p>
+                Investigación sobre las propiedades
+                anómalas del pueblo.
+            </p>
+
+        </article>
+
+
+        <article class="page">
+
+            <div class="page-number">
+                REG · 008
+            </div>
+
+            <div class="page-title">
+                ███████
+            </div>
+
+            <p>
+                Información clasificada.
+                Acceso restringido.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- EL AUTOR -->
+    <!-- ================================================= -->
+
+    <section class="author">
+
+        <h2>
+            EXPEDIENTE DEL AUTOR
+        </h2>
+
+
+        <p>
+
+            Stanford Pines dedicó gran parte de su vida
+            al estudio de fenómenos que escapaban de las
+            explicaciones convencionales.
+
+            Sus investigaciones dieron origen a los tres
+            diarios y a una extensa documentación sobre
+            Gravity Falls y otros fenómenos.
+
+        </p>
+
+
+        <div class="author-grid">
+
+
+            <div class="author-data">
+
+                <strong>
+                    NOMBRE
+                </strong>
+
+                <span>
+                    Stanford Pines
+                </span>
+
+            </div>
+
+
+            <div class="author-data">
+
+                <strong>
+                    PROFESIÓN
+                </strong>
+
+                <span>
+                    Científico e investigador
+                </span>
+
+            </div>
+
+
+            <div class="author-data">
+
+                <strong>
+                    ÁREA
+                </strong>
+
+                <span>
+                    Fenómenos sobrenaturales
+                </span>
+
+            </div>
+
+
+            <div class="author-data">
+
+                <strong>
+                    HERMANO
+                </strong>
+
+                <span>
+                    Stanley Pines
+                </span>
+
+            </div>
+
+
+            <div class="author-data">
+
+                <strong>
+                    PRINCIPAL AMENAZA
+                </strong>
+
+                <span>
+                    Bill Cipher
+                </span>
+
+            </div>
+
+
+            <div class="author-data">
+
+                <strong>
+                    DOCUMENTOS
+                </strong>
+
+                <span>
+                    Diarios 1 · 2 · 3
+                </span>
+
+            </div>
+
+
         </div>
 
-        <div>
+    </section>
 
-            <div class="titulo-diario">
+
+    <!-- ================================================= -->
+    <!-- CONEXION -->
+    <!-- ================================================= -->
+
+    <section class="connection">
+
+        <h2>
+            CONEXIÓN ENTRE LOS DIARIOS
+        </h2>
+
+
+        <p>
+
+            Los diarios no deben considerarse archivos
+            completamente independientes. Forman parte
+            de una investigación progresiva en la que
+            el conocimiento del autor se acumula y se
+            conecta con los acontecimientos posteriores.
+
+        </p>
+
+
+        <div class="connection-line">
+
+            <div class="connection-box">
                 DIARIO 1
             </div>
 
-            <div class="descripcion-corta">
-                Primer registro conocido del Autor.
+            <div class="arrow">
+                →
             </div>
 
-        </div>
-
-        <div class="estado-diario">
-            REGISTRADO
-        </div>
-
-    </div>
-
-
-    <div class="contenido-diario">
-
-        <div class="grid-info">
-
-            <div class="info">
-                <strong>IDENTIFICACIÓN</strong>
-                <span>JOURNAL 1</span>
-            </div>
-
-            <div class="info">
-                <strong>AUTOR</strong>
-                <span>Stanford Pines</span>
-            </div>
-
-            <div class="info">
-                <strong>TIPO</strong>
-                <span>Registro de investigación</span>
-            </div>
-
-            <div class="info">
-                <strong>ESTADO</strong>
-                <span>Existente</span>
-            </div>
-
-        </div>
-
-
-        <h3>DESCRIPCIÓN DEL DOCUMENTO</h3>
-
-        <p>
-            El Diario 1 forma parte del conjunto de tres diarios
-            creados por Stanford Pines durante sus investigaciones
-            sobre los fenómenos sobrenaturales de Gravity Falls.
-        </p>
-
-        <p>
-            Los diarios funcionan como registros científicos,
-            catálogos de criaturas, investigaciones y advertencias
-            relacionadas con las anomalías del pueblo.
-        </p>
-
-
-        <h3>ELEMENTOS RELACIONADOS</h3>
-
-        <div class="tags">
-
-            <span class="tag">CRIATURAS</span>
-            <span class="tag">ANOMALÍAS</span>
-            <span class="tag">GRAVITY FALLS</span>
-            <span class="tag">FORD</span>
-            <span class="tag">MISTERIOS</span>
-
-        </div>
-
-
-        <h3>NOTA DEL ARCHIVO</h3>
-
-        <p>
-            Parte de la información original del Diario 1 se conoce
-            a través de referencias posteriores y de los registros
-            encontrados por Dipper.
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- ==================================================
-     DIARIO 2
-================================================== -->
-
-<article
-    class="diario"
-    data-categoria="diario2 autor">
-
-    <div class="cabecera-diario">
-
-        <div class="simbolo">
-            II
-        </div>
-
-        <div>
-
-            <div class="titulo-diario">
+            <div class="connection-box">
                 DIARIO 2
             </div>
 
-            <div class="descripcion-corta">
-                Segundo volumen de las investigaciones.
+            <div class="arrow">
+                →
             </div>
 
-        </div>
-
-        <div class="estado-diario">
-            REGISTRADO
-        </div>
-
-    </div>
-
-
-    <div class="contenido-diario">
-
-        <div class="grid-info">
-
-            <div class="info">
-                <strong>IDENTIFICACIÓN</strong>
-                <span>JOURNAL 2</span>
-            </div>
-
-            <div class="info">
-                <strong>AUTOR</strong>
-                <span>Stanford Pines</span>
-            </div>
-
-            <div class="info">
-                <strong>TIPO</strong>
-                <span>Registro de investigación</span>
-            </div>
-
-            <div class="info">
-                <strong>ESTADO</strong>
-                <span>Existente</span>
-            </div>
-
-        </div>
-
-
-        <h3>DESCRIPCIÓN DEL DOCUMENTO</h3>
-
-        <p>
-            El segundo diario continúa las investigaciones de Ford
-            sobre las anomalías de Gravity Falls y los fenómenos
-            relacionados con otras dimensiones.
-        </p>
-
-        <p>
-            Junto con los otros dos diarios constituye una de las
-            principales fuentes documentales sobre los secretos del
-            pueblo.
-        </p>
-
-
-        <h3>ÁREAS DE INVESTIGACIÓN</h3>
-
-        <ul class="lista">
-
-            <li>Anomalías sobrenaturales</li>
-            <li>Criaturas</li>
-            <li>Fenómenos interdimensionales</li>
-            <li>Investigaciones científicas</li>
-            <li>Advertencias para futuros investigadores</li>
-
-        </ul>
-
-
-        <h3>CONEXIONES</h3>
-
-        <div class="tags">
-
-            <span class="tag">DIARIO 1</span>
-            <span class="tag">DIARIO 3</span>
-            <span class="tag">FORD</span>
-            <span class="tag">MCGUCKET</span>
-            <span class="tag">PORTAL</span>
-
-        </div>
-
-    </div>
-
-</article>
-
-
-<!-- ==================================================
-     DIARIO 3
-================================================== -->
-
-<article
-    class="diario"
-    data-categoria="diario3 autor bill">
-
-    <div class="cabecera-diario">
-
-        <div class="simbolo">
-            III
-        </div>
-
-        <div>
-
-            <div class="titulo-diario">
+            <div class="connection-box">
                 DIARIO 3
             </div>
 
-            <div class="descripcion-corta">
-                Registro principal recuperado por Dipper.
-            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- CLASIFICACION -->
+    <!-- ================================================= -->
+
+    <section class="classification">
+
+        <strong>
+            ⚠ NOTA DE INVESTIGACIÓN
+        </strong>
+
+        <br><br>
+
+        Este archivo diferencia entre información
+        confirmada dentro de la serie, material oficial
+        publicado posteriormente y elementos cuyo
+        significado permanece deliberadamente ambiguo.
+
+        <br><br>
+
+        <strong>
+            CONFIRMADO
+        </strong>
+        = mostrado directamente.
+
+        <br>
+
+        <strong>
+            MATERIAL OFICIAL
+        </strong>
+        = publicado oficialmente fuera de los episodios.
+
+        <br>
+
+        <strong>
+            CLASIFICADO
+        </strong>
+        = información incompleta, restringida o no resuelta.
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <a
+            class="back"
+            href="archivo.html">
+
+            ← VOLVER AL ARCHIVO PRINCIPAL
+
+        </a>
+
+
+        <div class="warning">
+
+            ARCHIVO DE DIARIOS · DOCUMENTOS RESTRINGIDOS
 
         </div>
 
-        <div class="estado-diario">
-            DOCUMENTO CLAVE
-        </div>
-
-    </div>
-
-
-    <div class="contenido-diario">
-
-        <div class="grid-info">
-
-            <div class="info">
-                <strong>IDENTIFICACIÓN</strong>
-                <span>JOURNAL 3</span>
-            </div>
-
-            <div class="info">
-                <strong>AUTOR</strong>
-                <span>Stanford Pines</span>
-            </div>
-
-            <div class="info">
-                <strong>EXTENSIÓN</strong>
-                <span>288 páginas</span>
-            </div>
-
-            <div class="info">
-                <strong>ESTADO</strong>
-                <span>Recuperado</span>
-            </div>
-
-        </div>
-
-
-        <h3>DESCRIPCIÓN</h3>
-
-        <p>
-            El Diario 3 es el documento que Dipper encuentra al
-            comienzo de sus investigaciones y se convierte en la
-            principal guía para comprender los misterios de
-            Gravity Falls.
-        </p>
-
-        <p>
-            El volumen contiene información sobre criaturas,
-            anomalías, símbolos, lugares y acontecimientos
-            sobrenaturales.
-        </p>
-
-
-        <h3>EL AUTOR</h3>
-
-        <p>
-            El documento fue escrito por Stanford Pines, quien
-            investigó Gravity Falls durante años antes de que
-            Dipper y Mabel llegaran al pueblo.
-        </p>
-
-
-        <h3>BILL CIPHER</h3>
-
-        <p>
-            El Diario 3 también contiene información relacionada
-            con Bill Cipher y las investigaciones de Ford sobre
-            entidades interdimensionales.
-        </p>
-
-
-        <h3>ELEMENTOS IMPORTANTES</h3>
-
-        <div class="tags">
-
-            <span class="tag">BILL CIPHER</span>
-            <span class="tag">PORTAL</span>
-            <span class="tag">CRIATURAS</span>
-            <span class="tag">CÓDIGOS</span>
-            <span class="tag">FORD</span>
-            <span class="tag">MCGUCKET</span>
-            <span class="tag">WEIRDMAGEDDON</span>
-
-        </div>
-
-
-        <h3>CONEXIONES DEL ARCHIVO</h3>
-
-        <p>
-            Este expediente debería funcionar como uno de los
-            principales puntos de conexión de toda la página.
-            Los misterios, criaturas, personajes y códigos pueden
-            enlazarse posteriormente con las páginas correspondientes
-            del Diario 3.
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- ==================================================
-     PAGINAS DESTACADAS
-================================================== -->
-
-<div class="seccion-titulo">
-    📜 PÁGINAS Y REGISTROS DESTACADOS
-</div>
-
-
-<section class="paginas">
-
-
-<div class="pagina">
-
-    <div class="pagina-numero">
-        PÁGINA 001
-    </div>
-
-    <h4>CRIATURAS</h4>
-
-    <p>
-        Registros de entidades y criaturas encontradas
-        en Gravity Falls.
-    </p>
-
-</div>
-
-
-<div class="pagina">
-
-    <div class="pagina-numero">
-        PÁGINA 002
-    </div>
-
-    <h4>ANOMALÍAS</h4>
-
-    <p>
-        Fenómenos que no pueden ser explicados mediante
-        ciencia convencional.
-    </p>
-
-</div>
-
-
-<div class="pagina">
-
-    <div class="pagina-numero">
-        PÁGINA 003
-    </div>
-
-    <h4>PORTAL</h4>
-
-    <p>
-        Investigación relacionada con tecnología
-        interdimensional.
-    </p>
-
-</div>
-
-
-<div class="pagina">
-
-    <div class="pagina-numero">
-        PÁGINA 004
-    </div>
-
-    <h4>FORD</h4>
-
-    <p>
-        Información relacionada con el Autor de los
-        diarios.
-    </p>
-
-</div>
-
-
-<div class="pagina">
-
-    <div class="pagina-numero">
-        PÁGINA 005
-    </div>
-
-    <h4>BILL CIPHER</h4>
-
-    <p>
-        Advertencias relacionadas con una entidad
-        interdimensional.
-    </p>
-
-</div>
-
-
-<div class="pagina bloqueado">
-
-    <div class="pagina-numero">
-        PÁGINA ███
-    </div>
-
-    <h4>████████</h4>
-
-    <p>
-        Información eliminada.
-    </p>
-
-</div>
-
-
-</section>
-
-
-<!-- ==================================================
-     ARCHIVO OCULTO
-================================================== -->
-
-<div class="seccion-titulo">
-    🔐 ARCHIVO OCULTO
-</div>
-
-
-<article class="diario">
-
-    <div
-        class="cabecera-diario"
-        onclick="alertaSecreta()"
-        style="cursor:pointer;">
-
-        <div class="simbolo">
-            ?
-        </div>
-
-        <div>
-
-            <div class="titulo-diario">
-                PÁGINAS PERDIDAS
-            </div>
-
-            <div class="descripcion-corta">
-                El archivo no reconoce estas páginas.
-            </div>
-
-        </div>
-
-        <div class="estado-diario">
-            BLOQUEADO
-        </div>
-
-    </div>
-
-</article>
+    </footer>
 
 
 </main>
 
 
-<a href="archivo.html" class="volver">
-    ← VOLVER AL ARCHIVO PRINCIPAL
-</a>
-
-
-<footer>
-
-    GRAVITY FALLS · ARCHIVO DE INVESTIGACIÓN<br>
-    GF-JRN · DOCUMENTOS RESTRINGIDOS
-
-</footer>
-
-
 <script>
 
-/* =========================
-   ABRIR / CERRAR DIARIOS
-========================= */
+/* ================= BUSQUEDA Y FILTROS ================= */
 
-const diarios =
-    document.querySelectorAll(".diario");
+const search =
+    document.getElementById("search");
 
-diarios.forEach(diario => {
+const buttons =
+    document.querySelectorAll(".filters button");
 
-    const cabecera =
-        diario.querySelector(".cabecera-diario");
-
-    if(!cabecera) return;
-
-    cabecera.addEventListener("click", function(){
-
-        if(
-            diario.classList.contains("bloqueado")
-        ){
-            return;
-        }
-
-        diario.classList.toggle("abierto");
-
-    });
-
-});
-
-
-/* =========================
-   BUSCADOR
-========================= */
-
-const buscador =
-    document.getElementById("buscador");
-
-const filtros =
-    document.querySelectorAll(".filtro");
+const journals =
+    document.querySelectorAll(".journal");
 
 let filtroActual = "todos";
 
@@ -1131,39 +1521,40 @@ let filtroActual = "todos";
 function actualizar(){
 
     const texto =
-        buscador.value.toLowerCase().trim();
+        search.value
+        .toLowerCase()
+        .trim();
 
-    diarios.forEach(diario => {
 
-        if(
-            diario.classList.contains("bloqueado")
-        ){
-            return;
-        }
+    journals.forEach(journal => {
 
         const contenido =
-            diario.innerText.toLowerCase();
+            journal.innerText.toLowerCase();
 
         const categoria =
-            diario.dataset.categoria || "";
+            journal.dataset.category;
+
 
         const coincideTexto =
+            texto === "" ||
             contenido.includes(texto);
+
 
         const coincideFiltro =
             filtroActual === "todos" ||
             categoria.includes(filtroActual);
+
 
         if(
             coincideTexto &&
             coincideFiltro
         ){
 
-            diario.style.display = "block";
+            journal.style.display = "";
 
         }else{
 
-            diario.style.display = "none";
+            journal.style.display = "none";
 
         }
 
@@ -1172,52 +1563,39 @@ function actualizar(){
 }
 
 
-buscador.addEventListener(
+search.addEventListener(
     "input",
     actualizar
 );
 
 
-/* =========================
-   FILTROS
-========================= */
+buttons.forEach(button => {
 
-filtros.forEach(filtro => {
+    button.addEventListener(
+        "click",
+        () => {
 
-    filtro.addEventListener("click",function(){
+            buttons.forEach(b =>
+                b.classList.remove("active")
+            );
 
-        filtros.forEach(boton => {
-            boton.classList.remove("activo");
-        });
 
-        this.classList.add("activo");
+            button.classList.add("active");
 
-        filtroActual =
-            this.dataset.filtro;
 
-        actualizar();
+            filtroActual =
+                button.dataset.filter;
 
-    });
+
+            actualizar();
+
+        }
+    );
 
 });
 
-
-/* =========================
-   ARCHIVO SECRETO
-========================= */
-
-function alertaSecreta(){
-
-    alert(
-        "ARCHIVO BLOQUEADO\n\n" +
-        "Se requiere una clave de acceso.\n\n" +
-        "PISTA: El autor dejó códigos ocultos " +
-        "en sus registros."
-    );
-
-}
-
 </script>
+
 
 </body>
 </html>
