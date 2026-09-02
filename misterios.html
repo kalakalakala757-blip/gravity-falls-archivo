@@ -1,298 +1,436 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Archivo de Misterios | Gravity Falls</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: Georgia, serif;
-            color: #eee;
-
-            background:
-                linear-gradient(
-                    rgba(4, 10, 7, 0.88),
-                    rgba(4, 10, 7, 0.96)
-                ),
-                url("https://images.unsplash.com/photo-1448375240586-882707db888b");
-
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 20px 25px;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 42px;
-            letter-spacing: 6px;
-            text-shadow: 0 0 15px #000;
-        }
-
-        .subtitulo {
-            margin-top: 12px;
-            color: #aaa;
-            letter-spacing: 3px;
-            font-size: 14px;
-        }
-
-        .contador {
-            max-width: 900px;
-            margin: 25px auto;
-
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(170px, 1fr));
-
-            gap: 10px;
-
-            padding: 15px;
-        }
-
-        .estadistica {
-            background: rgba(0, 0, 0, 0.65);
-            border: 1px solid #555;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .estadistica-numero {
-            display: block;
-            font-size: 25px;
-            margin-bottom: 5px;
-        }
-
-        .estadistica-texto {
-            color: #999;
-            font-size: 10px;
-            letter-spacing: 1px;
-        }
-
-        .filtros {
-            max-width: 1050px;
-            margin: 10px auto 30px;
-            padding: 0 20px;
-
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .filtro {
-            padding: 9px 15px;
-
-            background: rgba(0,0,0,0.65);
-            border: 1px solid #555;
-
-            color: #bbb;
-
-            font-family: Georgia, serif;
-            font-size: 11px;
-
-            letter-spacing: 1px;
-        }
-
-        .seccion {
-            max-width: 1100px;
-            margin: 0 auto 45px;
-            padding: 0 20px;
-        }
-
-        .titulo-seccion {
-            margin-bottom: 20px;
-
-            padding: 14px;
-
-            border-top: 1px solid #666;
-            border-bottom: 1px solid #666;
-
-            text-align: center;
-
-            letter-spacing: 4px;
-            font-size: 18px;
-        }
-
-        .expedientes {
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
-
-            gap: 20px;
-        }
-
-        .expediente {
-            position: relative;
-
-            background: rgba(13, 17, 15, 0.92);
-
-            border: 1px solid #555;
-
-            padding: 24px;
-
-            min-height: 280px;
-
-            transition: 0.3s;
-        }
-
-        .expediente:hover {
-            transform: translateY(-5px);
-
-            border-color: #aaa;
-
-            box-shadow:
-                0 12px 30px rgba(0,0,0,0.7);
-        }
-
-        .numero {
-            position: absolute;
-
-            top: 12px;
-            right: 15px;
-
-            color: #777;
-
-            font-family: monospace;
-            font-size: 11px;
-        }
-
-        .simbolo {
-            font-size: 42px;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            margin: 5px 0 12px;
-
-            font-size: 21px;
-
-            letter-spacing: 1px;
-        }
-
-        .nivel {
-            display: inline-block;
-
-            padding: 5px 9px;
-
-            margin-bottom: 15px;
-
-            border: 1px solid #777;
-
-            font-size: 10px;
-
-            letter-spacing: 1px;
-        }
-
-        .descripcion {
-            color: #bbb;
-
-            font-size: 13px;
-
-            line-height: 1.6;
-        }
-
-        .datos {
-            margin-top: 15px;
-
-            padding-top: 12px;
-
-            border-top: 1px solid #444;
-
-            color: #888;
-
-            font-size: 11px;
-
-            line-height: 1.7;
-        }
-
-        .clasificado {
-            background:
-                repeating-linear-gradient(
-                    -45deg,
-                    rgba(0,0,0,0.8),
-                    rgba(0,0,0,0.8) 8px,
-                    rgba(20,20,20,0.8) 8px,
-                    rgba(20,20,20,0.8) 16px
-                );
-
-            border-color: #777;
-        }
-
-        .clasificado h2 {
-            letter-spacing: 3px;
-        }
-
-        .volver {
-            display: block;
-
-            width: fit-content;
-
-            margin: 40px auto 50px;
-
-            padding: 12px 20px;
-
-            color: white;
-
-            text-decoration: none;
-
-            border: 1px solid #777;
-
-            background: rgba(0,0,0,0.65);
-
-            transition: 0.3s;
-        }
-
-        .volver:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-        }
-
-        footer {
-            text-align: center;
-
-            padding: 20px;
-
-            color: #666;
-
-            font-size: 10px;
-
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 600px) {
-
-            h1 {
-                font-size: 30px;
-            }
-
-            .contador {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .expedientes {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Archivo de Misterios | Gravity Falls</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Georgia, "Times New Roman", serif;
+    color:#eee;
+    background:
+        linear-gradient(rgba(5,10,8,.88),rgba(5,10,8,.94)),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b")
+        center/cover fixed;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.08;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(255,255,255,.12) 4px
+        );
+}
+
+/* =========================
+   CABECERA
+========================= */
+
+header{
+    text-align:center;
+    padding:55px 20px 35px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.codigo{
+    color:#d0a84f;
+    font-size:13px;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
+
+h1{
+    margin:0;
+    font-size:clamp(35px,7vw,70px);
+    letter-spacing:7px;
+    text-shadow:0 0 20px rgba(255,255,255,.2);
+}
+
+.subtitulo{
+    margin-top:12px;
+    color:#aaa;
+    letter-spacing:3px;
+    font-size:14px;
+}
+
+/* =========================
+   ESTADISTICAS
+========================= */
+
+.estadisticas{
+    max-width:1100px;
+    margin:30px auto;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    background:rgba(10,15,13,.85);
+    border:1px solid #39443d;
+    padding:18px;
+    text-align:center;
+}
+
+.stat-numero{
+    display:block;
+    font-size:30px;
+    color:#d0a84f;
+    font-weight:bold;
+}
+
+.stat-texto{
+    color:#aaa;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+/* =========================
+   BUSCADOR
+========================= */
+
+.controles{
+    max-width:1100px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+.buscar{
+    width:100%;
+    padding:17px 20px;
+    background:rgba(5,10,8,.9);
+    border:1px solid #59665c;
+    color:white;
+    font-size:16px;
+    font-family:inherit;
+    outline:none;
+}
+
+.buscar:focus{
+    border-color:#d0a84f;
+    box-shadow:0 0 15px rgba(208,168,79,.15);
+}
+
+.filtros{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:15px;
+}
+
+.filtro{
+    padding:10px 15px;
+    border:1px solid #4c584f;
+    background:rgba(10,15,13,.8);
+    color:#bbb;
+    cursor:pointer;
+    font-family:inherit;
+    transition:.2s;
+}
+
+.filtro:hover,
+.filtro.activo{
+    background:#d0a84f;
+    color:#111;
+    border-color:#d0a84f;
+}
+
+/* =========================
+   CONTENIDO
+========================= */
+
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:10px 20px 70px;
+}
+
+.seccion{
+    margin-top:45px;
+}
+
+.seccion-titulo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:#d0a84f;
+    border-bottom:1px solid #404a43;
+    padding-bottom:12px;
+    margin-bottom:18px;
+    letter-spacing:3px;
+    font-size:19px;
+}
+
+/* =========================
+   EXPEDIENTES
+========================= */
+
+.expediente{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18,24,20,.97),
+            rgba(7,11,9,.96)
+        );
+    border:1px solid #39443d;
+    margin-bottom:12px;
+    transition:.25s;
+}
+
+.expediente:hover{
+    border-color:#727d72;
+    transform:translateY(-1px);
+}
+
+.expediente[open]{
+    border-color:#d0a84f;
+}
+
+summary{
+    list-style:none;
+    cursor:pointer;
+    padding:20px;
+}
+
+summary::-webkit-details-marker{
+    display:none;
+}
+
+.encabezado{
+    display:grid;
+    grid-template-columns:80px 1fr auto;
+    gap:18px;
+    align-items:center;
+}
+
+.numero{
+    color:#777;
+    font-size:14px;
+    letter-spacing:2px;
+}
+
+.nombre{
+    font-size:21px;
+    letter-spacing:2px;
+}
+
+.tipo{
+    color:#999;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.estado{
+    font-size:11px;
+    letter-spacing:1px;
+    padding:7px 9px;
+    border:1px solid;
+    text-align:center;
+}
+
+.confirmado{
+    color:#83c995;
+    border-color:#477654;
+}
+
+.activo{
+    color:#e06c62;
+    border-color:#7e3933;
+}
+
+.desconocido{
+    color:#d0a84f;
+    border-color:#77612e;
+}
+
+.clasificado{
+    color:#aaa;
+    border-color:#555;
+}
+
+.dossier{
+    border-top:1px solid #303830;
+    padding:25px;
+    background:rgba(0,0,0,.18);
+}
+
+.datos{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.dato{
+    border-left:2px solid #555;
+    padding:10px 12px;
+    background:rgba(255,255,255,.025);
+}
+
+.dato strong{
+    display:block;
+    color:#888;
+    font-size:10px;
+    letter-spacing:1px;
+    margin-bottom:5px;
+}
+
+.dato span{
+    font-size:13px;
+}
+
+.dossier h3{
+    color:#d0a84f;
+    font-size:14px;
+    letter-spacing:2px;
+    margin-top:25px;
+}
+
+.dossier p{
+    color:#c6c6c6;
+    line-height:1.7;
+    margin-bottom:10px;
+}
+
+.conexiones{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.tag{
+    border:1px solid #505950;
+    padding:6px 9px;
+    font-size:11px;
+    color:#aaa;
+}
+
+.nivel{
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 10px;
+    border:1px solid #6d3934;
+    color:#d77c72;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+/* =========================
+   MENSAJE SIN RESULTADOS
+========================= */
+
+.sin-resultados{
+    display:none;
+    text-align:center;
+    padding:50px 20px;
+    color:#777;
+    border:1px dashed #414941;
+}
+
+/* =========================
+   PIE
+========================= */
+
+.volver{
+    display:block;
+    width:max-content;
+    margin:20px auto 50px;
+    padding:12px 22px;
+    border:1px solid #59665c;
+    color:#bbb;
+    text-decoration:none;
+    transition:.2s;
+}
+
+.volver:hover{
+    background:#d0a84f;
+    color:#111;
+    border-color:#d0a84f;
+}
+
+footer{
+    text-align:center;
+    color:#555;
+    font-size:11px;
+    letter-spacing:2px;
+    padding:25px;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:750px){
+
+    .estadisticas{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .encabezado{
+        grid-template-columns:55px 1fr;
+    }
+
+    .estado{
+        grid-column:2;
+        width:max-content;
+    }
+
+    .datos{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    h1{
+        letter-spacing:4px;
+    }
+}
+
+@media(max-width:480px){
+
+    .estadisticas{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .datos{
+        grid-template-columns:1fr;
+    }
+
+    .nombre{
+        font-size:17px;
+    }
+
+    .dossier{
+        padding:18px;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-
 <header>
+
+    <div class="codigo">
+        ARCHIVO RESTRINGIDO · GF-INV
+    </div>
 
     <h1>ARCHIVO DE MISTERIOS</h1>
 
@@ -303,749 +441,1466 @@
 </header>
 
 
-<!-- ESTADÍSTICAS -->
+<!-- =========================
+     ESTADISTICAS
+========================= -->
 
-<section class="contador">
+<section class="estadisticas">
 
-    <div class="estadistica">
-        <span class="estadistica-numero">024</span>
-        <span class="estadistica-texto">
-            EXPEDIENTES REGISTRADOS
-        </span>
+    <div class="stat">
+        <span class="stat-numero" id="totalExpedientes">24</span>
+        <span class="stat-texto">EXPEDIENTES</span>
     </div>
 
-    <div class="estadistica">
-        <span class="estadistica-numero">009</span>
-        <span class="estadistica-texto">
-            CASOS ABIERTOS
-        </span>
+    <div class="stat">
+        <span class="stat-numero" id="casosConfirmados">0</span>
+        <span class="stat-texto">CONFIRMADOS</span>
     </div>
 
-    <div class="estadistica">
-        <span class="estadistica-numero">008</span>
-        <span class="estadistica-texto">
-            CASOS RESUELTOS
-        </span>
+    <div class="stat">
+        <span class="stat-numero" id="casosActivos">0</span>
+        <span class="stat-texto">AMENAZAS ACTIVAS</span>
     </div>
 
-    <div class="estadistica">
-        <span class="estadistica-numero">007</span>
-        <span class="estadistica-texto">
-            CLASIFICADOS
-        </span>
+    <div class="stat">
+        <span class="stat-numero" id="casosDesconocidos">0</span>
+        <span class="stat-texto">SIN RESOLVER</span>
     </div>
 
 </section>
 
 
-<!-- FILTROS -->
+<!-- =========================
+     BUSCADOR
+========================= -->
 
-<div class="filtros">
+<div class="controles">
 
-    <div class="filtro">
-        TODOS LOS CASOS
-    </div>
+    <input
+        type="text"
+        id="buscador"
+        class="buscar"
+        placeholder="🔎 BUSCAR EXPEDIENTE, PERSONA, LUGAR, OBJETO..."
+    >
 
-    <div class="filtro">
-        AMENAZAS
-    </div>
+    <div class="filtros">
 
-    <div class="filtro">
-        LUGARES
-    </div>
+        <button class="filtro activo" data-categoria="todos">
+            TODOS
+        </button>
 
-    <div class="filtro">
-        OBJETOS
-    </div>
+        <button class="filtro" data-categoria="entidad">
+            ENTIDADES
+        </button>
 
-    <div class="filtro">
-        CONSPIRACIONES
-    </div>
+        <button class="filtro" data-categoria="lugar">
+            LUGARES
+        </button>
 
-    <div class="filtro">
-        EVENTOS
+        <button class="filtro" data-categoria="objeto">
+            OBJETOS
+        </button>
+
+        <button class="filtro" data-categoria="evento">
+            EVENTOS
+        </button>
+
+        <button class="filtro" data-categoria="conspiracion">
+            CONSPIRACIONES
+        </button>
+
     </div>
 
 </div>
 
 
-<!-- AMENAZAS -->
+<main>
+
+<!-- =====================================================
+     ENTIDADES
+===================================================== -->
 
 <section class="seccion">
 
-    <div class="titulo-seccion">
-        ⚠ AMENAZAS Y ENTIDADES
-    </div>
-
-    <div class="expedientes">
+<div class="seccion-titulo">
+    ⚠ ENTIDADES Y AMENAZAS
+</div>
 
 
-        <article class="expediente">
+<!-- 001 -->
 
-            <div class="numero">#001</div>
+<details class="expediente" data-categoria="entidad" data-estado="activo">
 
-            <div class="simbolo">🔺</div>
+<summary>
 
-            <h2>BILL CIPHER</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                AMENAZA: EXTREMA
-            </div>
+<div class="numero">#001</div>
 
-            <p class="descripcion">
-                Entidad interdimensional con capacidades
-                desconocidas. Su presencia está relacionada
-                con numerosos acontecimientos sobrenaturales.
-            </p>
+<div>
+<div class="nombre">BILL CIPHER</div>
+<div class="tipo">ENTIDAD · DEMONIO INTERDIMENSIONAL</div>
+</div>
 
-            <div class="datos">
-                ESTADO: ACTIVO<br>
-                TIPO: ENTIDAD INTERDIMENSIONAL
-            </div>
+<div class="estado activo">
+AMENAZA EXTREMA
+</div>
 
-        </article>
+</div>
 
+</summary>
 
-        <article class="expediente">
+<div class="dossier">
 
-            <div class="numero">#002</div>
+<div class="datos">
 
-            <div class="simbolo">🌀</div>
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Derrotado / existencia incierta</span>
+</div>
 
-            <h2>WEIRDMAGEDDON</h2>
+<div class="dato">
+<strong>AMENAZA</strong>
+<span>Extrema</span>
+</div>
 
-            <div class="nivel">
-                AMENAZA: EXTREMA
-            </div>
+<div class="dato">
+<strong>PRIMERA APARICIÓN</strong>
+<span>Temporada 1</span>
+</div>
 
-            <p class="descripcion">
-                Evento de proporciones extraordinarias que
-                altera las reglas normales de la realidad
-                dentro de Gravity Falls.
-            </p>
+<div class="dato">
+<strong>ÚLTIMO EVENTO</strong>
+<span>Weirdmageddon</span>
+</div>
 
-            <div class="datos">
-                ESTADO: ARCHIVADO<br>
-                TIPO: EVENTO ANÓMALO
-            </div>
+</div>
 
-        </article>
+<h3>DESCRIPCIÓN</h3>
 
+<p>
+Entidad triangular capaz de manipular la realidad, entrar en sueños
+y realizar acuerdos con seres humanos. Su objetivo principal en
+Gravity Falls fue conseguir acceso físico al mundo tridimensional.
+</p>
 
-        <article class="expediente">
+<p>
+Bill estuvo relacionado directamente con Ford Pines y con la
+investigación interdimensional que precedió a la construcción del
+Portal.
+</p>
 
-            <div class="numero">#003</div>
+<h3>ESTADO DE INVESTIGACIÓN</h3>
 
-            <div class="simbolo">👁️</div>
+<p>
+La forma física de Bill fue destruida durante el enfrentamiento final
+de Weirdmageddon. Sin embargo, el material posterior de la franquicia
+mantiene deliberadamente elementos relacionados con su existencia,
+memoria y posible supervivencia.
+</p>
 
-            <h2>OJOS DE BILL</h2>
+<div class="nivel">
+NIVEL DE AMENAZA: EXTREMO
+</div>
 
-            <div class="nivel">
-                AMENAZA: ALTA
-            </div>
+<h3>CONEXIONES</h3>
 
-            <p class="descripcion">
-                Símbolos y representaciones relacionadas con
-                Bill Cipher que aparecen en distintos lugares
-                y documentos.
-            </p>
+<div class="conexiones">
+<span class="tag">FORD PINES</span>
+<span class="tag">DIARIO 3</span>
+<span class="tag">PORTAL</span>
+<span class="tag">WEIRDMAGEDDON</span>
+<span class="tag">THE BOOK OF BILL</span>
+</div>
 
-            <div class="datos">
-                ESTADO: INVESTIGACIÓN ABIERTA<br>
-                TIPO: SÍMBOLO
-            </div>
+</div>
 
-        </article>
-
-
-        <article class="expediente">
-
-            <div class="numero">#004</div>
-
-            <div class="simbolo">👶</div>
-
-            <h2>TIME BABY</h2>
-
-            <div class="nivel">
-                AMENAZA: DESCONOCIDA
-            </div>
-
-            <p class="descripcion">
-                Entidad relacionada con el control y vigilancia
-                del tiempo y los acontecimientos temporales.
-            </p>
-
-            <div class="datos">
-                ESTADO: DESCONOCIDO<br>
-                TIPO: ENTIDAD TEMPORAL
-            </div>
-
-        </article>
+</details>
 
 
-        <article class="expediente">
+<!-- 002 -->
 
-            <div class="numero">#005</div>
+<details class="expediente" data-categoria="evento" data-estado="activo">
 
-            <div class="simbolo">🧠</div>
+<summary>
 
-            <h2>HOMBRE DEL SOMBRERO</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                AMENAZA: ALTA
-            </div>
+<div class="numero">#002</div>
 
-            <p class="descripcion">
-                Registro relacionado con acontecimientos
-                sobrenaturales y alteraciones de la memoria.
-            </p>
+<div>
+<div class="nombre">WEIRDMAGEDDON</div>
+<div class="tipo">EVENTO · COLAPSO DE LA REALIDAD</div>
+</div>
 
-            <div class="datos">
-                ESTADO: ARCHIVADO<br>
-                TIPO: ANOMALÍA
-            </div>
+<div class="estado activo">
+AMENAZA EXTREMA
+</div>
 
-        </article>
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Finalizado</span>
+</div>
+
+<div class="dato">
+<strong>AMENAZA</strong>
+<span>Extrema</span>
+</div>
+
+<div class="dato">
+<strong>INICIO</strong>
+<span>Temporada 2</span>
+</div>
+
+<div class="dato">
+<strong>RESPONSABLE</strong>
+<span>Bill Cipher</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Weirdmageddon fue la invasión de la realidad tridimensional por
+parte de Bill y sus aliados. Las leyes físicas dejaron de funcionar
+normalmente y Gravity Falls quedó aislado del mundo exterior.
+</p>
+
+<h3>RESULTADO</h3>
+
+<p>
+El evento terminó después de que los habitantes de Gravity Falls
+se enfrentaran a Bill. El sacrificio de Stan permitió utilizar el
+poder de la pistola de memoria contra Bill.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">BILL CIPHER</span>
+<span class="tag">STAN PINES</span>
+<span class="tag">FORD PINES</span>
+<span class="tag">AXOLOTL</span>
+</div>
+
+</div>
+
+</details>
 
 
-        <article class="expediente">
+<!-- 003 -->
 
-            <div class="numero">#006</div>
+<details class="expediente" data-categoria="entidad" data-estado="desconocido">
 
-            <div class="simbolo">👽</div>
+<summary>
 
-            <h2>ANOMALÍAS DESCONOCIDAS</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                AMENAZA: VARIABLE
-            </div>
+<div class="numero">#003</div>
 
-            <p class="descripcion">
-                Conjunto de fenómenos que no pueden ser
-                explicados mediante métodos convencionales.
-            </p>
+<div>
+<div class="nombre">TIME BABY</div>
+<div class="tipo">ENTIDAD · GUARDIÁN TEMPORAL</div>
+</div>
 
-            <div class="datos">
-                ESTADO: ACTIVO<br>
-                TIPO: ANOMALÍA
-            </div>
+<div class="estado desconocido">
+DESCONOCIDO
+</div>
 
-        </article>
+</div>
 
-    </div>
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>TIPO</strong>
+<span>Entidad temporal</span>
+</div>
+
+<div class="dato">
+<strong>FUNCIÓN</strong>
+<span>Protección temporal</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Derrotado temporalmente</span>
+</div>
+
+<div class="dato">
+<strong>CONEXIÓN</strong>
+<span>Blendin Blandin</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Time Baby es una enorme entidad encargada de mantener el orden
+temporal. Su existencia demuestra que el universo de Gravity Falls
+posee estructuras de autoridad relacionadas con el tiempo.
+</p>
+
+<p>
+Durante Weirdmageddon fue derrotado por Bill Cipher, aunque la
+naturaleza exacta de su supervivencia y recuperación queda ligada
+a la compleja lógica temporal de la serie.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- 004 -->
+
+<details class="expediente" data-categoria="entidad" data-estado="desconocido">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#004</div>
+
+<div>
+<div class="nombre">THE SHAPESHIFTER</div>
+<div class="tipo">CRIATURA · ORGANISMO CAMBIANTE</div>
+</div>
+
+<div class="estado desconocido">
+DESCONOCIDO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>ORIGEN</strong>
+<span>Desconocido</span>
+</div>
+
+<div class="dato">
+<strong>UBICACIÓN</strong>
+<span>Búnker del Autor</span>
+</div>
+
+<div class="dato">
+<strong>PELIGRO</strong>
+<span>Alto</span>
+</div>
+
+<div class="dato">
+<strong>APARICIÓN</strong>
+<span>Into the Bunker</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Criatura capaz de adoptar la apariencia de otras personas. Fue
+encontrada en el búnker relacionado con el Autor y utilizó los
+recuerdos y deseos de sus víctimas para manipularlas.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- 005 -->
+
+<details class="expediente" data-categoria="entidad" data-estado="confirmado">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#005</div>
+
+<div>
+<div class="nombre">SUMMERWEEN TRICKSTER</div>
+<div class="tipo">ENTIDAD · CRIATURA ESTACIONAL</div>
+</div>
+
+<div class="estado confirmado">
+CONFIRMADO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>TIPO</strong>
+<span>Entidad sobrenatural</span>
+</div>
+
+<div class="dato">
+<strong>EVENTO</strong>
+<span>Summerween</span>
+</div>
+
+<div class="dato">
+<strong>PELIGRO</strong>
+<span>Medio</span>
+</div>
+
+<div class="dato">
+<strong>OBJETIVO</strong>
+<span>Caramelos</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Criatura asociada con la celebración de Summerween. Persigue a
+quienes rompen las reglas de la tradición y demuestra que incluso
+las festividades de Gravity Falls pueden tener reglas sobrenaturales.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- 006 -->
+
+<details class="expediente" data-categoria="entidad" data-estado="confirmado">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#006</div>
+
+<div>
+<div class="nombre">GNOMOS</div>
+<div class="tipo">CRIATURAS · SOCIEDAD DEL BOSQUE</div>
+</div>
+
+<div class="estado confirmado">
+CONFIRMADO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>HÁBITAT</strong>
+<span>Bosque</span>
+</div>
+
+<div class="dato">
+<strong>PELIGRO</strong>
+<span>Bajo / medio</span>
+</div>
+
+<div class="dato">
+<strong>ORGANIZACIÓN</strong>
+<span>Colonia</span>
+</div>
+
+<div class="dato">
+<strong>PRIMERA APARICIÓN</strong>
+<span>Tourist Trapped</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Los gnomos viven en los bosques de Gravity Falls y forman una
+sociedad organizada. Intentaron convertir a Mabel en su reina
+utilizando métodos bastante poco convencionales.
+</p>
+
+</div>
+
+</details>
 
 </section>
 
 
-<!-- LUGARES -->
+<!-- =====================================================
+     LUGARES
+===================================================== -->
 
 <section class="seccion">
 
-    <div class="titulo-seccion">
-        🗺 LUGARES ANÓMALOS
-    </div>
-
-    <div class="expedientes">
+<div class="seccion-titulo">
+    🗺 LUGARES ANÓMALOS
+</div>
 
 
-        <article class="expediente">
+<!-- 007 -->
 
-            <div class="numero">#007</div>
+<details class="expediente" data-categoria="lugar" data-estado="confirmado">
 
-            <div class="simbolo">🏚️</div>
+<summary>
 
-            <h2>CABAÑA DEL MISTERIO</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                NIVEL: ALTO
-            </div>
+<div class="numero">#007</div>
 
-            <p class="descripcion">
-                Centro turístico, residencia de la familia
-                Pines y ubicación de numerosas investigaciones.
-            </p>
+<div>
+<div class="nombre">LA CABAÑA DEL MISTERIO</div>
+<div class="tipo">LUGAR · ATRACCIÓN TURÍSTICA</div>
+</div>
 
-            <div class="datos">
-                UBICACIÓN: GRAVITY FALLS<br>
-                ESTADO: ACTIVO
-            </div>
+<div class="estado confirmado">
+CONFIRMADO
+</div>
 
-        </article>
+</div>
 
+</summary>
 
-        <article class="expediente">
+<div class="dossier">
 
-            <div class="numero">#008</div>
+<h3>DESCRIPCIÓN</h3>
 
-            <div class="simbolo">🚪</div>
+<p>
+La Mystery Shack es el centro de operaciones de Stan Pines y el
+principal punto de encuentro de la familia Pines durante el verano.
+Aunque muchas de sus atracciones son falsas, el edificio termina
+conectado directamente con algunos de los mayores secretos de
+Gravity Falls.
+</p>
 
-            <h2>PORTAL INTERDIMENSIONAL</h2>
+<h3>ELEMENTOS RELACIONADOS</h3>
 
-            <div class="nivel">
-                NIVEL: EXTREMO
-            </div>
+<div class="conexiones">
+<span class="tag">STAN</span>
+<span class="tag">DIPPER</span>
+<span class="tag">MABEL</span>
+<span class="tag">FORD</span>
+<span class="tag">PORTAL</span>
+<span class="tag">WEIRDMAGEDDON</span>
+</div>
 
-            <p class="descripcion">
-                Máquina capaz de abrir una conexión entre
-                diferentes dimensiones.
-            </p>
+</div>
 
-            <div class="datos">
-                UBICACIÓN: CLASIFICADA<br>
-                ESTADO: DESTRUIDO
-            </div>
-
-        </article>
-
-
-        <article class="expediente">
-
-            <div class="numero">#009</div>
-
-            <div class="simbolo">🌲</div>
-
-            <h2>BOSQUE DE GRAVITY FALLS</h2>
-
-            <div class="nivel">
-                NIVEL: DESCONOCIDO
-            </div>
-
-            <p class="descripcion">
-                Zona con una concentración extraordinariamente
-                alta de criaturas, anomalías y fenómenos
-                inexplicables.
-            </p>
-
-            <div class="datos">
-                UBICACIÓN: GRAVITY FALLS<br>
-                ESTADO: ACTIVO
-            </div>
-
-        </article>
+</details>
 
 
-        <article class="expediente">
+<!-- 008 -->
 
-            <div class="numero">#010</div>
+<details class="expediente" data-categoria="lugar" data-estado="confirmado">
 
-            <div class="simbolo">🏔️</div>
+<summary>
 
-            <h2>BÚNKER</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                NIVEL: ALTO
-            </div>
+<div class="numero">#008</div>
 
-            <p class="descripcion">
-                Instalación oculta relacionada con investigaciones
-                sobre fenómenos sobrenaturales.
-            </p>
+<div>
+<div class="nombre">PORTAL INTERDIMENSIONAL</div>
+<div class="tipo">ARTEFACTO · TECNOLOGÍA INTERDIMENSIONAL</div>
+</div>
 
-            <div class="datos">
-                UBICACIÓN: BOSQUE<br>
-                ESTADO: ABANDONADO
-            </div>
+<div class="estado confirmado">
+CONFIRMADO
+</div>
 
-        </article>
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>CREADOR</strong>
+<span>Stanford Pines</span>
+</div>
+
+<div class="dato">
+<strong>UBICACIÓN</strong>
+<span>Debajo de Mystery Shack</span>
+</div>
+
+<div class="dato">
+<strong>PROPÓSITO</strong>
+<span>Abrir una brecha dimensional</span>
+</div>
+
+<div class="dato">
+<strong>RIESGO</strong>
+<span>Extremo</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Máquina construida por Ford para abrir un portal hacia otra dimensión.
+Su construcción fue una de las piezas fundamentales de la historia
+oculta de Gravity Falls.
+</p>
+
+<p>
+El proyecto terminó relacionando a Ford con Bill Cipher y provocó
+una cadena de acontecimientos que culminó años después en
+Weirdmageddon.
+</p>
+
+</div>
+
+</details>
 
 
-        <article class="expediente">
+<!-- 009 -->
 
-            <div class="numero">#011</div>
+<details class="expediente" data-categoria="lugar" data-estado="desconocido">
 
-            <div class="simbolo">🌌</div>
+<summary>
 
-            <h2>DIMENSIÓN DE PESADILLA</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                NIVEL: EXTREMO
-            </div>
+<div class="numero">#009</div>
 
-            <p class="descripcion">
-                Dimensión asociada con Bill Cipher y con
-                fenómenos que desafían las leyes conocidas.
-            </p>
+<div>
+<div class="nombre">BÚNKER DEL AUTOR</div>
+<div class="tipo">LUGAR · REFUGIO SUBTERRÁNEO</div>
+</div>
 
-            <div class="datos">
-                UBICACIÓN: OTRA DIMENSIÓN<br>
-                ACCESO: RESTRINGIDO
-            </div>
+<div class="estado desconocido">
+PARCIALMENTE DOCUMENTADO
+</div>
 
-        </article>
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Refugio construido por el Autor para investigar y contener las
+amenazas sobrenaturales de Gravity Falls. Contiene tecnología,
+registros y sistemas destinados a proteger al investigador de las
+criaturas de la zona.
+</p>
+
+<p>
+El búnker también demuestra hasta qué punto el Autor consideraba
+peligrosa la actividad sobrenatural del pueblo.
+</p>
+
+</div>
+
+</details>
 
 
-        <article class="expediente">
+<!-- 010 -->
 
-            <div class="numero">#012</div>
+<details class="expediente" data-categoria="lugar" data-estado="desconocido">
 
-            <div class="simbolo">🌊</div>
+<summary>
 
-            <h2>LAGO GRAVITY FALLS</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                NIVEL: MEDIO
-            </div>
+<div class="numero">#010</div>
 
-            <p class="descripcion">
-                Zona acuática relacionada con historias
-                y criaturas desconocidas.
-            </p>
+<div>
+<div class="nombre">EL BOSQUE DE GRAVITY FALLS</div>
+<div class="tipo">LUGAR · ZONA ANÓMALA</div>
+</div>
 
-            <div class="datos">
-                UBICACIÓN: GRAVITY FALLS<br>
-                ESTADO: ACTIVO
-            </div>
+<div class="estado desconocido">
+ANOMALÍA
+</div>
 
-        </article>
+</div>
 
-    </div>
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Los bosques alrededor de Gravity Falls concentran una cantidad
+extraordinaria de criaturas y fenómenos sobrenaturales. Los diarios
+documentan numerosas especies y anomalías encontradas en esta zona.
+</p>
+
+<p>
+La concentración de fenómenos convierte al bosque en una de las
+áreas prioritarias del archivo.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- 011 -->
+
+<details class="expediente" data-categoria="lugar" data-estado="desconocido">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#011</div>
+
+<div>
+<div class="nombre">DIMENSIONES INTERDIMENSIONALES</div>
+<div class="tipo">FENÓMENO · MULTIVERSO</div>
+</div>
+
+<div class="estado desconocido">
+SIN RESOLVER
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Los acontecimientos de Gravity Falls demuestran que existen
+múltiples dimensiones y realidades. El Portal construido por Ford
+permitió establecer una conexión con una de ellas.
+</p>
+
+<p>
+La existencia de múltiples dimensiones es fundamental para
+comprender tanto a Bill Cipher como la historia del Autor.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- 012 -->
+
+<details class="expediente" data-categoria="lugar" data-estado="desconocido">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#012</div>
+
+<div>
+<div class="nombre">LA DIMENSIÓN DE PESADILLA</div>
+<div class="tipo">DIMENSIÓN · REALIDAD ALTERADA</div>
+</div>
+
+<div class="estado desconocido">
+CLASIFICADA
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Zona dimensional asociada con Bill Cipher y con acontecimientos
+que no obedecen las reglas normales del espacio y el tiempo.
+</p>
+
+<p>
+La información disponible sobre su estructura y ubicación es
+incompleta.
+</p>
+
+</div>
+
+</details>
 
 </section>
 
 
-<!-- OBJETOS -->
+<!-- =====================================================
+     OBJETOS
+===================================================== -->
 
 <section class="seccion">
 
-    <div class="titulo-seccion">
-        🔮 OBJETOS Y ARTEFACTOS
-    </div>
-
-    <div class="expedientes">
+<div class="seccion-titulo">
+    🔮 OBJETOS Y ARTEFACTOS
+</div>
 
 
-        <article class="expediente">
+<!-- 013 -->
 
-            <div class="numero">#013</div>
+<details class="expediente" data-categoria="objeto" data-estado="confirmado">
 
-            <div class="simbolo">📖</div>
+<summary>
 
-            <h2>LOS DIARIOS</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                IMPORTANCIA: CRÍTICA
-            </div>
+<div class="numero">#013</div>
 
-            <p class="descripcion">
-                Tres diarios que contienen información sobre
-                criaturas, anomalías y secretos de Gravity Falls.
-            </p>
+<div>
+<div class="nombre">DIARIO 1</div>
+<div class="tipo">DOCUMENTO · INVESTIGACIÓN ANÓMALA</div>
+</div>
 
-            <div class="datos">
-                TIPO: DOCUMENTOS<br>
-                ESTADO: PARCIALMENTE RECUPERADOS
-            </div>
+<div class="estado confirmado">
+CONFIRMADO
+</div>
 
-        </article>
+</div>
 
+</summary>
 
-        <article class="expediente">
+<div class="dossier">
 
-            <div class="numero">#014</div>
+<h3>DESCRIPCIÓN</h3>
 
-            <div class="simbolo">🔑</div>
+<p>
+Uno de los tres diarios escritos por el Autor. Contiene información
+sobre fenómenos sobrenaturales, criaturas y acontecimientos
+relacionados con Gravity Falls.
+</p>
 
-            <h2>LLAVES Y CÓDIGOS</h2>
+<h3>CONEXIONES</h3>
 
-            <div class="nivel">
-                IMPORTANCIA: ALTA
-            </div>
+<div class="conexiones">
+<span class="tag">FORD</span>
+<span class="tag">DIARIO 2</span>
+<span class="tag">DIARIO 3</span>
+<span class="tag">CRIATURAS</span>
+</div>
 
-            <p class="descripcion">
-                Diferentes claves y mecanismos utilizados para
-                ocultar información dentro de los archivos.
-            </p>
+</div>
 
-            <div class="datos">
-                TIPO: SISTEMA DE SEGURIDAD<br>
-                ESTADO: ACTIVO
-            </div>
-
-        </article>
+</details>
 
 
-        <article class="expediente">
+<!-- 014 -->
 
-            <div class="numero">#015</div>
+<details class="expediente" data-categoria="objeto" data-estado="confirmado">
 
-            <div class="simbolo">📻</div>
+<summary>
 
-            <h2>OBJETOS ANÓMALOS</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                PELIGRO: VARIABLE
-            </div>
+<div class="numero">#014</div>
 
-            <p class="descripcion">
-                Objetos encontrados en Gravity Falls que
-                presentan propiedades imposibles de explicar.
-            </p>
+<div>
+<div class="nombre">DIARIO 2</div>
+<div class="tipo">DOCUMENTO · INVESTIGACIÓN ANÓMALA</div>
+</div>
 
-            <div class="datos">
-                TIPO: ARTEFACTO<br>
-                ESTADO: INVESTIGACIÓN
-            </div>
+<div class="estado confirmado">
+CONFIRMADO
+</div>
 
-        </article>
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Segundo volumen de la investigación del Autor. Los diarios fueron
+diseñados como registros independientes que, al reunirse, revelan
+información mucho más peligrosa.
+</p>
+
+</div>
+
+</details>
 
 
-        <article class="expediente">
+<!-- 015 -->
 
-            <div class="numero">#016</div>
+<details class="expediente" data-categoria="objeto" data-estado="confirmado">
 
-            <div class="simbolo">💿</div>
+<summary>
 
-            <h2>REGISTROS PERDIDOS</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                IMPORTANCIA: DESCONOCIDA
-            </div>
+<div class="numero">#015</div>
 
-            <p class="descripcion">
-                Documentos cuyo contenido original ha sido
-                eliminado o alterado.
-            </p>
+<div>
+<div class="nombre">DIARIO 3</div>
+<div class="tipo">DOCUMENTO · ARCHIVO PRINCIPAL</div>
+</div>
 
-            <div class="datos">
-                TIPO: ARCHIVO<br>
-                ESTADO: INCOMPLETO
-            </div>
+<div class="estado confirmado">
+CONFIRMADO
+</div>
 
-        </article>
+</div>
 
-    </div>
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>AUTOR</strong>
+<span>Stanford Pines</span>
+</div>
+
+<div class="dato">
+<strong>EDICIÓN OFICIAL</strong>
+<span>288 páginas</span>
+</div>
+
+<div class="dato">
+<strong>CONTENIDO</strong>
+<span>Criaturas y anomalías</span>
+</div>
+
+<div class="dato">
+<strong>IMPORTANCIA</strong>
+<span>Extrema</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+El Diario 3 es el documento más importante para comprender gran
+parte de la investigación sobrenatural de Gravity Falls. La edición
+oficial publicada posteriormente incluye páginas vistas durante
+la serie y material adicional con monstruos, secretos, notas de
+Dipper y Mabel y la historia completa del Autor.
+</p>
+
+<h3>FUENTE</h3>
+
+<p>
+El archivo considera el Diario 3 una fuente primaria de investigación
+para múltiples expedientes.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- 016 -->
+
+<details class="expediente" data-categoria="objeto" data-estado="confirmado">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#016</div>
+
+<div>
+<div class="nombre">PISTOLA DE BORRADO DE MEMORIA</div>
+<div class="tipo">TECNOLOGÍA · MODIFICACIÓN MEMORIAL</div>
+</div>
+
+<div class="estado confirmado">
+CONFIRMADO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Dispositivo utilizado por la Sociedad del Ojo Cegado para eliminar
+recuerdos específicos de las personas. La existencia de esta
+tecnología demuestra que los fenómenos de Gravity Falls pueden
+afectar directamente a la memoria humana.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- 017 -->
+
+<details class="expediente" data-categoria="objeto" data-estado="confirmado">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#017</div>
+
+<div>
+<div class="nombre">PÁGINAS PERDIDAS</div>
+<div class="tipo">DOCUMENTO · INFORMACIÓN CLASIFICADA</div>
+</div>
+
+<div class="estado desconocido">
+CLASIFICADO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Existe información adicional relacionada con los diarios que no
+formaba parte del material visto originalmente en pantalla. La
+edición oficial del Diario 3 incorpora material nuevo, mientras que
+The Book of Bill presenta páginas perdidas y documentos adicionales.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">DIARIO 3</span>
+<span class="tag">THE BOOK OF BILL</span>
+<span class="tag">FORD</span>
+<span class="tag">BILL</span>
+</div>
+
+</div>
+
+</details>
 
 </section>
 
 
-<!-- CONSPIRACIONES -->
+<!-- =====================================================
+     CONSPIRACIONES
+===================================================== -->
 
 <section class="seccion">
 
-    <div class="titulo-seccion">
-        🕵 CONSPIRACIONES
-    </div>
-
-    <div class="expedientes">
+<div class="seccion-titulo">
+    🕵 CONSPIRACIONES Y SOCIEDADES
+</div>
 
 
-        <article class="expediente">
+<!-- 018 -->
 
-            <div class="numero">#017</div>
+<details class="expediente" data-categoria="conspiracion" data-estado="confirmado">
 
-            <div class="simbolo">👁️</div>
+<summary>
 
-            <h2>SOCIEDAD DEL OJO CIEGO</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                IMPORTANCIA: ALTA
-            </div>
+<div class="numero">#018</div>
 
-            <p class="descripcion">
-                Organización secreta dedicada a borrar recuerdos
-                relacionados con acontecimientos extraños.
-            </p>
+<div>
+<div class="nombre">SOCIEDAD DEL OJO CEGADO</div>
+<div class="tipo">SOCIEDAD SECRETA · BORRADO DE MEMORIA</div>
+</div>
 
-            <div class="datos">
-                ESTADO: DESCUBIERTA<br>
-                TIPO: ORGANIZACIÓN
-            </div>
+<div class="estado confirmado">
+CONFIRMADO
+</div>
 
-        </article>
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>TIPO</strong>
+<span>Sociedad secreta</span>
+</div>
+
+<div class="dato">
+<strong>ACTIVIDAD</strong>
+<span>Borrado de recuerdos</span>
+</div>
+
+<div class="dato">
+<strong>UBICACIÓN</strong>
+<span>Gravity Falls</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Desmantelada</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+La Sociedad del Ojo Cegado operó secretamente en Gravity Falls
+durante años. Sus miembros utilizaban una máquina para eliminar
+recuerdos relacionados con fenómenos sobrenaturales.
+</p>
+
+<p>
+Dipper y Mabel descubrieron la sociedad y expusieron sus
+actividades. El episodio también revela conexiones con Fiddleford
+McGucket y con el pasado del Autor.
+</p>
+
+<h3>EVIDENCIA</h3>
+
+<p>
+El episodio "Society of the Blind Eye" constituye la principal
+evidencia audiovisual del expediente.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">MCGUCKET</span>
+<span class="tag">FORD</span>
+<span class="tag">MEMORIA</span>
+<span class="tag">DIARIOS</span>
+</div>
+
+</div>
+
+</details>
 
 
-        <article class="expediente">
+<!-- 019 -->
 
-            <div class="numero">#018</div>
+<details class="expediente" data-categoria="conspiracion" data-estado="confirmado">
 
-            <div class="simbolo">🧩</div>
+<summary>
 
-            <h2>EL AUTOR</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                IMPORTANCIA: CRÍTICA
-            </div>
+<div class="numero">#019</div>
 
-            <p class="descripcion">
-                Identidad del misterioso creador de los diarios
-                y responsable de numerosas investigaciones.
-            </p>
+<div>
+<div class="nombre">EL AUTOR</div>
+<div class="tipo">PERSONA · INVESTIGADOR DESCONOCIDO</div>
+</div>
 
-            <div class="datos">
-                ESTADO: RESUELTO<br>
-                TIPO: IDENTIDAD
-            </div>
+<div class="estado confirmado">
+IDENTIFICADO
+</div>
 
-        </article>
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Durante gran parte de la serie, la identidad del Autor constituye
+uno de los mayores misterios. Los diarios proporcionan pistas sobre
+su investigación y finalmente se revela que se trata de Stanford
+Pines.
+</p>
+
+<p>
+Su investigación sobre Gravity Falls estuvo directamente relacionada
+con el Portal y con Bill Cipher.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">STANFORD PINES</span>
+<span class="tag">DIARIOS</span>
+<span class="tag">PORTAL</span>
+<span class="tag">BILL CIPHER</span>
+</div>
+
+</div>
+
+</details>
 
 
-        <article class="expediente">
+<!-- 020 -->
 
-            <div class="numero">#019</div>
+<details class="expediente" data-categoria="conspiracion" data-estado="confirmado">
 
-            <div class="simbolo">⏳</div>
+<summary>
 
-            <h2>ANOMALÍAS TEMPORALES</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                IMPORTANCIA: ALTA
-            </div>
+<div class="numero">#020</div>
 
-            <p class="descripcion">
-                Fenómenos que afectan el paso normal del tiempo
-                y provocan acontecimientos imposibles.
-            </p>
+<div>
+<div class="nombre">FIDDLEFORD MCGUCKET</div>
+<div class="tipo">PERSONA · TESTIGO PRINCIPAL</div>
+</div>
 
-            <div class="datos">
-                ESTADO: ABIERTO<br>
-                TIPO: FENÓMENO TEMPORAL
-            </div>
+<div class="estado confirmado">
+RESUELTO
+</div>
 
-        </article>
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Fiddleford fue socio de Ford durante la construcción del Portal.
+La exposición a los fenómenos interdimensionales y sus posteriores
+experiencias con la Sociedad del Ojo Cegado lo convierten en una
+pieza fundamental para reconstruir el pasado de Gravity Falls.
+</p>
+
+<h3>IMPORTANCIA</h3>
+
+<p>
+Sus recuerdos y conocimientos conectan la historia del Portal con
+la Sociedad del Ojo Cegado y con la desaparición de Ford.
+</p>
+
+</div>
+
+</details>
 
 
-        <article class="expediente">
+<!-- 021 -->
 
-            <div class="numero">#020</div>
+<details class="expediente" data-categoria="conspiracion" data-estado="desconocido">
 
-            <div class="simbolo">🔺</div>
+<summary>
 
-            <h2>EL SÍMBOLO</h2>
+<div class="encabezado">
 
-            <div class="nivel">
-                IMPORTANCIA: CRÍTICA
-            </div>
+<div class="numero">#021</div>
 
-            <p class="descripcion">
-                Símbolo triangular relacionado con diferentes
-                personajes, acontecimientos y mensajes ocultos.
-            </p>
+<div>
+<div class="nombre">EL SÍMBOLO DE GRAVITY FALLS</div>
+<div class="tipo">SÍMBOLO · CONEXIONES DESCONOCIDAS</div>
+</div>
 
-            <div class="datos">
-                ESTADO: INVESTIGACIÓN<br>
-                TIPO: SÍMBOLO
-            </div>
+<div class="estado desconocido">
+EN INVESTIGACIÓN
+</div>
 
-        </article>
+</div>
 
-    </div>
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+A lo largo de la serie aparecen numerosos símbolos, diagramas,
+códigos y referencias visuales. Algunos están asociados con
+personajes concretos, mientras otros forman parte del lenguaje
+visual utilizado para esconder información.
+</p>
+
+<p>
+El archivo mantendrá este expediente abierto hasta separar los
+símbolos puramente decorativos de los que contienen información
+real.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- 022 -->
+
+<details class="expediente" data-categoria="conspiracion" data-estado="desconocido">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#022</div>
+
+<div>
+<div class="nombre">LOS CÓDIGOS OCULTOS</div>
+<div class="tipo">CRIPTografía · MENSAJES SECRETOS</div>
+</div>
+
+<div class="estado desconocido">
+INVESTIGACIÓN
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Gravity Falls utiliza códigos y mensajes ocultos durante los
+episodios y en material complementario. Los créditos contienen
+criptogramas y distintas formas de cifrado forman parte de la
+identidad de la serie.
+</p>
+
+<p>
+Este expediente servirá posteriormente como índice hacia la sección
+de CÓDIGOS del archivo.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- 023 -->
+
+<details class="expediente" data-categoria="conspiracion" data-estado="desconocido">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#023</div>
+
+<div>
+<div class="nombre">EL AXOLOTL</div>
+<div class="tipo">ENTIDAD · INFORMACIÓN INTERDIMENSIONAL</div>
+</div>
+
+<div class="estado desconocido">
+CLASIFICADO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+La figura del Axolotl aparece asociada con información
+interdimensional y con Bill Cipher. Su importancia aumenta
+considerablemente al estudiar el material posterior a la serie.
+</p>
+
+<p>
+Debido a la naturaleza deliberadamente misteriosa de esta
+información, el expediente se mantiene parcialmente clasificado.
+</p>
+
+<h3>FUENTES RELACIONADAS</h3>
+
+<div class="conexiones">
+<span class="tag">BILL CIPHER</span>
+<span class="tag">THE BOOK OF BILL</span>
+<span class="tag">MULTIVERSO</span>
+</div>
+
+</div>
+
+</details>
+
+
+<!-- 024 -->
+
+<details class="expediente" data-categoria="evento" data-estado="desconocido">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#024</div>
+
+<div>
+<div class="nombre">ARCHIVO NEGRO</div>
+<div class="tipo">EXPEDIENTE · INFORMACIÓN RESTRINGIDA</div>
+</div>
+
+<div class="estado clasificado">
+CLASIFICADO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>ACCESO DENEGADO</h3>
+
+<p>
+Este expediente contiene información que todavía no ha sido
+clasificada correctamente por el Archivo de Investigación.
+</p>
+
+<p>
+Se desbloqueará cuando se hayan establecido suficientes conexiones
+entre los diarios, los códigos, los personajes y los fenómenos
+interdimensionales.
+</p>
+
+<div class="nivel">
+████ NIVEL DE AUTORIZACIÓN INSUFICIENTE ████
+</div>
+
+</div>
+
+</details>
 
 </section>
 
 
-<!-- ARCHIVOS CLASIFICADOS -->
+<div class="sin-resultados" id="sinResultados">
+    NO SE ENCONTRARON EXPEDIENTES CON ESOS CRITERIOS.
+</div>
 
-<section class="seccion">
-
-    <div class="titulo-seccion">
-        🔒 ARCHIVOS CLASIFICADOS
-    </div>
-
-    <div class="expedientes">
-
-
-        <article class="expediente clasificado">
-
-            <div class="numero">#021</div>
-
-            <div class="simbolo">❓</div>
-
-            <h2>████████████</h2>
-
-            <div class="nivel">
-                ACCESO: DENEGADO
-            </div>
-
-            <p class="descripcion">
-                La información de este expediente ha sido
-                eliminada por una autoridad desconocida.
-            </p>
-
-            <div class="datos">
-                ESTADO: ████████<br>
-                ACCESO: 🔒
-            </div>
-
-        </article>
-
-
-        <article class="expediente clasificado">
-
-            <div class="numero">#022</div>
-
-            <div class="simbolo">👁️</div>
-
-            <h2>████████████</h2>
-
-            <div class="nivel">
-                ACCESO: DENEGADO
-            </div>
-
-            <p class="descripcion">
-                Se requiere una clave especial para acceder
-                al contenido de este archivo.
-            </p>
-
-            <div class="datos">
-                ESTADO: ████████<br>
-                ACCESO: 🔒
-            </div>
-
-        </article>
-
-
-        <article class="expediente clasificado">
-
-            <div class="numero">#023</div>
-
-            <div class="simbolo">🔺</div>
-
-            <h2>████████████</h2>
-
-            <div class="nivel">
-                ACCESO: DENEGADO
-            </div>
-
-            <p class="descripcion">
-                Este expediente contiene información relacionada
-                con un caso todavía sin resolver.
-            </p>
-
-            <div class="datos">
-                ESTADO: ████████<br>
-                ACCESO: 🔒
-            </div>
-
-        </article>
-
-
-        <article class="expediente clasificado">
-
-            <div class="numero">#024</div>
-
-            <div class="simbolo">⚠️</div>
-
-            <h2>ARCHIVO NEGRO</h2>
-
-            <div class="nivel">
-                AMENAZA: █████
-            </div>
-
-            <p class="descripcion">
-                NO EXISTE INFORMACIÓN DISPONIBLE.
-                NO INTENTAR ACCEDER.
-            </p>
-
-            <div class="datos">
-                ESTADO: ████████<br>
-                ACCESO: 🔒
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
+</main>
 
 
 <a href="archivo.html" class="volver">
@@ -1054,9 +1909,154 @@
 
 
 <footer>
-    ARCHIVO DE INVESTIGACIÓN · GRAVITY FALLS
+    GRAVITY FALLS · ARCHIVO DE INVESTIGACIÓN<br>
+    INFORMACIÓN RESTRINGIDA · GF-INV
 </footer>
 
 
+<script>
+
+/* =====================================
+   BUSCADOR + FILTROS
+===================================== */
+
+const buscador = document.getElementById("buscador");
+const filtros = document.querySelectorAll(".filtro");
+const expedientes = document.querySelectorAll(".expediente");
+const sinResultados = document.getElementById("sinResultados");
+
+let categoriaActual = "todos";
+
+
+function filtrar(){
+
+    const texto = buscador.value.toLowerCase().trim();
+
+    let visibles = 0;
+
+    expedientes.forEach(expediente => {
+
+        const contenido =
+            expediente.innerText.toLowerCase();
+
+        const categoria =
+            expediente.dataset.categoria;
+
+        const coincideTexto =
+            contenido.includes(texto);
+
+        const coincideCategoria =
+            categoriaActual === "todos" ||
+            categoria === categoriaActual;
+
+        if(coincideTexto && coincideCategoria){
+
+            expediente.style.display = "block";
+            visibles++;
+
+        }else{
+
+            expediente.style.display = "none";
+
+        }
+
+    });
+
+    sinResultados.style.display =
+        visibles === 0 ? "block" : "none";
+}
+
+
+buscador.addEventListener("input", filtrar);
+
+
+filtros.forEach(filtro => {
+
+    filtro.addEventListener("click", () => {
+
+        filtros.forEach(boton =>
+            boton.classList.remove("activo")
+        );
+
+        filtro.classList.add("activo");
+
+        categoriaActual =
+            filtro.dataset.categoria;
+
+        filtrar();
+
+    });
+
+});
+
+
+/* =====================================
+   ESTADISTICAS AUTOMATICAS
+===================================== */
+
+const total =
+    expedientes.length;
+
+const confirmados =
+    document.querySelectorAll(
+        '.expediente[data-estado="confirmado"]'
+    ).length;
+
+const activos =
+    document.querySelectorAll(
+        '.expediente[data-estado="activo"]'
+    ).length;
+
+const desconocidos =
+    document.querySelectorAll(
+        '.expediente[data-estado="desconocido"]'
+    ).length;
+
+
+document.getElementById(
+    "totalExpedientes"
+).textContent =
+    String(total).padStart(3,"0");
+
+document.getElementById(
+    "casosConfirmados"
+).textContent =
+    String(confirmados).padStart(3,"0");
+
+document.getElementById(
+    "casosActivos"
+).textContent =
+    String(activos).padStart(3,"0");
+
+document.getElementById(
+    "casosDesconocidos"
+).textContent =
+    String(desconocidos).padStart(3,"0");
+
+
+/* =====================================
+   EFECTO DE APERTURA
+===================================== */
+
+document.querySelectorAll("details").forEach(detalle => {
+
+    detalle.addEventListener("toggle", () => {
+
+        if(detalle.open){
+
+            detalle.scrollIntoView({
+                behavior:"smooth",
+                block:"nearest"
+            });
+
+        }
+
+    });
+
+});
+
+</script>
+
 </body>
 </html>
+```
