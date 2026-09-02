@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Personajes — Gravity Falls</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            color: #e8dfc4;
+
+            background:
+                linear-gradient(
+                    rgba(7, 10, 7, 0.9),
+                    rgba(4, 7, 4, 0.96)
+                ),
+                url("https://images.unsplash.com/photo-1448375240586-882707db888b")
+                center / cover fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        .volver {
+            position: absolute;
+            left: 25px;
+            top: 25px;
+            color: #b9aa7c;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .volver:hover {
+            color: white;
+        }
+
+        .clasificado {
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: #a99d76;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 7vw, 75px);
+            letter-spacing: 7px;
+            margin-bottom: 12px;
+        }
+
+        .subtitulo {
+            color: #b9aa7c;
+            letter-spacing: 3px;
+        }
+
+        .personajes {
+            width: 90%;
+            max-width: 1100px;
+            margin: 45px auto 80px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .personaje {
+            padding: 30px;
+            min-height: 240px;
+
+            border: 1px solid rgba(185,170,124,0.4);
+            background: rgba(13,17,12,0.88);
+
+            transition: 0.3s;
+        }
+
+        .personaje:hover {
+            transform: translateY(-7px);
+            border-color: #b9aa7c;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+        }
+
+        .simbolo {
+            font-size: 40px;
+            margin-bottom: 18px;
+        }
+
+        h2 {
+            font-size: 23px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .rol {
+            color: #b9aa7c;
+            font-size: 11px;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .personaje p {
+            color: #aaa493;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #575448;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 800px) {
+            .personajes {
+                grid-template-columns: 1fr;
+            }
+
+            .volver {
+                position: static;
+                display: block;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="archivo.html" class="volver">
+        ← VOLVER AL ARCHIVO
+    </a>
+
+    <div class="clasificado">
+        ARCHIVO GF-003
+    </div>
+
+    <h1>PERSONAJES</h1>
+
+    <div class="subtitulo">
+        HABITANTES Y PROTAGONISTAS
+    </div>
+
+</header>
+
+
+<main class="personajes">
+
+    <article class="personaje">
+        <div class="simbolo">🔎</div>
+        <h2>DIPPER PINES</h2>
+        <span class="rol">INVESTIGADOR</span>
+        <p>
+            Un joven decidido a descubrir los secretos de Gravity Falls.
+            Su obsesión por los misterios lo lleva a investigar fenómenos
+            que nadie más parece tomar en serio.
+        </p>
+    </article>
+
+
+    <article class="personaje">
+        <div class="simbolo">⭐</div>
+        <h2>MABEL PINES</h2>
+        <span class="rol">AVENTURERA</span>
+        <p>
+            La hermana gemela de Dipper. Alegre, creativa y siempre
+            dispuesta a convertir cualquier situación extraña en una
+            nueva aventura.
+        </p>
+    </article>
+
+
+    <article class="personaje">
+        <div class="simbolo">🧢</div>
+        <h2>STAN PINES</h2>
+        <span class="rol">DUEÑO DE LA CABAÑA</span>
+        <p>
+            El misterioso propietario de la Cabaña del Misterio.
+            Detrás de su personalidad extravagante se esconden secretos
+            mucho más importantes de lo que aparenta.
+        </p>
+    </article>
+
+
+    <article class="personaje">
+        <div class="simbolo">🔧</div>
+        <h2>SOOS</h2>
+        <span class="rol">ENCARGADO</span>
+        <p>
+            El encargado de mantenimiento de la Cabaña del Misterio.
+            Es amable, divertido y posee una sorprendente capacidad
+            para sobrevivir a situaciones absurdas.
+        </p>
+    </article>
+
+
+    <article class="personaje">
+        <div class="simbolo">🪓</div>
+        <h2>WENDY</h2>
+        <span class="rol">EMPLEADA</span>
+        <p>
+            Una de las trabajadoras de la Cabaña. Su personalidad
+            relajada y su valentía la convierten en una aliada
+            importante durante las aventuras.
+        </p>
+    </article>
+
+
+    <article class="personaje">
+        <div class="simbolo">📖</div>
+        <h2>FORD PINES</h2>
+        <span class="rol">INVESTIGADOR</span>
+        <p>
+            Un científico obsesionado con comprender los fenómenos
+            sobrenaturales de Gravity Falls y descubrir el origen
+            de sus anomalías.
+        </p>
+    </article>
+
+
+    <article class="personaje">
+        <div class="simbolo">👁️</div>
+        <h2>BILL CIPHER</h2>
+        <span class="rol">ENTIDAD INTERDIMENSIONAL</span>
+        <p>
+            Una misteriosa entidad capaz de manipular la realidad.
+            Sus verdaderas intenciones convierten su presencia en una
+            de las mayores amenazas conocidas.
+        </p>
+    </article>
+
+
+    <article class="personaje">
+        <div class="simbolo">🎩</div>
+        <h2>GIDEON</h2>
+        <span class="rol">RIVAL</span>
+        <p>
+            Un joven con una personalidad aparentemente encantadora
+            que esconde ambiciones y habilidades mucho más oscuras.
+        </p>
+    </article>
+
+
+    <article class="personaje">
+        <div class="simbolo">🕵️</div>
+        <h2>AGENTES POWERS Y TRIGGER</h2>
+        <span class="rol">INVESTIGADORES</span>
+        <p>
+            Agentes enviados para investigar los acontecimientos
+            sobrenaturales relacionados con Gravity Falls.
+        </p>
+    </article>
+
+</main>
+
+
+<footer>
+    ARCHIVO GF-003 — INFORMACIÓN RESTRINGIDA
+</footer>
+
+</body>
+</html>
