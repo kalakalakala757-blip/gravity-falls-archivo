@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Criaturas | Gravity Falls</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            color: #eee;
+            background:
+                linear-gradient(rgba(5, 15, 10, 0.82), rgba(5, 15, 10, 0.92)),
+                url("https://images.unsplash.com/photo-1448375240586-882707db888b");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px 30px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 42px;
+            letter-spacing: 5px;
+            text-shadow: 0 0 15px #000;
+        }
+
+        .subtitulo {
+            margin-top: 10px;
+            font-size: 16px;
+            letter-spacing: 3px;
+            color: #aaa;
+        }
+
+        .advertencia {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 15px;
+            border: 1px solid #777;
+            background: rgba(0, 0, 0, 0.65);
+            text-align: center;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .criaturas {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .criatura {
+            background: rgba(15, 20, 17, 0.88);
+            border: 1px solid #666;
+            padding: 25px;
+            position: relative;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .criatura:hover {
+            transform: translateY(-6px);
+            border-color: #aaa;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+        }
+
+        .numero {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .icono {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 5px 0;
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .nivel {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 5px 10px;
+            border: 1px solid #888;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .dato {
+            margin: 8px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .dato strong {
+            color: #ccc;
+        }
+
+        .separador {
+            border: none;
+            border-top: 1px solid #444;
+            margin: 15px 0;
+        }
+
+        .curiosidad {
+            font-size: 13px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .volver {
+            display: block;
+            width: fit-content;
+            margin: 35px auto 50px;
+            padding: 12px 20px;
+            border: 1px solid #777;
+            color: white;
+            text-decoration: none;
+            background: rgba(0,0,0,0.6);
+            transition: 0.3s;
+        }
+
+        .volver:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            .criaturas {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>BESTIARIO</h1>
+
+    <div class="subtitulo">
+        ARCHIVO DE CRIATURAS DE GRAVITY FALLS
+    </div>
+
+</header>
+
+<div class="advertencia">
+    ⚠ ADVERTENCIA: ALGUNAS CRIATURAS PUEDEN SER EXTREMADAMENTE PELIGROSAS ⚠
+</div>
+
+
+<section class="criaturas">
+
+    <!-- CRIATURA 01 -->
+
+    <article class="criatura">
+
+        <div class="numero">REGISTRO Nº 001</div>
+
+        <div class="icono">🦶</div>
+
+        <h2>GIGANTE</h2>
+
+        <div class="nivel">
+            NIVEL DE PELIGRO: ALTO
+        </div>
+
+        <hr class="separador">
+
+        <p class="dato">
+            <strong>Hábitat:</strong> Bosques y zonas montañosas.
+        </p>
+
+        <p class="dato">
+            <strong>Descripción:</strong>
+            Criatura de enormes dimensiones capaz de desplazarse
+            por el bosque sin ser detectada fácilmente.
+        </p>
+
+        <p class="dato">
+            <strong>Primera aparición:</strong>
+            Bosques de Gravity Falls.
+        </p>
+
+        <p class="curiosidad">
+            "Si escuchas pasos demasiado grandes para ser humanos,
+            probablemente ya sea demasiado tarde."
+        </p>
+
+    </article>
+
+
+    <!-- CRIATURA 02 -->
+
+    <article class="criatura">
+
+        <div class="numero">REGISTRO Nº 002</div>
+
+        <div class="icono">👁️</div>
+
+        <h2>GNOMO</h2>
+
+        <div class="nivel">
+            NIVEL DE PELIGRO: MEDIO
+        </div>
+
+        <hr class="separador">
+
+        <p class="dato">
+            <strong>Hábitat:</strong> Bosques de Gravity Falls.
+        </p>
+
+        <p class="dato">
+            <strong>Descripción:</strong>
+            Pequeñas criaturas que viven en grupos y pueden
+            comportarse de forma bastante extraña.
+        </p>
+
+        <p class="dato">
+            <strong>Primera aparición:</strong>
+            Bosque cercano a Gravity Falls.
+        </p>
+
+        <p class="curiosidad">
+            "Nunca confíes en un grupo de criaturas pequeñas
+            que parecen demasiado organizadas."
+        </p>
+
+    </article>
+
+
+    <!-- CRIATURA 03 -->
+
+    <article class="criatura">
+
+        <div class="numero">REGISTRO Nº 003</div>
+
+        <div class="icono">🐙</div>
+
+        <h2>MONSTRUO DEL LAGO</h2>
+
+        <div class="nivel">
+            NIVEL DE PELIGRO: ALTO
+        </div>
+
+        <hr class="separador">
+
+        <p class="dato">
+            <strong>Hábitat:</strong> Lagos y zonas acuáticas.
+        </p>
+
+        <p class="dato">
+            <strong>Descripción:</strong>
+            Criatura acuática de origen desconocido.
+            Su existencia está relacionada con las numerosas
+            anomalías de Gravity Falls.
+        </p>
+
+        <p class="dato">
+            <strong>Primera aparición:</strong>
+            Lago de Gravity Falls.
+        </p>
+
+        <p class="curiosidad">
+            "El agua puede ocultar cosas que sería mejor no encontrar."
+        </p>
+
+    </article>
+
+
+    <!-- CRIATURA 04 -->
+
+    <article class="criatura">
+
+        <div class="numero">REGISTRO Nº 004</div>
+
+        <div class="icono">🦌</div>
+
+        <h2>CIERVOS EXTRAÑOS</h2>
+
+        <div class="nivel">
+            NIVEL DE PELIGRO: DESCONOCIDO
+        </div>
+
+        <hr class="separador">
+
+        <p class="dato">
+            <strong>Hábitat:</strong> Bosques.
+        </p>
+
+        <p class="dato">
+            <strong>Descripción:</strong>
+            Algunos animales de Gravity Falls presentan
+            comportamientos o características que no coinciden
+            con los animales normales.
+        </p>
+
+        <p class="dato">
+            <strong>Primera aparición:</strong>
+            Registros del bosque.
+        </p>
+
+        <p class="curiosidad">
+            "No todos los animales de este bosque son exactamente
+            lo que parecen."
+        </p>
+
+    </article>
+
+
+    <!-- CRIATURA 05 -->
+
+    <article class="criatura">
+
+        <div class="numero">REGISTRO Nº 005</div>
+
+        <div class="icono">👹</div>
+
+        <h2>CRIATURA DESCONOCIDA</h2>
+
+        <div class="nivel">
+            NIVEL DE PELIGRO: VARIABLE
+        </div>
+
+        <hr class="separador">
+
+        <p class="dato">
+            <strong>Hábitat:</strong> Clasificado.
+        </p>
+
+        <p class="dato">
+            <strong>Descripción:</strong>
+            Existen numerosas criaturas que todavía no han sido
+            identificadas correctamente.
+        </p>
+
+        <p class="dato">
+            <strong>Primera aparición:</strong>
+            ARCHIVOS INCOMPLETOS.
+        </p>
+
+        <p class="curiosidad">
+            "Hay cosas en Gravity Falls que ni siquiera aparecen
+            en los diarios."
+        </p>
+
+    </article>
+
+
+    <!-- CRIATURA 06 -->
+
+    <article class="criatura">
+
+        <div class="numero">REGISTRO Nº 006</div>
+
+        <div class="icono">❓</div>
+
+        <h2>REGISTRO VACÍO</h2>
+
+        <div class="nivel">
+            NIVEL DE PELIGRO: █████
+        </div>
+
+        <hr class="separador">
+
+        <p class="dato">
+            <strong>Hábitat:</strong> █████████
+        </p>
+
+        <p class="dato">
+            <strong>Descripción:</strong>
+            Este archivo ha sido parcialmente eliminado.
+            No se dispone de suficiente información.
+        </p>
+
+        <p class="dato">
+            <strong>Primera aparición:</strong>
+            █████████
+        </p>
+
+        <p class="curiosidad">
+            "Tal vez este registro debería permanecer cerrado..."
+        </p>
+
+    </article>
+
+</section>
+
+
+<a href="archivo.html" class="volver">
+    ← VOLVER AL ARCHIVO
+</a>
+
+
+<footer>
+    ARCHIVO DE INVESTIGACIÓN · GRAVITY FALLS
+</footer>
+
+</body>
+</html>
