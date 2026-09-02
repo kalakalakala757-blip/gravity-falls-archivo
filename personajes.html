@@ -1,276 +1,1637 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Personajes — Gravity Falls</title>
+<title>Archivo de Personajes | Gravity Falls</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
 
-        body {
-            min-height: 100vh;
-            font-family: Georgia, serif;
-            color: #e8dfc4;
+*{
+    box-sizing:border-box;
+}
 
-            background:
-                linear-gradient(
-                    rgba(7, 10, 7, 0.9),
-                    rgba(4, 7, 4, 0.96)
-                ),
-                url("https://images.unsplash.com/photo-1448375240586-882707db888b")
-                center / cover fixed;
-        }
+body{
+    margin:0;
+    font-family:Georgia, "Times New Roman", serif;
+    color:#eee;
+    background:
+        linear-gradient(rgba(5,10,8,.88),rgba(5,10,8,.95)),
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b")
+        center/cover fixed;
+}
 
-        header {
-            text-align: center;
-            padding: 55px 20px 35px;
-        }
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.08;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(255,255,255,.12) 4px
+        );
+}
 
-        .volver {
-            position: absolute;
-            left: 25px;
-            top: 25px;
-            color: #b9aa7c;
-            text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 2px;
-        }
+/* =========================
+   CABECERA
+========================= */
 
-        .volver:hover {
-            color: white;
-        }
+header{
+    text-align:center;
+    padding:55px 20px 35px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
 
-        .clasificado {
-            font-size: 11px;
-            letter-spacing: 5px;
-            color: #a99d76;
-            margin-bottom: 18px;
-        }
+.codigo{
+    color:#d0a84f;
+    font-size:13px;
+    letter-spacing:4px;
+    margin-bottom:15px;
+}
 
-        h1 {
-            font-size: clamp(42px, 7vw, 75px);
-            letter-spacing: 7px;
-            margin-bottom: 12px;
-        }
+h1{
+    margin:0;
+    font-size:clamp(35px,7vw,70px);
+    letter-spacing:7px;
+    text-shadow:0 0 20px rgba(255,255,255,.2);
+}
 
-        .subtitulo {
-            color: #b9aa7c;
-            letter-spacing: 3px;
-        }
+.subtitulo{
+    margin-top:12px;
+    color:#aaa;
+    letter-spacing:3px;
+    font-size:14px;
+}
 
-        .personajes {
-            width: 90%;
-            max-width: 1100px;
-            margin: 45px auto 80px;
+/* =========================
+   ESTADISTICAS
+========================= */
 
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+.estadisticas{
+    max-width:1100px;
+    margin:30px auto;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
 
-        .personaje {
-            padding: 30px;
-            min-height: 240px;
+.stat{
+    background:rgba(10,15,13,.85);
+    border:1px solid #39443d;
+    padding:18px;
+    text-align:center;
+}
 
-            border: 1px solid rgba(185,170,124,0.4);
-            background: rgba(13,17,12,0.88);
+.stat-numero{
+    display:block;
+    font-size:30px;
+    color:#d0a84f;
+    font-weight:bold;
+}
 
-            transition: 0.3s;
-        }
+.stat-texto{
+    color:#aaa;
+    font-size:11px;
+    letter-spacing:2px;
+}
 
-        .personaje:hover {
-            transform: translateY(-7px);
-            border-color: #b9aa7c;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.6);
-        }
+/* =========================
+   BUSCADOR
+========================= */
 
-        .simbolo {
-            font-size: 40px;
-            margin-bottom: 18px;
-        }
+.controles{
+    max-width:1100px;
+    margin:30px auto;
+    padding:0 20px;
+}
 
-        h2 {
-            font-size: 23px;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
+.buscar{
+    width:100%;
+    padding:17px 20px;
+    background:rgba(5,10,8,.9);
+    border:1px solid #59665c;
+    color:white;
+    font-size:16px;
+    font-family:inherit;
+    outline:none;
+}
 
-        .rol {
-            color: #b9aa7c;
-            font-size: 11px;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 16px;
-        }
+.buscar:focus{
+    border-color:#d0a84f;
+    box-shadow:0 0 15px rgba(208,168,79,.15);
+}
 
-        .personaje p {
-            color: #aaa493;
-            line-height: 1.6;
-            font-size: 14px;
-        }
+.filtros{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:15px;
+}
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #575448;
-            font-size: 10px;
-            letter-spacing: 2px;
-        }
+.filtro{
+    padding:10px 15px;
+    border:1px solid #4c584f;
+    background:rgba(10,15,13,.8);
+    color:#bbb;
+    cursor:pointer;
+    font-family:inherit;
+    transition:.2s;
+}
 
-        @media (max-width: 800px) {
-            .personajes {
-                grid-template-columns: 1fr;
-            }
+.filtro:hover,
+.filtro.activo{
+    background:#d0a84f;
+    color:#111;
+    border-color:#d0a84f;
+}
 
-            .volver {
-                position: static;
-                display: block;
-                margin-bottom: 30px;
-            }
-        }
-    </style>
+/* =========================
+   CONTENIDO
+========================= */
+
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:10px 20px 70px;
+}
+
+.seccion{
+    margin-top:45px;
+}
+
+.seccion-titulo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:#d0a84f;
+    border-bottom:1px solid #404a43;
+    padding-bottom:12px;
+    margin-bottom:18px;
+    letter-spacing:3px;
+    font-size:19px;
+}
+
+/* =========================
+   EXPEDIENTES
+========================= */
+
+.personaje{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18,24,20,.97),
+            rgba(7,11,9,.96)
+        );
+    border:1px solid #39443d;
+    margin-bottom:12px;
+    transition:.25s;
+}
+
+.personaje:hover{
+    border-color:#727d72;
+    transform:translateY(-1px);
+}
+
+.personaje[open]{
+    border-color:#d0a84f;
+}
+
+summary{
+    list-style:none;
+    cursor:pointer;
+    padding:20px;
+}
+
+summary::-webkit-details-marker{
+    display:none;
+}
+
+.encabezado{
+    display:grid;
+    grid-template-columns:80px 1fr auto;
+    gap:18px;
+    align-items:center;
+}
+
+.numero{
+    color:#777;
+    font-size:14px;
+    letter-spacing:2px;
+}
+
+.nombre{
+    font-size:21px;
+    letter-spacing:2px;
+}
+
+.tipo{
+    color:#999;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.estado{
+    font-size:11px;
+    letter-spacing:1px;
+    padding:7px 9px;
+    border:1px solid;
+    text-align:center;
+}
+
+.confirmado{
+    color:#83c995;
+    border-color:#477654;
+}
+
+.vivo{
+    color:#83c995;
+    border-color:#477654;
+}
+
+.muerto{
+    color:#e06c62;
+    border-color:#7e3933;
+}
+
+.desconocido{
+    color:#d0a84f;
+    border-color:#77612e;
+}
+
+.clasificado{
+    color:#aaa;
+    border-color:#555;
+}
+
+.dossier{
+    border-top:1px solid #303830;
+    padding:25px;
+    background:rgba(0,0,0,.18);
+}
+
+.datos{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.dato{
+    border-left:2px solid #555;
+    padding:10px 12px;
+    background:rgba(255,255,255,.025);
+}
+
+.dato strong{
+    display:block;
+    color:#888;
+    font-size:10px;
+    letter-spacing:1px;
+    margin-bottom:5px;
+}
+
+.dato span{
+    font-size:13px;
+}
+
+.dossier h3{
+    color:#d0a84f;
+    font-size:14px;
+    letter-spacing:2px;
+    margin-top:25px;
+}
+
+.dossier p{
+    color:#c6c6c6;
+    line-height:1.7;
+    margin-bottom:10px;
+}
+
+.conexiones{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.tag{
+    border:1px solid #505950;
+    padding:6px 9px;
+    font-size:11px;
+    color:#aaa;
+}
+
+/* =========================
+   SIN RESULTADOS
+========================= */
+
+.sin-resultados{
+    display:none;
+    text-align:center;
+    padding:50px 20px;
+    color:#777;
+    border:1px dashed #414941;
+}
+
+/* =========================
+   VOLVER
+========================= */
+
+.volver{
+    display:block;
+    width:max-content;
+    margin:20px auto 50px;
+    padding:12px 22px;
+    border:1px solid #59665c;
+    color:#bbb;
+    text-decoration:none;
+    transition:.2s;
+}
+
+.volver:hover{
+    background:#d0a84f;
+    color:#111;
+    border-color:#d0a84f;
+}
+
+footer{
+    text-align:center;
+    color:#555;
+    font-size:11px;
+    letter-spacing:2px;
+    padding:25px;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:750px){
+
+    .estadisticas{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .encabezado{
+        grid-template-columns:55px 1fr;
+    }
+
+    .estado{
+        grid-column:2;
+        width:max-content;
+    }
+
+    .datos{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    h1{
+        letter-spacing:4px;
+    }
+}
+
+@media(max-width:480px){
+
+    .datos{
+        grid-template-columns:1fr;
+    }
+
+    .nombre{
+        font-size:17px;
+    }
+
+    .dossier{
+        padding:18px;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
 <header>
 
-    <a href="archivo.html" class="volver">
-        ← VOLVER AL ARCHIVO
-    </a>
-
-    <div class="clasificado">
-        ARCHIVO GF-003
+    <div class="codigo">
+        ARCHIVO RESTRINGIDO · GF-CHAR
     </div>
 
-    <h1>PERSONAJES</h1>
+    <h1>ARCHIVO DE PERSONAJES</h1>
 
     <div class="subtitulo">
-        HABITANTES Y PROTAGONISTAS
+        REGISTRO DE INDIVIDUOS · GRAVITY FALLS
     </div>
 
 </header>
 
 
-<main class="personajes">
+<!-- =========================
+     ESTADISTICAS
+========================= -->
 
-    <article class="personaje">
-        <div class="simbolo">🔎</div>
-        <h2>DIPPER PINES</h2>
-        <span class="rol">INVESTIGADOR</span>
-        <p>
-            Un joven decidido a descubrir los secretos de Gravity Falls.
-            Su obsesión por los misterios lo lleva a investigar fenómenos
-            que nadie más parece tomar en serio.
-        </p>
-    </article>
+<section class="estadisticas">
 
+    <div class="stat">
+        <span class="stat-numero" id="totalPersonajes">000</span>
+        <span class="stat-texto">PERSONAJES</span>
+    </div>
 
-    <article class="personaje">
-        <div class="simbolo">⭐</div>
-        <h2>MABEL PINES</h2>
-        <span class="rol">AVENTURERA</span>
-        <p>
-            La hermana gemela de Dipper. Alegre, creativa y siempre
-            dispuesta a convertir cualquier situación extraña en una
-            nueva aventura.
-        </p>
-    </article>
+    <div class="stat">
+        <span class="stat-numero" id="vivos">000</span>
+        <span class="stat-texto">REGISTRADOS ACTIVOS</span>
+    </div>
 
+    <div class="stat">
+        <span class="stat-numero" id="confirmados">000</span>
+        <span class="stat-texto">IDENTIFICADOS</span>
+    </div>
 
-    <article class="personaje">
-        <div class="simbolo">🧢</div>
-        <h2>STAN PINES</h2>
-        <span class="rol">DUEÑO DE LA CABAÑA</span>
-        <p>
-            El misterioso propietario de la Cabaña del Misterio.
-            Detrás de su personalidad extravagante se esconden secretos
-            mucho más importantes de lo que aparenta.
-        </p>
-    </article>
+    <div class="stat">
+        <span class="stat-numero" id="clasificados">000</span>
+        <span class="stat-texto">INFORMACIÓN CLASIFICADA</span>
+    </div>
+
+</section>
 
 
-    <article class="personaje">
-        <div class="simbolo">🔧</div>
-        <h2>SOOS</h2>
-        <span class="rol">ENCARGADO</span>
-        <p>
-            El encargado de mantenimiento de la Cabaña del Misterio.
-            Es amable, divertido y posee una sorprendente capacidad
-            para sobrevivir a situaciones absurdas.
-        </p>
-    </article>
+<!-- =========================
+     BUSCADOR
+========================= -->
+
+<div class="controles">
+
+    <input
+        type="text"
+        id="buscador"
+        class="buscar"
+        placeholder="🔎 BUSCAR PERSONA, NOMBRE, ROL, EXPEDIENTE..."
+    >
+
+    <div class="filtros">
+
+        <button class="filtro activo" data-categoria="todos">
+            TODOS
+        </button>
+
+        <button class="filtro" data-categoria="familia">
+            FAMILIA PINES
+        </button>
+
+        <button class="filtro" data-categoria="habitante">
+            HABITANTES
+        </button>
+
+        <button class="filtro" data-categoria="aliado">
+            ALIADOS
+        </button>
+
+        <button class="filtro" data-categoria="enemigo">
+            ENEMIGOS
+        </button>
+
+        <button class="filtro" data-categoria="entidad">
+            ENTIDADES
+        </button>
+
+    </div>
+
+</div>
 
 
-    <article class="personaje">
-        <div class="simbolo">🪓</div>
-        <h2>WENDY</h2>
-        <span class="rol">EMPLEADA</span>
-        <p>
-            Una de las trabajadoras de la Cabaña. Su personalidad
-            relajada y su valentía la convierten en una aliada
-            importante durante las aventuras.
-        </p>
-    </article>
+<main>
 
 
-    <article class="personaje">
-        <div class="simbolo">📖</div>
-        <h2>FORD PINES</h2>
-        <span class="rol">INVESTIGADOR</span>
-        <p>
-            Un científico obsesionado con comprender los fenómenos
-            sobrenaturales de Gravity Falls y descubrir el origen
-            de sus anomalías.
-        </p>
-    </article>
+<!-- =====================================================
+     FAMILIA PINES
+===================================================== -->
+
+<section class="seccion">
+
+<div class="seccion-titulo">
+    🔺 FAMILIA PINES
+</div>
 
 
-    <article class="personaje">
-        <div class="simbolo">👁️</div>
-        <h2>BILL CIPHER</h2>
-        <span class="rol">ENTIDAD INTERDIMENSIONAL</span>
-        <p>
-            Una misteriosa entidad capaz de manipular la realidad.
-            Sus verdaderas intenciones convierten su presencia en una
-            de las mayores amenazas conocidas.
-        </p>
-    </article>
+<!-- DIPPER -->
+
+<details class="personaje"
+data-categoria="familia"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#001</div>
+
+<div>
+<div class="nombre">DIPPER PINES</div>
+<div class="tipo">INVESTIGADOR · GEMELO DE MABEL</div>
+</div>
+
+<div class="estado vivo">
+ACTIVO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>NOMBRE</strong>
+<span>Mason "Dipper" Pines</span>
+</div>
+
+<div class="dato">
+<strong>EDAD</strong>
+<span>12 años</span>
+</div>
+
+<div class="dato">
+<strong>ROL</strong>
+<span>Investigador</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Vivo</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Dipper es uno de los protagonistas de Gravity Falls. Durante el
+verano encuentra el Diario 3 y comienza a investigar los fenómenos
+sobrenaturales del pueblo.
+</p>
+
+<p>
+Su obsesión por descubrir la identidad del Autor termina llevándolo
+a descubrir secretos relacionados con Ford, Bill Cipher y el Portal.
+</p>
+
+<h3>IMPORTANCIA EN EL ARCHIVO</h3>
+
+<p>
+Dipper es uno de los principales investigadores de los fenómenos
+documentados en este archivo.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">MABEL PINES</span>
+<span class="tag">STAN</span>
+<span class="tag">FORD</span>
+<span class="tag">DIARIO 3</span>
+<span class="tag">BILL CIPHER</span>
+</div>
+
+</div>
+
+</details>
 
 
-    <article class="personaje">
-        <div class="simbolo">🎩</div>
-        <h2>GIDEON</h2>
-        <span class="rol">RIVAL</span>
-        <p>
-            Un joven con una personalidad aparentemente encantadora
-            que esconde ambiciones y habilidades mucho más oscuras.
-        </p>
-    </article>
+<!-- MABEL -->
+
+<details class="personaje"
+data-categoria="familia"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#002</div>
+
+<div>
+<div class="nombre">MABEL PINES</div>
+<div class="tipo">INVESTIGADORA · GEMELA DE DIPPER</div>
+</div>
+
+<div class="estado vivo">
+ACTIVO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>EDAD</strong>
+<span>12 años</span>
+</div>
+
+<div class="dato">
+<strong>ROL</strong>
+<span>Investigadora</span>
+</div>
+
+<div class="dato">
+<strong>PERSONALIDAD</strong>
+<span>Optimista / creativa</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Viva</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Mabel es la hermana gemela de Dipper. Su personalidad y creatividad
+contrastan constantemente con la obsesión de su hermano por resolver
+los misterios.
+</p>
+
+<p>
+Aunque muchas veces parece menos interesada en la investigación,
+Mabel participa directamente en algunos de los acontecimientos más
+importantes de Gravity Falls.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">DIPPER</span>
+<span class="tag">STAN</span>
+<span class="tag">FORD</span>
+<span class="tag">BILL</span>
+</div>
+
+</div>
+
+</details>
 
 
-    <article class="personaje">
-        <div class="simbolo">🕵️</div>
-        <h2>AGENTES POWERS Y TRIGGER</h2>
-        <span class="rol">INVESTIGADORES</span>
-        <p>
-            Agentes enviados para investigar los acontecimientos
-            sobrenaturales relacionados con Gravity Falls.
-        </p>
-    </article>
+<!-- STAN -->
+
+<details class="personaje"
+data-categoria="familia"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#003</div>
+
+<div>
+<div class="nombre">STANLEY PINES</div>
+<div class="tipo">DUEÑO DE MYSTERY SHACK · GEMELO DE FORD</div>
+</div>
+
+<div class="estado vivo">
+ACTIVO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>IDENTIDAD</strong>
+<span>Stanley Pines</span>
+</div>
+
+<div class="dato">
+<strong>ROL</strong>
+<span>Empresario / protector</span>
+</div>
+
+<div class="dato">
+<strong>UBICACIÓN</strong>
+<span>Mystery Shack</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Vivo</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Stan dirige la Mystery Shack y durante años mantiene ocultos los
+secretos relacionados con su hermano Stanford.
+</p>
+
+<p>
+Durante gran parte de la serie se hace pasar por otra identidad
+mientras intenta reconstruir el Portal y recuperar a su hermano.
+</p>
+
+<h3>IMPORTANCIA</h3>
+
+<p>
+Su historia conecta directamente la Mystery Shack, el Portal,
+Ford y el enfrentamiento final contra Bill Cipher.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">FORD</span>
+<span class="tag">MYSTERY SHACK</span>
+<span class="tag">PORTAL</span>
+<span class="tag">BILL</span>
+</div>
+
+</div>
+
+</details>
+
+
+<!-- FORD -->
+
+<details class="personaje"
+data-categoria="familia"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#004</div>
+
+<div>
+<div class="nombre">STANFORD PINES</div>
+<div class="tipo">AUTOR DE LOS DIARIOS · CIENTÍFICO</div>
+</div>
+
+<div class="estado vivo">
+ACTIVO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>IDENTIDAD</strong>
+<span>Stanford Pines</span>
+</div>
+
+<div class="dato">
+<strong>PROFESIÓN</strong>
+<span>Científico / investigador</span>
+</div>
+
+<div class="dato">
+<strong>DOCUMENTOS</strong>
+<span>Diarios</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Vivo</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Stanford Pines es el científico que investigó las anomalías de
+Gravity Falls y escribió los tres diarios.
+</p>
+
+<p>
+Su investigación lo llevó a construir el Portal Interdimensional
+y a establecer contacto con Bill Cipher.
+</p>
+
+<h3>IMPORTANCIA</h3>
+
+<p>
+Ford es una de las figuras centrales de prácticamente todos los
+misterios relacionados con el origen de la actividad sobrenatural
+de Gravity Falls.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">DIARIO 1</span>
+<span class="tag">DIARIO 2</span>
+<span class="tag">DIARIO 3</span>
+<span class="tag">PORTAL</span>
+<span class="tag">BILL</span>
+<span class="tag">MCGUCKET</span>
+</div>
+
+</div>
+
+</details>
+
+
+</section>
+
+
+<!-- =====================================================
+     HABITANTES
+===================================================== -->
+
+<section class="seccion">
+
+<div class="seccion-titulo">
+    🏚 HABITANTES DE GRAVITY FALLS
+</div>
+
+
+<!-- SOOS -->
+
+<details class="personaje"
+data-categoria="habitante"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#005</div>
+
+<div>
+<div class="nombre">SOOS RAMIREZ</div>
+<div class="tipo">EMPLEADO · MYSTERY SHACK</div>
+</div>
+
+<div class="estado vivo">
+ACTIVO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>ROL</strong>
+<span>Empleado / encargado</span>
+</div>
+
+<div class="dato">
+<strong>UBICACIÓN</strong>
+<span>Mystery Shack</span>
+</div>
+
+<div class="dato">
+<strong>AFILIACIÓN</strong>
+<span>Familia Pines</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Vivo</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Soos es el empleado y amigo de confianza de Stan en la Mystery
+Shack. Forma parte del grupo principal de personajes durante las
+investigaciones.
+</p>
+
+<p>
+Su relación con la familia Pines termina convirtiéndolo en una de
+las personas más importantes dentro de la Mystery Shack.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- WENDY -->
+
+<details class="personaje"
+data-categoria="habitante"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#006</div>
+
+<div>
+<div class="nombre">WENDY CORDUROY</div>
+<div class="tipo">EMPLEADA · MYSTERY SHACK</div>
+</div>
+
+<div class="estado vivo">
+ACTIVO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>EDAD</strong>
+<span>15 años</span>
+</div>
+
+<div class="dato">
+<strong>ROL</strong>
+<span>Empleado</span>
+</div>
+
+<div class="dato">
+<strong>HABILIDADES</strong>
+<span>Supervivencia / combate</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Viva</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Wendy trabaja en la Mystery Shack y se convierte en una de las
+principales aliadas de Dipper y Mabel.
+</p>
+
+<p>
+Su conocimiento del bosque y sus habilidades físicas resultan
+útiles durante numerosas investigaciones.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- MCGUCKET -->
+
+<details class="personaje"
+data-categoria="habitante"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#007</div>
+
+<div>
+<div class="nombre">FIDDLEFORD MCGUCKET</div>
+<div class="tipo">CIENTÍFICO · EX SOCIO DE FORD</div>
+</div>
+
+<div class="estado vivo">
+ACTIVO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>PROFESIÓN</strong>
+<span>Ingeniero</span>
+</div>
+
+<div class="dato">
+<strong>RELACIÓN</strong>
+<span>Socio de Ford</span>
+</div>
+
+<div class="dato">
+<strong>SOCIEDAD</strong>
+<span>Ojo Cegado</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Vivo</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Fiddleford fue socio de Ford durante la construcción del Portal.
+La exposición a la tecnología interdimensional cambió su vida y
+terminó participando en la Sociedad del Ojo Cegado.
+</p>
+
+<h3>IMPORTANCIA</h3>
+
+<p>
+Su historia permite reconstruir una parte fundamental del pasado
+de Ford y del Portal.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- GIDEON -->
+
+<details class="personaje"
+data-categoria="enemigo"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#008</div>
+
+<div>
+<div class="nombre">GIDEON GLEEFUL</div>
+<div class="tipo">ANTAGONISTA · PSÍQUICO</div>
+</div>
+
+<div class="estado vivo">
+ACTIVO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>ROL</strong>
+<span>Antagonista</span>
+</div>
+
+<div class="dato">
+<strong>HABILIDAD</strong>
+<span>Poderes psíquicos</span>
+</div>
+
+<div class="dato">
+<strong>OBJETIVO</strong>
+<span>Control de Mystery Shack</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Vivo</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Gideon es un joven con habilidades psíquicas que intenta obtener
+el control de la Mystery Shack y acercarse a Mabel.
+</p>
+
+<p>
+Su historia demuestra que los peligros de Gravity Falls no siempre
+proceden de criaturas sobrenaturales.
+</p>
+
+</div>
+
+</details>
+
+
+</section>
+
+
+<!-- =====================================================
+     ALIADOS
+===================================================== -->
+
+<section class="seccion">
+
+<div class="seccion-titulo">
+    🛡 ALIADOS Y FIGURAS CLAVE
+</div>
+
+
+<!-- CANDY -->
+
+<details class="personaje"
+data-categoria="aliado"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#009</div>
+
+<div>
+<div class="nombre">CANDY CHIU</div>
+<div class="tipo">AMIGA DE MABEL</div>
+</div>
+
+<div class="estado vivo">
+ACTIVA
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Candy es una de las amigas de Mabel y participa en varias aventuras
+junto a ella y Grenda.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">MABEL</span>
+<span class="tag">GRENDA</span>
+<span class="tag">GRAVITY FALLS</span>
+</div>
+
+</div>
+
+</details>
+
+
+<!-- GRENDA -->
+
+<details class="personaje"
+data-categoria="aliado"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#010</div>
+
+<div>
+<div class="nombre">GRENDA</div>
+<div class="tipo">AMIGA DE MABEL</div>
+</div>
+
+<div class="estado vivo">
+ACTIVA
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Grenda es una de las mejores amigas de Mabel. Su personalidad
+extremadamente enérgica la convierte en una de las figuras más
+reconocibles del grupo de amigos.
+</p>
+
+</div>
+
+</details>
+
+
+<!-- AGENTES -->
+
+<details class="personaje"
+data-categoria="aliado"
+data-estado="vivo">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#011</div>
+
+<div>
+<div class="nombre">POWERS Y TRIGGER</div>
+<div class="tipo">AGENTES FEDERALES</div>
+</div>
+
+<div class="estado clasificado">
+CLASIFICADO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Agentes federales enviados a investigar los acontecimientos
+extraños relacionados con Gravity Falls.
+</p>
+
+<p>
+Su participación demuestra que algunos fenómenos del pueblo
+llamaron la atención de autoridades externas.
+</p>
+
+</div>
+
+</details>
+
+
+</section>
+
+
+<!-- =====================================================
+     ENEMIGOS Y ENTIDADES
+===================================================== -->
+
+<section class="seccion">
+
+<div class="seccion-titulo">
+    🔺 ENEMIGOS Y ENTIDADES
+</div>
+
+
+<!-- BILL -->
+
+<details class="personaje"
+data-categoria="entidad"
+data-estado="clasificado">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#012</div>
+
+<div>
+<div class="nombre">BILL CIPHER</div>
+<div class="tipo">ENTIDAD INTERDIMENSIONAL</div>
+</div>
+
+<div class="estado clasificado">
+CLASIFICADO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<div class="datos">
+
+<div class="dato">
+<strong>TIPO</strong>
+<span>Entidad interdimensional</span>
+</div>
+
+<div class="dato">
+<strong>PELIGRO</strong>
+<span>Extremo</span>
+</div>
+
+<div class="dato">
+<strong>OBJETIVO</strong>
+<span>Control de la realidad</span>
+</div>
+
+<div class="dato">
+<strong>ESTADO</strong>
+<span>Información clasificada</span>
+</div>
+
+</div>
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Bill Cipher es una entidad interdimensional con la capacidad de
+manipular sueños, realizar acuerdos y alterar la realidad.
+</p>
+
+<p>
+Su relación con Ford Pines es una de las piezas fundamentales del
+misterio central de Gravity Falls.
+</p>
+
+<p>
+Durante Weirdmageddon consigue acceder físicamente a la realidad
+y transforma Gravity Falls en una zona completamente alterada.
+</p>
+
+<h3>INFORMACIÓN ADICIONAL</h3>
+
+<p>
+Los acontecimientos posteriores de la franquicia amplían
+considerablemente la información relacionada con Bill. Este
+expediente se mantendrá conectado con el archivo de misterios y
+con los materiales oficiales posteriores a la serie.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">FORD</span>
+<span class="tag">DIARIOS</span>
+<span class="tag">PORTAL</span>
+<span class="tag">WEIRDMAGEDDON</span>
+<span class="tag">AXOLOTL</span>
+<span class="tag">THE BOOK OF BILL</span>
+</div>
+
+</div>
+
+</details>
+
+
+<!-- TIME BABY -->
+
+<details class="personaje"
+data-categoria="entidad"
+data-estado="clasificado">
+
+<summary>
+
+<div class="encabezado">
+
+<div class="numero">#013</div>
+
+<div>
+<div class="nombre">TIME BABY</div>
+<div class="tipo">ENTIDAD · GUARDIÁN TEMPORAL</div>
+</div>
+
+<div class="estado clasificado">
+CLASIFICADO
+</div>
+
+</div>
+
+</summary>
+
+<div class="dossier">
+
+<h3>DESCRIPCIÓN</h3>
+
+<p>
+Time Baby es una entidad relacionada con la protección y supervisión
+de la línea temporal. Su existencia demuestra que el universo de
+Gravity Falls posee estructuras temporales que van más allá del
+mundo humano.
+</p>
+
+<h3>CONEXIONES</h3>
+
+<div class="conexiones">
+<span class="tag">BLENDIN BLANDIN</span>
+<span class="tag">VIAJES TEMPORALES</span>
+<span class="tag">BILL</span>
+</div>
+
+</div>
+
+</details>
+
+
+</section>
+
+
+<div class="sin-resultados" id="sinResultados">
+    NO SE ENCONTRARON PERSONAJES CON ESOS CRITERIOS.
+</div>
 
 </main>
 
 
+<a href="archivo.html" class="volver">
+    ← VOLVER AL ARCHIVO PRINCIPAL
+</a>
+
+
 <footer>
-    ARCHIVO GF-003 — INFORMACIÓN RESTRINGIDA
+
+    GRAVITY FALLS · ARCHIVO DE INVESTIGACIÓN<br>
+    INFORMACIÓN RESTRINGIDA · GF-CHAR
+
 </footer>
+
+
+<script>
+
+/* =====================================
+   BUSCADOR Y FILTROS
+===================================== */
+
+const buscador =
+    document.getElementById("buscador");
+
+const filtros =
+    document.querySelectorAll(".filtro");
+
+const personajes =
+    document.querySelectorAll(".personaje");
+
+const sinResultados =
+    document.getElementById("sinResultados");
+
+let categoriaActual = "todos";
+
+
+function filtrar(){
+
+    const texto =
+        buscador.value.toLowerCase().trim();
+
+    let visibles = 0;
+
+    personajes.forEach(personaje => {
+
+        const contenido =
+            personaje.innerText.toLowerCase();
+
+        const categoria =
+            personaje.dataset.categoria;
+
+        const coincideTexto =
+            contenido.includes(texto);
+
+        const coincideCategoria =
+            categoriaActual === "todos" ||
+            categoria === categoriaActual;
+
+        if(
+            coincideTexto &&
+            coincideCategoria
+        ){
+
+            personaje.style.display = "block";
+            visibles++;
+
+        }else{
+
+            personaje.style.display = "none";
+
+        }
+
+    });
+
+    sinResultados.style.display =
+        visibles === 0 ? "block" : "none";
+}
+
+
+buscador.addEventListener(
+    "input",
+    filtrar
+);
+
+
+filtros.forEach(filtro => {
+
+    filtro.addEventListener(
+        "click",
+        () => {
+
+            filtros.forEach(boton => {
+                boton.classList.remove("activo");
+            });
+
+            filtro.classList.add("activo");
+
+            categoriaActual =
+                filtro.dataset.categoria;
+
+            filtrar();
+
+        }
+    );
+
+});
+
+
+/* =====================================
+   ESTADISTICAS
+===================================== */
+
+const total =
+    personajes.length;
+
+const vivos =
+    document.querySelectorAll(
+        '.personaje[data-estado="vivo"]'
+    ).length;
+
+const confirmados =
+    personajes.length;
+
+const clasificados =
+    document.querySelectorAll(
+        '.personaje[data-estado="clasificado"]'
+    ).length;
+
+
+document.getElementById(
+    "totalPersonajes"
+).textContent =
+    String(total).padStart(3,"0");
+
+document.getElementById(
+    "vivos"
+).textContent =
+    String(vivos).padStart(3,"0");
+
+document.getElementById(
+    "confirmados"
+).textContent =
+    String(confirmados).padStart(3,"0");
+
+document.getElementById(
+    "clasificados"
+).textContent =
+    String(clasificados).padStart(3,"0");
+
+
+/* =====================================
+   APERTURA SUAVE
+===================================== */
+
+document.querySelectorAll(
+    "details"
+).forEach(detalle => {
+
+    detalle.addEventListener(
+        "toggle",
+        () => {
+
+            if(detalle.open){
+
+                detalle.scrollIntoView({
+                    behavior:"smooth",
+                    block:"nearest"
+                });
+
+            }
+
+        }
+    );
+
+});
+
+</script>
 
 </body>
 </html>
