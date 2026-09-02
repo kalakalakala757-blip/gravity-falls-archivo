@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Los Diarios — Gravity Falls</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Georgia, serif;
+            color: #e8dfc4;
+
+            background:
+                linear-gradient(
+                    rgba(8, 10, 7, 0.9),
+                    rgba(4, 6, 4, 0.96)
+                ),
+                url("https://images.unsplash.com/photo-1448375240586-882707db888b")
+                center / cover fixed;
+        }
+
+        header {
+            text-align: center;
+            padding: 55px 20px 35px;
+        }
+
+        .volver {
+            position: absolute;
+            left: 25px;
+            top: 25px;
+
+            color: #b9aa7c;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 2px;
+
+            transition: 0.3s;
+        }
+
+        .volver:hover {
+            color: white;
+        }
+
+        .clasificado {
+            color: #a99d76;
+            font-size: 11px;
+            letter-spacing: 5px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 7vw, 75px);
+            letter-spacing: 7px;
+            margin-bottom: 12px;
+        }
+
+        .subtitulo {
+            color: #b9aa7c;
+            letter-spacing: 3px;
+        }
+
+        .introduccion {
+            width: 90%;
+            max-width: 750px;
+            margin: 35px auto;
+
+            text-align: center;
+            color: #aaa493;
+            line-height: 1.7;
+        }
+
+        .diarios {
+            width: 90%;
+            max-width: 1100px;
+            margin: 55px auto 80px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .diario {
+            position: relative;
+            min-height: 440px;
+
+            padding: 40px 30px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(91, 67, 40, 0.35),
+                    rgba(40, 29, 19, 0.8)
+                );
+
+            border: 1px solid rgba(184, 151, 100, 0.5);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.65),
+                inset 0 0 30px rgba(0,0,0,0.3);
+
+            transition: 0.4s;
+        }
+
+        .diario:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow:
+                0 25px 45px rgba(0,0,0,0.75),
+                inset 0 0 30px rgba(0,0,0,0.25);
+        }
+
+        .numero {
+            color: #c5ad7b;
+            font-size: 13px;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+        }
+
+        .simbolo {
+            width: 120px;
+            height: 120px;
+
+            border: 2px solid #b9aa7c;
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 65px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 0 20px rgba(185,170,124,0.12),
+                inset 0 0 20px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            font-size: 28px;
+            letter-spacing: 4px;
+            margin-bottom: 18px;
+        }
+
+        .estado {
+            color: #b9aa7c;
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .diario p {
+            color: #aaa493;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .bloqueado {
+            margin-top: auto;
+            padding-top: 25px;
+
+            color: #756e5b;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .nota {
+            width: 90%;
+            max-width: 850px;
+            margin: 0 auto 70px;
+
+            padding: 25px;
+
+            border: 1px dashed rgba(185,170,124,0.35);
+            background: rgba(10,12,9,0.65);
+
+            text-align: center;
+            color: #817a67;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #575448;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 850px) {
+            .diarios {
+                grid-template-columns: 1fr;
+            }
+
+            .volver {
+                position: static;
+                display: block;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="archivo.html" class="volver">
+        ← VOLVER AL ARCHIVO
+    </a>
+
+    <div class="clasificado">
+        ARCHIVO GF-004
+    </div>
+
+    <h1>LOS DIARIOS</h1>
+
+    <div class="subtitulo">
+        DOCUMENTOS DE INVESTIGACIÓN
+    </div>
+
+</header>
+
+
+<p class="introduccion">
+    Durante años, un investigador desconocido documentó las anomalías
+    y criaturas de Gravity Falls. Sus investigaciones quedaron
+    registradas en tres diarios.
+</p>
+
+
+<main class="diarios">
+
+
+    <article class="diario">
+
+        <div class="numero">
+            DIARIO Nº 1
+        </div>
+
+        <div class="simbolo">
+            1
+        </div>
+
+        <h2>JOURNAL 1</h2>
+
+        <div class="estado">
+            INFORMACIÓN PARCIAL
+        </div>
+
+        <p>
+            El primero de los diarios conocidos. Contiene registros
+            tempranos sobre criaturas y fenómenos sobrenaturales
+            encontrados en Gravity Falls.
+        </p>
+
+        <div class="bloqueado">
+            🔒 ARCHIVO PARCIALMENTE BLOQUEADO
+        </div>
+
+    </article>
+
+
+    <article class="diario">
+
+        <div class="numero">
+            DIARIO Nº 2
+        </div>
+
+        <div class="simbolo">
+            2
+        </div>
+
+        <h2>JOURNAL 2</h2>
+
+        <div class="estado">
+            INFORMACIÓN PARCIAL
+        </div>
+
+        <p>
+            Un segundo volumen de investigaciones. Sus páginas
+            contienen información sobre nuevas anomalías y pistas
+            relacionadas con los secretos del pueblo.
+        </p>
+
+        <div class="bloqueado">
+            🔒 ARCHIVO PARCIALMENTE BLOQUEADO
+        </div>
+
+    </article>
+
+
+    <article class="diario">
+
+        <div class="numero">
+            DIARIO Nº 3
+        </div>
+
+        <div class="simbolo">
+            3
+        </div>
+
+        <h2>JOURNAL 3</h2>
+
+        <div class="estado">
+            DOCUMENTO PRINCIPAL
+        </div>
+
+        <p>
+            El diario más completo. Reúne información sobre las
+            anomalías de Gravity Falls y contiene pistas esenciales
+            para comprender la historia del pueblo.
+        </p>
+
+        <div class="bloqueado">
+            🔒 ALGUNAS PÁGINAS REQUIEREN AUTORIZACIÓN
+        </div>
+
+    </article>
+
+
+</main>
+
+
+<div class="nota">
+    ⚠ NOTA DEL ARCHIVISTA ⚠
+    <br><br>
+    Si encontraste uno de estos diarios, no intentes leer las páginas
+    marcadas con símbolos desconocidos.
+</div>
+
+
+<footer>
+    ARCHIVO GF-004 — INFORMACIÓN RESTRINGIDA
+</footer>
+
+</body>
+</html>
