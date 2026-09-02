@@ -4,176 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Misterios — Gravity Falls</title>
+    <title>Archivo de Misterios | Gravity Falls</title>
 
     <style>
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         body {
+            margin: 0;
             min-height: 100vh;
             font-family: Georgia, serif;
-            color: #e8dfc4;
+            color: #eee;
 
             background:
                 linear-gradient(
-                    rgba(7, 10, 7, 0.88),
-                    rgba(5, 8, 5, 0.95)
+                    rgba(4, 10, 7, 0.88),
+                    rgba(4, 10, 7, 0.96)
                 ),
-                url("https://images.unsplash.com/photo-1448375240586-882707db888b")
-                center / cover fixed;
+                url("https://images.unsplash.com/photo-1448375240586-882707db888b");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         header {
             text-align: center;
-            padding: 55px 20px 35px;
+            padding: 50px 20px 25px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 42px;
+            letter-spacing: 6px;
+            text-shadow: 0 0 15px #000;
+        }
+
+        .subtitulo {
+            margin-top: 12px;
+            color: #aaa;
+            letter-spacing: 3px;
+            font-size: 14px;
+        }
+
+        .contador {
+            max-width: 900px;
+            margin: 25px auto;
+
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(170px, 1fr));
+
+            gap: 10px;
+
+            padding: 15px;
+        }
+
+        .estadistica {
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid #555;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .estadistica-numero {
+            display: block;
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .estadistica-texto {
+            color: #999;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        .filtros {
+            max-width: 1050px;
+            margin: 10px auto 30px;
+            padding: 0 20px;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .filtro {
+            padding: 9px 15px;
+
+            background: rgba(0,0,0,0.65);
+            border: 1px solid #555;
+
+            color: #bbb;
+
+            font-family: Georgia, serif;
+            font-size: 11px;
+
+            letter-spacing: 1px;
+        }
+
+        .seccion {
+            max-width: 1100px;
+            margin: 0 auto 45px;
+            padding: 0 20px;
+        }
+
+        .titulo-seccion {
+            margin-bottom: 20px;
+
+            padding: 14px;
+
+            border-top: 1px solid #666;
+            border-bottom: 1px solid #666;
+
+            text-align: center;
+
+            letter-spacing: 4px;
+            font-size: 18px;
+        }
+
+        .expedientes {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 20px;
+        }
+
+        .expediente {
+            position: relative;
+
+            background: rgba(13, 17, 15, 0.92);
+
+            border: 1px solid #555;
+
+            padding: 24px;
+
+            min-height: 280px;
+
+            transition: 0.3s;
+        }
+
+        .expediente:hover {
+            transform: translateY(-5px);
+
+            border-color: #aaa;
+
+            box-shadow:
+                0 12px 30px rgba(0,0,0,0.7);
+        }
+
+        .numero {
+            position: absolute;
+
+            top: 12px;
+            right: 15px;
+
+            color: #777;
+
+            font-family: monospace;
+            font-size: 11px;
+        }
+
+        .simbolo {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin: 5px 0 12px;
+
+            font-size: 21px;
+
+            letter-spacing: 1px;
+        }
+
+        .nivel {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            margin-bottom: 15px;
+
+            border: 1px solid #777;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+        }
+
+        .descripcion {
+            color: #bbb;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+        .datos {
+            margin-top: 15px;
+
+            padding-top: 12px;
+
+            border-top: 1px solid #444;
+
+            color: #888;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+        .clasificado {
+            background:
+                repeating-linear-gradient(
+                    -45deg,
+                    rgba(0,0,0,0.8),
+                    rgba(0,0,0,0.8) 8px,
+                    rgba(20,20,20,0.8) 8px,
+                    rgba(20,20,20,0.8) 16px
+                );
+
+            border-color: #777;
+        }
+
+        .clasificado h2 {
+            letter-spacing: 3px;
         }
 
         .volver {
-            position: absolute;
-            left: 25px;
-            top: 25px;
+            display: block;
 
-            color: #b9aa7c;
+            width: fit-content;
+
+            margin: 40px auto 50px;
+
+            padding: 12px 20px;
+
+            color: white;
+
             text-decoration: none;
-            font-size: 13px;
-            letter-spacing: 2px;
+
+            border: 1px solid #777;
+
+            background: rgba(0,0,0,0.65);
 
             transition: 0.3s;
         }
 
         .volver:hover {
-            color: #ffffff;
-        }
-
-        .clasificado {
-            font-size: 11px;
-            letter-spacing: 5px;
-            color: #a99d76;
-            margin-bottom: 18px;
-        }
-
-        h1 {
-            font-size: clamp(42px, 7vw, 75px);
-            letter-spacing: 7px;
-            margin-bottom: 12px;
-        }
-
-        .subtitulo {
-            color: #b9aa7c;
-            letter-spacing: 3px;
-        }
-
-        .linea {
-            width: 80%;
-            max-width: 900px;
-            height: 1px;
-            margin: 30px auto;
-            background: rgba(185, 170, 124, 0.35);
-        }
-
-        .descripcion {
-            max-width: 750px;
-            margin: auto;
-            text-align: center;
-            line-height: 1.7;
-            color: #bcb5a1;
-        }
-
-        .misterios {
-            width: 90%;
-            max-width: 1100px;
-            margin: 50px auto;
-
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .misterio {
-            position: relative;
-            min-height: 220px;
-
-            padding: 30px;
-
-            border: 1px solid rgba(185, 170, 124, 0.4);
-            background: rgba(13, 17, 12, 0.85);
-
-            transition: 0.3s;
-            overflow: hidden;
-        }
-
-        .misterio:hover {
-            transform: translateY(-6px);
-            border-color: #b9aa7c;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
-        }
-
-        .numero {
-            position: absolute;
-            right: 18px;
-            top: 15px;
-
-            font-size: 12px;
-            color: #625e4e;
-            letter-spacing: 2px;
-        }
-
-        .icono {
-            font-size: 38px;
-            margin-bottom: 18px;
-        }
-
-        h2 {
-            font-size: 22px;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .nivel {
-            display: inline-block;
-            margin-bottom: 15px;
-
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: #b9aa7c;
-        }
-
-        .misterio p {
-            color: #aaa493;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        .advertencia {
-            text-align: center;
-            margin: 60px 20px 30px;
-
-            color: #625e4e;
-            font-size: 11px;
-            letter-spacing: 3px;
+            background: rgba(255,255,255,0.1);
+            border-color: white;
         }
 
         footer {
             text-align: center;
-            padding: 30px;
-            color: #575448;
+
+            padding: 20px;
+
+            color: #666;
+
             font-size: 10px;
+
             letter-spacing: 2px;
         }
 
-        @media (max-width: 800px) {
-            .misterios {
-                grid-template-columns: 1fr;
+        @media (max-width: 600px) {
+
+            h1 {
+                font-size: 30px;
             }
 
-            .volver {
-                position: static;
-                display: block;
-                margin-bottom: 30px;
+            .contador {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .expedientes {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -181,172 +291,772 @@
 
 <body>
 
-    <header>
 
-        <a href="archivo.html" class="volver">
-            ← VOLVER AL ARCHIVO
-        </a>
+<header>
 
-        <div class="clasificado">
-            ARCHIVO GF-002
-        </div>
+    <h1>ARCHIVO DE MISTERIOS</h1>
 
-        <h1>MISTERIOS</h1>
+    <div class="subtitulo">
+        EXPEDIENTES DE INVESTIGACIÓN · GRAVITY FALLS
+    </div>
 
-        <div class="subtitulo">
-            CASOS Y FENÓMENOS REGISTRADOS
-        </div>
-
-        <div class="linea"></div>
-
-        <p class="descripcion">
-            Gravity Falls esconde secretos que desafían toda explicación.
-            Este archivo reúne algunos de los fenómenos más importantes
-            registrados en el pueblo.
-        </p>
-
-    </header>
+</header>
 
 
-    <main class="misterios">
+<!-- ESTADÍSTICAS -->
+
+<section class="contador">
+
+    <div class="estadistica">
+        <span class="estadistica-numero">024</span>
+        <span class="estadistica-texto">
+            EXPEDIENTES REGISTRADOS
+        </span>
+    </div>
+
+    <div class="estadistica">
+        <span class="estadistica-numero">009</span>
+        <span class="estadistica-texto">
+            CASOS ABIERTOS
+        </span>
+    </div>
+
+    <div class="estadistica">
+        <span class="estadistica-numero">008</span>
+        <span class="estadistica-texto">
+            CASOS RESUELTOS
+        </span>
+    </div>
+
+    <div class="estadistica">
+        <span class="estadistica-numero">007</span>
+        <span class="estadistica-texto">
+            CLASIFICADOS
+        </span>
+    </div>
+
+</section>
 
 
-        <article class="misterio">
+<!-- FILTROS -->
 
-            <span class="numero">CASO 001</span>
+<div class="filtros">
 
-            <div class="icono">🔺</div>
+    <div class="filtro">
+        TODOS LOS CASOS
+    </div>
+
+    <div class="filtro">
+        AMENAZAS
+    </div>
+
+    <div class="filtro">
+        LUGARES
+    </div>
+
+    <div class="filtro">
+        OBJETOS
+    </div>
+
+    <div class="filtro">
+        CONSPIRACIONES
+    </div>
+
+    <div class="filtro">
+        EVENTOS
+    </div>
+
+</div>
+
+
+<!-- AMENAZAS -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+        ⚠ AMENAZAS Y ENTIDADES
+    </div>
+
+    <div class="expedientes">
+
+
+        <article class="expediente">
+
+            <div class="numero">#001</div>
+
+            <div class="simbolo">🔺</div>
 
             <h2>BILL CIPHER</h2>
 
-            <span class="nivel">
-                NIVEL DE PELIGRO: EXTREMO
-            </span>
+            <div class="nivel">
+                AMENAZA: EXTREMA
+            </div>
 
-            <p>
-                Una entidad interdimensional con forma de triángulo
-                que posee poderes capaces de alterar la realidad.
+            <p class="descripcion">
+                Entidad interdimensional con capacidades
+                desconocidas. Su presencia está relacionada
+                con numerosos acontecimientos sobrenaturales.
             </p>
+
+            <div class="datos">
+                ESTADO: ACTIVO<br>
+                TIPO: ENTIDAD INTERDIMENSIONAL
+            </div>
 
         </article>
 
 
-        <article class="misterio">
+        <article class="expediente">
 
-            <span class="numero">CASO 002</span>
+            <div class="numero">#002</div>
 
-            <div class="icono">🌀</div>
+            <div class="simbolo">🌀</div>
 
-            <h2>EL PORTAL</h2>
+            <h2>WEIRDMAGEDDON</h2>
 
-            <span class="nivel">
-                NIVEL DE PELIGRO: EXTREMO
-            </span>
+            <div class="nivel">
+                AMENAZA: EXTREMA
+            </div>
 
-            <p>
-                Una máquina construida para abrir una puerta hacia
-                otra dimensión. Su funcionamiento está relacionado
-                con numerosos acontecimientos del pueblo.
+            <p class="descripcion">
+                Evento de proporciones extraordinarias que
+                altera las reglas normales de la realidad
+                dentro de Gravity Falls.
             </p>
+
+            <div class="datos">
+                ESTADO: ARCHIVADO<br>
+                TIPO: EVENTO ANÓMALO
+            </div>
 
         </article>
 
 
-        <article class="misterio">
+        <article class="expediente">
 
-            <span class="numero">CASO 003</span>
+            <div class="numero">#003</div>
 
-            <div class="icono">📖</div>
+            <div class="simbolo">👁️</div>
+
+            <h2>OJOS DE BILL</h2>
+
+            <div class="nivel">
+                AMENAZA: ALTA
+            </div>
+
+            <p class="descripcion">
+                Símbolos y representaciones relacionadas con
+                Bill Cipher que aparecen en distintos lugares
+                y documentos.
+            </p>
+
+            <div class="datos">
+                ESTADO: INVESTIGACIÓN ABIERTA<br>
+                TIPO: SÍMBOLO
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#004</div>
+
+            <div class="simbolo">👶</div>
+
+            <h2>TIME BABY</h2>
+
+            <div class="nivel">
+                AMENAZA: DESCONOCIDA
+            </div>
+
+            <p class="descripcion">
+                Entidad relacionada con el control y vigilancia
+                del tiempo y los acontecimientos temporales.
+            </p>
+
+            <div class="datos">
+                ESTADO: DESCONOCIDO<br>
+                TIPO: ENTIDAD TEMPORAL
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#005</div>
+
+            <div class="simbolo">🧠</div>
+
+            <h2>HOMBRE DEL SOMBRERO</h2>
+
+            <div class="nivel">
+                AMENAZA: ALTA
+            </div>
+
+            <p class="descripcion">
+                Registro relacionado con acontecimientos
+                sobrenaturales y alteraciones de la memoria.
+            </p>
+
+            <div class="datos">
+                ESTADO: ARCHIVADO<br>
+                TIPO: ANOMALÍA
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#006</div>
+
+            <div class="simbolo">👽</div>
+
+            <h2>ANOMALÍAS DESCONOCIDAS</h2>
+
+            <div class="nivel">
+                AMENAZA: VARIABLE
+            </div>
+
+            <p class="descripcion">
+                Conjunto de fenómenos que no pueden ser
+                explicados mediante métodos convencionales.
+            </p>
+
+            <div class="datos">
+                ESTADO: ACTIVO<br>
+                TIPO: ANOMALÍA
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- LUGARES -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+        🗺 LUGARES ANÓMALOS
+    </div>
+
+    <div class="expedientes">
+
+
+        <article class="expediente">
+
+            <div class="numero">#007</div>
+
+            <div class="simbolo">🏚️</div>
+
+            <h2>CABAÑA DEL MISTERIO</h2>
+
+            <div class="nivel">
+                NIVEL: ALTO
+            </div>
+
+            <p class="descripcion">
+                Centro turístico, residencia de la familia
+                Pines y ubicación de numerosas investigaciones.
+            </p>
+
+            <div class="datos">
+                UBICACIÓN: GRAVITY FALLS<br>
+                ESTADO: ACTIVO
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#008</div>
+
+            <div class="simbolo">🚪</div>
+
+            <h2>PORTAL INTERDIMENSIONAL</h2>
+
+            <div class="nivel">
+                NIVEL: EXTREMO
+            </div>
+
+            <p class="descripcion">
+                Máquina capaz de abrir una conexión entre
+                diferentes dimensiones.
+            </p>
+
+            <div class="datos">
+                UBICACIÓN: CLASIFICADA<br>
+                ESTADO: DESTRUIDO
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#009</div>
+
+            <div class="simbolo">🌲</div>
+
+            <h2>BOSQUE DE GRAVITY FALLS</h2>
+
+            <div class="nivel">
+                NIVEL: DESCONOCIDO
+            </div>
+
+            <p class="descripcion">
+                Zona con una concentración extraordinariamente
+                alta de criaturas, anomalías y fenómenos
+                inexplicables.
+            </p>
+
+            <div class="datos">
+                UBICACIÓN: GRAVITY FALLS<br>
+                ESTADO: ACTIVO
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#010</div>
+
+            <div class="simbolo">🏔️</div>
+
+            <h2>BÚNKER</h2>
+
+            <div class="nivel">
+                NIVEL: ALTO
+            </div>
+
+            <p class="descripcion">
+                Instalación oculta relacionada con investigaciones
+                sobre fenómenos sobrenaturales.
+            </p>
+
+            <div class="datos">
+                UBICACIÓN: BOSQUE<br>
+                ESTADO: ABANDONADO
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#011</div>
+
+            <div class="simbolo">🌌</div>
+
+            <h2>DIMENSIÓN DE PESADILLA</h2>
+
+            <div class="nivel">
+                NIVEL: EXTREMO
+            </div>
+
+            <p class="descripcion">
+                Dimensión asociada con Bill Cipher y con
+                fenómenos que desafían las leyes conocidas.
+            </p>
+
+            <div class="datos">
+                UBICACIÓN: OTRA DIMENSIÓN<br>
+                ACCESO: RESTRINGIDO
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#012</div>
+
+            <div class="simbolo">🌊</div>
+
+            <h2>LAGO GRAVITY FALLS</h2>
+
+            <div class="nivel">
+                NIVEL: MEDIO
+            </div>
+
+            <p class="descripcion">
+                Zona acuática relacionada con historias
+                y criaturas desconocidas.
+            </p>
+
+            <div class="datos">
+                UBICACIÓN: GRAVITY FALLS<br>
+                ESTADO: ACTIVO
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- OBJETOS -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+        🔮 OBJETOS Y ARTEFACTOS
+    </div>
+
+    <div class="expedientes">
+
+
+        <article class="expediente">
+
+            <div class="numero">#013</div>
+
+            <div class="simbolo">📖</div>
 
             <h2>LOS DIARIOS</h2>
 
-            <span class="nivel">
-                NIVEL DE PELIGRO: ALTO
-            </span>
+            <div class="nivel">
+                IMPORTANCIA: CRÍTICA
+            </div>
 
-            <p>
-                Tres diarios que contienen información sobre las
-                criaturas, anomalías y secretos sobrenaturales
-                encontrados en Gravity Falls.
+            <p class="descripcion">
+                Tres diarios que contienen información sobre
+                criaturas, anomalías y secretos de Gravity Falls.
             </p>
+
+            <div class="datos">
+                TIPO: DOCUMENTOS<br>
+                ESTADO: PARCIALMENTE RECUPERADOS
+            </div>
 
         </article>
 
 
-        <article class="misterio">
+        <article class="expediente">
 
-            <span class="numero">CASO 004</span>
+            <div class="numero">#014</div>
 
-            <div class="icono">🏚️</div>
+            <div class="simbolo">🔑</div>
 
-            <h2>LA CABAÑA DEL MISTERIO</h2>
+            <h2>LLAVES Y CÓDIGOS</h2>
 
-            <span class="nivel">
-                NIVEL DE PELIGRO: DESCONOCIDO
-            </span>
+            <div class="nivel">
+                IMPORTANCIA: ALTA
+            </div>
 
-            <p>
-                Una atracción turística aparentemente normal que
-                esconde muchos más secretos de los que Stan Pines
-                estaría dispuesto a admitir.
+            <p class="descripcion">
+                Diferentes claves y mecanismos utilizados para
+                ocultar información dentro de los archivos.
             </p>
+
+            <div class="datos">
+                TIPO: SISTEMA DE SEGURIDAD<br>
+                ESTADO: ACTIVO
+            </div>
 
         </article>
 
 
-        <article class="misterio">
+        <article class="expediente">
 
-            <span class="numero">CASO 005</span>
+            <div class="numero">#015</div>
 
-            <div class="icono">👁️</div>
+            <div class="simbolo">📻</div>
 
-            <h2>LOS SÍMBOLOS</h2>
+            <h2>OBJETOS ANÓMALOS</h2>
 
-            <span class="nivel">
-                NIVEL DE PELIGRO: DESCONOCIDO
-            </span>
+            <div class="nivel">
+                PELIGRO: VARIABLE
+            </div>
 
-            <p>
-                Extraños símbolos aparecen escondidos en distintos
-                lugares y objetos. Algunos parecen estar conectados
-                con acontecimientos futuros.
+            <p class="descripcion">
+                Objetos encontrados en Gravity Falls que
+                presentan propiedades imposibles de explicar.
             </p>
+
+            <div class="datos">
+                TIPO: ARTEFACTO<br>
+                ESTADO: INVESTIGACIÓN
+            </div>
 
         </article>
 
 
-        <article class="misterio">
+        <article class="expediente">
 
-            <span class="numero">CASO 006</span>
+            <div class="numero">#016</div>
 
-            <div class="icono">👽</div>
+            <div class="simbolo">💿</div>
 
-            <h2>ANOMALÍAS</h2>
+            <h2>REGISTROS PERDIDOS</h2>
 
-            <span class="nivel">
-                NIVEL DE PELIGRO: VARIABLE
-            </span>
+            <div class="nivel">
+                IMPORTANCIA: DESCONOCIDA
+            </div>
 
-            <p>
-                Desde criaturas imposibles hasta fenómenos que
-                desafían las leyes normales de la realidad.
-                Gravity Falls parece atraerlos constantemente.
+            <p class="descripcion">
+                Documentos cuyo contenido original ha sido
+                eliminado o alterado.
             </p>
+
+            <div class="datos">
+                TIPO: ARCHIVO<br>
+                ESTADO: INCOMPLETO
+            </div>
 
         </article>
 
-
-    </main>
-
-
-    <div class="advertencia">
-        ⚠ ALGUNOS ARCHIVOS PUEDEN CONTENER INFORMACIÓN PELIGROSA ⚠
     </div>
 
+</section>
 
-    <footer>
-        ARCHIVO GF-002 — INFORMACIÓN RESTRINGIDA
-    </footer>
+
+<!-- CONSPIRACIONES -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+        🕵 CONSPIRACIONES
+    </div>
+
+    <div class="expedientes">
+
+
+        <article class="expediente">
+
+            <div class="numero">#017</div>
+
+            <div class="simbolo">👁️</div>
+
+            <h2>SOCIEDAD DEL OJO CIEGO</h2>
+
+            <div class="nivel">
+                IMPORTANCIA: ALTA
+            </div>
+
+            <p class="descripcion">
+                Organización secreta dedicada a borrar recuerdos
+                relacionados con acontecimientos extraños.
+            </p>
+
+            <div class="datos">
+                ESTADO: DESCUBIERTA<br>
+                TIPO: ORGANIZACIÓN
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#018</div>
+
+            <div class="simbolo">🧩</div>
+
+            <h2>EL AUTOR</h2>
+
+            <div class="nivel">
+                IMPORTANCIA: CRÍTICA
+            </div>
+
+            <p class="descripcion">
+                Identidad del misterioso creador de los diarios
+                y responsable de numerosas investigaciones.
+            </p>
+
+            <div class="datos">
+                ESTADO: RESUELTO<br>
+                TIPO: IDENTIDAD
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#019</div>
+
+            <div class="simbolo">⏳</div>
+
+            <h2>ANOMALÍAS TEMPORALES</h2>
+
+            <div class="nivel">
+                IMPORTANCIA: ALTA
+            </div>
+
+            <p class="descripcion">
+                Fenómenos que afectan el paso normal del tiempo
+                y provocan acontecimientos imposibles.
+            </p>
+
+            <div class="datos">
+                ESTADO: ABIERTO<br>
+                TIPO: FENÓMENO TEMPORAL
+            </div>
+
+        </article>
+
+
+        <article class="expediente">
+
+            <div class="numero">#020</div>
+
+            <div class="simbolo">🔺</div>
+
+            <h2>EL SÍMBOLO</h2>
+
+            <div class="nivel">
+                IMPORTANCIA: CRÍTICA
+            </div>
+
+            <p class="descripcion">
+                Símbolo triangular relacionado con diferentes
+                personajes, acontecimientos y mensajes ocultos.
+            </p>
+
+            <div class="datos">
+                ESTADO: INVESTIGACIÓN<br>
+                TIPO: SÍMBOLO
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ARCHIVOS CLASIFICADOS -->
+
+<section class="seccion">
+
+    <div class="titulo-seccion">
+        🔒 ARCHIVOS CLASIFICADOS
+    </div>
+
+    <div class="expedientes">
+
+
+        <article class="expediente clasificado">
+
+            <div class="numero">#021</div>
+
+            <div class="simbolo">❓</div>
+
+            <h2>████████████</h2>
+
+            <div class="nivel">
+                ACCESO: DENEGADO
+            </div>
+
+            <p class="descripcion">
+                La información de este expediente ha sido
+                eliminada por una autoridad desconocida.
+            </p>
+
+            <div class="datos">
+                ESTADO: ████████<br>
+                ACCESO: 🔒
+            </div>
+
+        </article>
+
+
+        <article class="expediente clasificado">
+
+            <div class="numero">#022</div>
+
+            <div class="simbolo">👁️</div>
+
+            <h2>████████████</h2>
+
+            <div class="nivel">
+                ACCESO: DENEGADO
+            </div>
+
+            <p class="descripcion">
+                Se requiere una clave especial para acceder
+                al contenido de este archivo.
+            </p>
+
+            <div class="datos">
+                ESTADO: ████████<br>
+                ACCESO: 🔒
+            </div>
+
+        </article>
+
+
+        <article class="expediente clasificado">
+
+            <div class="numero">#023</div>
+
+            <div class="simbolo">🔺</div>
+
+            <h2>████████████</h2>
+
+            <div class="nivel">
+                ACCESO: DENEGADO
+            </div>
+
+            <p class="descripcion">
+                Este expediente contiene información relacionada
+                con un caso todavía sin resolver.
+            </p>
+
+            <div class="datos">
+                ESTADO: ████████<br>
+                ACCESO: 🔒
+            </div>
+
+        </article>
+
+
+        <article class="expediente clasificado">
+
+            <div class="numero">#024</div>
+
+            <div class="simbolo">⚠️</div>
+
+            <h2>ARCHIVO NEGRO</h2>
+
+            <div class="nivel">
+                AMENAZA: █████
+            </div>
+
+            <p class="descripcion">
+                NO EXISTE INFORMACIÓN DISPONIBLE.
+                NO INTENTAR ACCEDER.
+            </p>
+
+            <div class="datos">
+                ESTADO: ████████<br>
+                ACCESO: 🔒
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<a href="archivo.html" class="volver">
+    ← VOLVER AL ARCHIVO PRINCIPAL
+</a>
+
+
+<footer>
+    ARCHIVO DE INVESTIGACIÓN · GRAVITY FALLS
+</footer>
+
 
 </body>
 </html>
